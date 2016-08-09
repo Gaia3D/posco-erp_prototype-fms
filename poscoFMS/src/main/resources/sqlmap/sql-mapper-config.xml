@@ -16,10 +16,4 @@
 
     </typeAliases>
 
-    <mappers>
-
-        <mapper resource ="sqlmap/mappers/**/*_SQL.xml"/>
-
-    </mappers>
-
 </configuration>
