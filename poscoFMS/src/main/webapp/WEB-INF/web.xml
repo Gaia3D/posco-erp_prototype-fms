@@ -43,11 +43,11 @@
 
 	<servlet-mapping>
 		<servlet-name>appServlet</servlet-name>
-		<url-pattern>*.ngii</url-pattern>
+		<url-pattern>*.posco</url-pattern>
 	</servlet-mapping>
 
 	<welcome-file-list>
-		<welcome-file>index.ngii</welcome-file>
+		<welcome-file>index.posco</welcome-file>
 		<welcome-file>index.jsp</welcome-file>
 		<welcome-file>index.html</welcome-file>
 	</welcome-file-list>

@@ -1,0 +1,289 @@
+@charset "utf-8";
+
+/* RESET CSS */
+* { margin:0; padding:0; border:0; outline:0; vertical-align:top; }
+article, aside, details, figcaption, figure, footer, header, hgroup, menu nav, section { display:block; }
+ul, ol, dl { list-style:none; }
+img, video { max-width:100%; border:0; vertical-align:top; }
+a {vertical-align:top; text-decoration:none; color:#000; }
+table { border-collapse:collapse; border-spacing:0; }
+input, select { vertical-align:middle; }
+html, body { margin:0; padding:0; height:100%; }
+body, th, td, input, select, textarea { color:#444; font-family:'Malgun Gothic','돋움',dotum, sans-serif; font-size:13px; line-height:1.5em;}
+button { cursor:pointer; font-family:'Malgun Gothic','돋움'; }
+
+/* /////// 공통적용 /////// */ㄴ
+.hide {
+visibility:hidden;
+display:none;
+}
+
+/* LAYOUT */
+#header_wrap {
+background-color:#262b30;
+}
+#header_wrap .header {
+position:relative;
+width:1000px;
+height:35px;
+margin:0 auto;
+}
+#wrap {
+}
+#wrap .snb {
+padding:10px;
+background:#407fe3;
+}
+#wrap .contents {
+position:relative;
+width:1000px;
+margin:10px auto;
+}
+
+/* HEADER */
+.header h1 {
+float:left;
+width:245px;
+height:25px;
+margin-top:7px;
+text-indent:-999em;
+cursor:pointer;
+background:url(../images/logo.png) no-repeat 0 0;
+}
+.header > ul {
+margin:0 auto;
+width:500px;
+text-align:center;
+}
+.header > ul li {
+display:inline-block;
+margin:0 10px;
+padding-top:6px;
+}
+.header > ul li a {
+color:#fff;
+font-size:1.3em;
+}
+.header > ul li a:hover {
+color:#407fe3;
+}
+.header > ul li a.on {
+color:#407fe3;
+}
+.header .user {
+position:absolute;
+top:7px;
+right:0;
+color:#fff;
+}
+.header .user > span {
+}
+.header .user > button {
+padding:1px 4px;
+color:#FFF;
+border-radius:3px;
+background:#407fe3;
+}
+.header .user > button:hover {
+background:#5999ff;
+}
+.header .user * {
+vertical-align:middle;
+}
+
+
+/* WRAP */
+/* ///// WRAP / SNB영역 ///// */
+.snb ul {
+width:1000px;
+margin:0 auto;
+}
+.snb ul li {
+display:inline-block;
+margin-right:20px;
+}
+.snb ul li label {
+color:#fff;
+}
+.snb ul li select {
+display:inline-block;
+min-width:100px;
+padding:5px 7px;
+border:1px solid #2362c8;
+}
+.snb ul li * {
+vertical-align:middle;
+}
+
+/* CONTENTS */
+.contents ul.count {
+position:absolute;
+top:0;
+left:0;
+margin:0;
+padding:0;
+}
+.contents ul.count li label {
+display:inline-block;
+margin-right:7px;
+padding-right:10px;
+background:url(../images/ico_label.png) no-repeat right;
+}
+.contents ul.count li {
+margin-bottom:5px;
+padding-left:20px;
+background-image:url(../images/ico_count.png);
+background-repeat:no-repeat;
+}
+.contents ul.count li.measure {
+background-position:0 0;
+}
+.contents ul.count li.check {
+background-position:0 -20px;
+}
+.contents > ul.count li span {
+color:#ff3300;
+}
+
+
+.contents .index {
+width:1000px;
+height:817px;
+background-color:#f0f2f4;
+background-image:url(../images/index.png);
+background-repeat:no-repeat;
+background-position:0 0;
+}
+.contents .index > a {
+position:absolute;
+width:13px;
+height:42px;
+display:inline-block;
+}
+.contents .index > a:hover {
+filter:alpha(opacity=50); opacity:0.5; -moz-opacity:0.5;		
+background-color:#fff;	
+}
+.contents .index > a.on {
+background-color:#407fe3;
+filter:alpha(opacity=70); opacity:0.7; -moz;-opacity:0.7;	
+}
+
+
+.contents .index > p {
+position:absolute;
+width:13px;
+height:42px;	
+background-color:#F33;
+filter:alpha(opacity=80); opacity:0.8; -moz;-opacity:0.8;		
+}
+.contents .index > p a {
+display:inline-block;
+width:100%;	
+height:100%;
+text-indent:-999em;
+background-image:url(../images/ico_warning.png);
+background-repeat:no-repeat;
+}
+.contents .index > p a.measure {
+background-position:left center;
+}
+.contents .index > p a.check {
+background-position:-13px center;
+}
+.contents .index > p.both {
+position:absolute;
+width:13px;
+height:42px;	
+background-color:#F33;
+filter:alpha(opacity=80); opacity:0.8; -moz;-opacity:0.8;		
+}
+.contents .index p.both > a {
+display:inline-block;
+width:100%;	
+height:21px;
+text-indent:-999em;
+background-image:url(../images/ico_warning.png);
+background-repeat:no-repeat;
+}
+.contents .index p.both > a.measure {
+background-position:left center;
+}
+.contents .index p.both > a.check {
+background-position:-13px center;
+}
+
+
+.contents .view {
+float:left;
+width:736px;
+
+border:1px solid #eee;
+}
+
+/*
+.contents index.main {
+width:1000px;
+height:817px;
+}
+.contents index.sub{
+float:left;
+width:250px;
+height:680px;
+margin-right:10px;
+}
+
+*/
+
+
+/* 공통 */
+h3 {
+float:left;
+margin:9px 0 0;
+padding-left:12px;
+font-size:1.4em;
+color:#000;
+background:url(../images/bullet_h3.png) no-repeat left 50%;
+}
+h4 {
+width:50px;
+margin-bottom:20px;
+padding:3px 10px;
+color:#407fe3;
+border:1px solid #407fe3;
+}
+
+
+.btns {
+margin-bottom:15px;
+text-align:right;
+}
+.btns button {
+padding:5px 15px;
+color:#407fe3;
+border:3px solid #407fe3;
+border-radius:17px;
+background:#fff;	
+}
+.btns button:hover {
+color:#fff;
+background:#407fe3;
+}
+.btns button.on {
+color:#fff;
+background:#407fe3;
+}
+.graph {
+margin-bottom:30px;
+padding:10px;
+border:1px solid #eee;
+}
+
+
+/* LOGIN */
+body.login {
+background-image:url(../images/login_bg.jpg);
+background-repeat:no-repeat;
+background-position:center 0;
+background-color:#000;
+}
