@@ -27,7 +27,7 @@ public class MainController {
 	
 	/**
 	 * indexPage
-	 * 사이트 초기 진입 시 지정된 페이지로 포워딩한다.
+	 * 메인 화면으로 진입한다.
 	 * @param none
 	 * @return indexPage 경로
 	 */
@@ -43,6 +43,46 @@ public class MainController {
 		model.addAttribute("serverTime", formattedDate );
 		
 		return "main/index";
+	}
+	
+	/**
+	 * detailPage
+	 * 상세정보 화면으로 진입한다.
+	 * @param none
+	 * @return detailPage 경로
+	 */
+	@RequestMapping(value = "/detail.posco", method = RequestMethod.GET)
+	public String detailPage(Locale locale, Model model) {
+		logger.info("Welcome fms! The client locale is {}.", locale);
+		
+		Date date = new Date();
+		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+		
+		String formattedDate = dateFormat.format(date);
+		
+		model.addAttribute("serverTime", formattedDate );
+		
+		return "main/detail";
+	}
+	
+	/**
+	 * reportPage
+	 * 리포트 화면으로 진입한다.
+	 * @param none
+	 * @return reportPage 경로
+	 */
+	@RequestMapping(value = "/report.posco", method = RequestMethod.GET)
+	public String reportPage(Locale locale, Model model) {
+		logger.info("Welcome fms! The client locale is {}.", locale);
+		
+		Date date = new Date();
+		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+		
+		String formattedDate = dateFormat.format(date);
+		
+		model.addAttribute("serverTime", formattedDate );
+		
+		return "main/report";
 	}
 	
 	/**

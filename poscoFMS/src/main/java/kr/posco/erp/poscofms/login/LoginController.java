@@ -40,33 +40,18 @@ public class LoginController {
 	private int inteval = 30 * 60;			// 세션 만료될 시간 (30분)
 	
 	/**
-	 * indexPage
-	 * 사이트 초기 진입 시 지정된 페이지로 포워딩한다.
+	 * loginPage
+	 * 사이트 초기 진입 시 로그인 페이지로 포워딩한다.
 	 * @param none
 	 * @return indexPage 경로
 	 */
-	@RequestMapping(value = "/login.ngii", method = RequestMethod.GET)
+	@RequestMapping(value = "/login.posco", method = RequestMethod.GET)
 	public String login(HttpServletRequest request, Locale locale, Model model, String social, String email, String name)
 	throws UnsupportedEncodingException
 	{
-		logger.info("Welcome smdc! The client locale is {}.", locale);
+		logger.info("Welcome poscoFMS! The client locale is {}.", locale);
 		
-		// TODO - khj : 임시로 소셜 로그인을 막는다. 나중에 소셜 로그인 기능을 구현할거면 제대로 구현 된상태서 막은걸 풀어야 한다.
-		social = "";
-
-		String url = loginService.makeLoginValidationUrl(social);
-		
-		if(StringUtil.isEmpty(email))
-		{
-			if(!url.substring(0, 4).equals("http"))
-				model.addAttribute("error", "empty email");
-		}
-		else
-		{
-			model.addAttribute("email", URLDecoder.decode(email, "UTF-8"));
-		}
-	
-		return "redirect:" + url;
+		return "main/login";
 	}
 	
 }

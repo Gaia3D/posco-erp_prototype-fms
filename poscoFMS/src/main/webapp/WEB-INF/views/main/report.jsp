@@ -37,7 +37,6 @@
 </head>
 
 <body>  
-
 <div id="header_wrap">
 <jsp:include page="../import/top.jsp" />
 </div>
@@ -62,43 +61,18 @@
                   <option>EF LINE</option>
                 </select>
             </li>
-            <li>
-            	<label>측량일</label>
-                <select>
-                  <option>2015. 11. 05</option>
-                  <option>2014. 11. 05</option>
-                  <option>2013. 11. 05</option>
-                </select>
-            </li>
         </ul>
     </div>
     <!-- END NAV --> 
     <div class="contents">
-    	<ul class="count">
-        	<li class="measure"><label>측량</label><span>3</span>건</li>
-        	<li class="check"><label>점검</label><span>3</span>건</li>
-        </ul>
-        
-    	<div class="index xy">
-        	<!-- 링크샘플 A13 -->
-        	<a href="#" style="top:117px;left:435px;" title="A13"></a>
-            <!-- 선택된 샘플 B13 -->
-            <a href="#" class="on" style="top:117px; left:496px;" title="B13~12"></a>
-            <!-- 측량경고 샘플 A4 -->
-            <p style="top:576px; left:435px;" title="A4~3">
-            	<a href="#" class="measure">측량경고</a>
-            </p>
-            <!-- 점검경고 샘플 B9 -->
-            <p style="top:321px; left:496px;" title="B9~8">
-            	<a href="#" class="check">측량경고</a>
-            </p>
-            <!-- 측량,점검경고 샘플 B3 -->
-            <p style="top:627px; left:496px;" class="both" title="B3~2">
-            	<a href="#" class="measure">측량경고</a>
-                <a href="#" class="check">측량경고</a>
-            </p>
+    	<div class="btns">
+        	<button type="button">PDF다운로드</button>
+            <button type="button">인쇄</button>
         </div>
-        <!-- END INDEX -->
+        <!-- 보고서 -->
+        <div>
+        	<img src="<%=contextRoot%>common/images/@report.png" />
+        </div>
     </div>
     <!-- END CONTENTS -->   
 </div>
