@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+ <!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://www.mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.posco.erp.poscofms.dao.PoscoFmsDao">
+
+    <select id="selectTotalMeasurementDates">
+    </select>
+    
+    <select id="selectAllGirderErrorStatus">
+    </select>
+    
+    <select id="selectGirderMeasurement" resultType="GirderMeasurement">
+    </select>
+    
+    <select id="selectGirderReplacement" resultType="GirderInspection">
+    </select>
+    
+    <select id="selectGirderInspectionRecords">
+    </select>
+    
+    <select id="selectGirderHorizontalDeformationHistory">
+    </select>
+    
+    <select id="selectGirderVerticalDeformationHistory">
+    </select>
+
+
+</mapper>
