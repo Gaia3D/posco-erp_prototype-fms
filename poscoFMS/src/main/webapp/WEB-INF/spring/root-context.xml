@@ -44,7 +44,7 @@
 
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="kr.posco.erp.poscofms" />
-        <property name="annotationClass" value="kr.posco.erp.poscofms.core.annotation.DsApp"/>
+        <property name="annotationClass" value="kr.posco.erp.poscofms.core.annotation.MybatisForPoscofms"/>
         <property name="sqlSessionFactoryBeanName" value="sqlSession1"/>
     </bean>
 
