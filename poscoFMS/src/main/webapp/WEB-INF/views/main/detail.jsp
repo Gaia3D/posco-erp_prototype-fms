@@ -96,7 +96,7 @@
                 <!-- 진직도 -->
                 <div class="straight">
                     <h4>진직도</h4>
-                    <a href="#" title="시계열조회" class="first"><span>-10</span></a>
+                    <a href="#" title="시계열조회" class="first" onclick="showGraph();"><span>-10</span></a>
                     <a href="#" title="시계열조회" class="middle warn"><span>-0</span></a>
                     <a href="#" title="시계열조회" class="last"><span>23</span></a>
                 </div>
@@ -187,7 +187,7 @@
                 	<li id="marker1" style="top:152px; left:329px;" title="C/G 하부 플래지와 웨브 접합부">1</li>
                     <li id="marker2" style="top:67px; left:170px;" title="C/G상부 플래지와 웨브 접합부">2</li>
                     <li id="marker3" style="top:96px; left:247px;" title="C/G 웨브(플랜지)">3</li>
-                    <li id="marker4" style="top:77px; left:385px;" title="C/G 상부 수직 스티프너와 웨브 접합부" class="warn" onclick="showGraph();">4</li>
+                    <li id="marker4" style="top:77px; left:385px;" title="C/G 상부 수직 스티프너와 웨브 접합부" class="warn">4</li>
                     <li id="marker5" style="top:147px; left:244px;" title="C/G 하부 수평스티프너와 플랜지, 웨브 부재균열">5</li>
                     <li id="marker6" style="top:99px; left:107px;" title="C/G 수평스티프너와 웨브(플랜지) 접합부">6</li>
                     <li id="marker7" style="top:59px; left:50px;" title="C/G 엔드 플레이트와 웨브 접합부">7</li>
