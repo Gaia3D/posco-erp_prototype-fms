@@ -18,6 +18,7 @@
 	
 	String userEmail = (String)session.getAttribute("userEmail");
 	String userName = (String)session.getAttribute("userName");
+	String currMenu = request.getParameter("menu");
 	
 	if(!StringUtil.isEmpty(userEmail))
 		userEmail = URLDecoder.decode(userEmail, "UTF-8");
@@ -31,13 +32,13 @@
 	<div class="header">
     	<h1>POSCO RUNWAY시설물 관리시스템</h1>
         <ul id="topMenu">
-        	<li><a href="#" class="home" onclick="goMenu('home');">홈</a></li>
-            <li><a href="#" class="detail" onclick="goMenu('detail');">상세조회</a></li>
-            <li><a href="#" class="report" onclick="goMenu('report');">보고서</a></li>
+        	<li><a href="#" class="home<%="home".equals(currMenu)?" on":"" %>" onclick="goMenu('home');">홈</a></li>
+            <li><a href="#" class="detail<%="detail".equals(currMenu)?" on":"" %>" onclick="goMenu('detail');">상세조회</a></li>
+            <li><a href="#" class="report<%="report".equals(currMenu)?" on":"" %>" onclick="goMenu('report');">보고서</a></li>
         </ul>
         <p class="user">
-        	<span>홍길동 님</span>
-            <button type="button" onclick="goMenu('login');">로그아웃</button>
+        	<span><%=userName%> 님</span>
+            <button type="button" onclick="logout();">로그아웃</button>
         </p>
     </div>
 

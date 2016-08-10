@@ -35,3 +35,9 @@ function highlightMarker(table){
 	var markerId = 'marker' + subTd[1].innerHTML
 	$("#"+ markerId).addClass("warn");
 }
+
+
+
+function logout(){
+	location.href=contextRoot + "logout.posco";
+}

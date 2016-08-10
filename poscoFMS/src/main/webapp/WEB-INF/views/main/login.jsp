@@ -18,6 +18,8 @@
 	
 	String userEmail = (String)session.getAttribute("userEmail");
 	String userName = (String)session.getAttribute("userName");
+	String msg = (String)session.getAttribute("msg");
+	session.setAttribute("msg", null);
 	
 	if(!StringUtil.isEmpty(userEmail))
 		userEmail = URLDecoder.decode(userEmail, "UTF-8");
@@ -40,15 +42,18 @@
 <body class="login">
 	<div class="login_wrap">
     	<h1>POSCO RUNWAY시설물 관리시스템</h1>
+    	<% if(!StringUtil.isEmpty(msg)){%>
+    	<h2><%=msg %><br /></h2>
+    	<%} %>
 
-        <form>
+        <form action="<%=contextRoot %>goLogin.posco" method="POST">
         	<p>
-        		<input type="text" placeholder="아이디">
+        		<input type="text" name="userId" placeholder="아이디">
             </p>
             <p>
-            	<input type="password" placeholder="비밀번호">
+            	<input type="password" name="userPw" placeholder="비밀번호">
             </p>
-            <button type="submit" onclick="goMenu('home');return false;">로그인</button>
+            <button type="submit">로그인</button>
         </form>
 
 

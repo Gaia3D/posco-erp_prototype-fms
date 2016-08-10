@@ -26,7 +26,17 @@
 		userName = URLDecoder.decode(userName, "UTF-8");
 	
 	String error = request.getParameter("error");
+
+	
+	if(StringUtil.isEmpty(userEmail)){
 %>
+<script>
+history.back();
+</script>
+<%		
+	} else {
+%>
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -40,7 +50,9 @@
 <body>
 
 <div id="header_wrap">
-<jsp:include page="../import/top.jsp" />
+<jsp:include page="../import/top.jsp" >
+	<jsp:param value="detail" name="menu"/>
+</jsp:include>
 </div>
 <!-- END HEADER -->
 
@@ -291,3 +303,7 @@
 <!-- END LAYER -->
 </body>
 </html>
+
+<%		
+	}
+%>
