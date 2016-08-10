@@ -1,6 +1,6 @@
 package kr.posco.erp.poscofms.main.vo;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class GirderErrorStatusSummaryVO {
 	
@@ -8,7 +8,7 @@ public class GirderErrorStatusSummaryVO {
 	
 	private int inspectionErrorCount;
 	
-	private ArrayList<GirderErrorStatusVO> allGirderErrorStatus;
+	private List<GirderErrorStatusVO> allGirderErrorStatus;
 	
 	
 	public int getMeasurementErrorCount()
@@ -31,12 +31,12 @@ public class GirderErrorStatusSummaryVO {
 		this.inspectionErrorCount = count;
 	}
 	
-	public ArrayList<GirderErrorStatusVO> getAllGirderErrorStatus()
+	public List<GirderErrorStatusVO> getAllGirderErrorStatus()
 	{
 		return this.allGirderErrorStatus;
 	}
 	
-	public void setAllGirderErrorStatus(ArrayList<GirderErrorStatusVO> girderErrorStatus)
+	public void setAllGirderErrorStatus(List<GirderErrorStatusVO> girderErrorStatus)
 	{
 		this.allGirderErrorStatus = girderErrorStatus;
 	}

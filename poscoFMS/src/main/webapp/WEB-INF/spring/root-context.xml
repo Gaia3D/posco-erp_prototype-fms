@@ -11,7 +11,7 @@
 
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="org.postgresql.Driver" />
-        <property name="url" value="jdbc:postgresql://192.168.10.38:5432/poscoFMS" />
+        <property name="url" value="jdbc:postgresql://192.168.10.38:5432/bumaeng" />
         <property name="username" value="postgres" />
         <property name="password" value="0000" />
     </bean>

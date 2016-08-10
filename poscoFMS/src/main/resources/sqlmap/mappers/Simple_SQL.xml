@@ -5,7 +5,8 @@
 
 <mapper namespace="kr.posco.erp.poscofms.main.dao.PoscoFmsDao">
 
-    <select id="selectTotalMeasurementDates">
+    <select id="selectTotalMeasurementDates" resultType="String">
+    	SELECT to_char(survey_dt, 'YYYY-MM-DD') from survey_info
     </select>
     
     <select id="selectAllGirderErrorStatus">

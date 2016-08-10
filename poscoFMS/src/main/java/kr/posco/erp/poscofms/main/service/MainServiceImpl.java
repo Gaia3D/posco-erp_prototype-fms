@@ -1,6 +1,6 @@
 package kr.posco.erp.poscofms.main.service;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -64,13 +64,13 @@ public class MainServiceImpl implements MainService {
 	}
 
 	@Override
-	public ArrayList<Integer> getGirderHorizontalDeformationHistory(String id, int positionType) {
+	public List<Integer> getGirderHorizontalDeformationHistory(String id, int positionType) {
 
 		return poscoFmsDao.selectGirderHorizontalDeformationHistory(id, positionType);
 	}
 
 	@Override
-	public ArrayList<Integer> getGirderVerticalDeformationHistory(String id, int positionType) {
+	public List<Integer> getGirderVerticalDeformationHistory(String id, int positionType) {
 
 		return poscoFmsDao.selectGirderVerticalDeformationHistory(id, positionType);
 	}

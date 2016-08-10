@@ -1,6 +1,6 @@
 package kr.posco.erp.poscofms.main.service;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import kr.posco.erp.poscofms.main.vo.GirderErrorStatusSummaryVO;
 import kr.posco.erp.poscofms.main.vo.GirderInspectionVO;
@@ -14,8 +14,8 @@ public interface MainService {
 	
 	public GirderInspectionVO getGirderInspection(String id);
 	
-	public ArrayList<Integer> getGirderHorizontalDeformationHistory(String id, int positionType);
+	public List<Integer> getGirderHorizontalDeformationHistory(String id, int positionType);
 	
-	public ArrayList<Integer> getGirderVerticalDeformationHistory(String id, int positionType);
+	public List<Integer> getGirderVerticalDeformationHistory(String id, int positionType);
 
 }

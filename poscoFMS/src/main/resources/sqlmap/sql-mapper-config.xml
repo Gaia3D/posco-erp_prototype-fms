@@ -15,5 +15,9 @@
         <typeAlias alias="ArrayList" type="java.util.ArrayList"/>
 
     </typeAliases>
+    
+    <mappers>
+		<mapper resource ="sqlmap/mappers/Simple_SQL.xml"/>
+	</mappers>
 
 </configuration>

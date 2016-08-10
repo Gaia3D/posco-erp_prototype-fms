@@ -1,6 +1,6 @@
 package kr.posco.erp.poscofms.main.vo;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class GirderInspectionVO {
 	
@@ -12,7 +12,7 @@ public class GirderInspectionVO {
 	
 	private String replacementReason;
 	
-	private ArrayList<GirderInspectionItemVO> inspectionRecords;
+	private List<GirderInspectionItemVO> inspectionRecords;
 	
 	
 	public String getGirderId()
@@ -55,12 +55,12 @@ public class GirderInspectionVO {
 		this.replacementReason = reason;
 	}
 	
-	public ArrayList<GirderInspectionItemVO> getInspectionRecords()
+	public List<GirderInspectionItemVO> getInspectionRecords()
 	{
 		return this.inspectionRecords;
 	}
 	
-	public void setInspectionRecords(ArrayList<GirderInspectionItemVO> records)
+	public void setInspectionRecords(List<GirderInspectionItemVO> records)
 	{
 		this.inspectionRecords = records;
 	}
