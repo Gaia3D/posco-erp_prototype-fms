@@ -30,11 +30,6 @@
 
 	<script src="<%=contextRoot%>common/js/jquery-2.2.3.min.js"></script>
     <script>
-    	function goMenu(url){
-    		$("#topMenu > li").each(function(){
-    			$(this).removeClass("on");
-    		});
-    		$("."+url).addClass("on");
-    		location.href="<%=contextRoot%>" + url + ".posco";
-    	}
+    	var context = '<%=contextRoot%>';
+    
     </script>
