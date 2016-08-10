@@ -1,5 +1,8 @@
 
 
+    <!-- 그래프 생성 JS -->
+    <script src="<%=contextRoot%>common/js/chart.js"></script>
+    <script>
 	function showGraph(){
 		$(".layer").show();
 		
@@ -26,8 +29,8 @@
 	   	            pointHoverBorderWidth: 2,
 	   	            pointRadius: 1,
 	   	            pointHitRadius: 10,
-	   	            data: [-5, -10, 10, -34, 2, 1, 17],
-	   	            spanGaps: false,
+	   	            data: [-5, -10, 10, -34, null, 1, 17],
+	   	            spanGaps: true,
 	   	        }
 	   	    ]
 	   	};

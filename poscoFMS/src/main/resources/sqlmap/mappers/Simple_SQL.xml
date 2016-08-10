@@ -9,7 +9,7 @@
     	SELECT to_char(survey_dt, 'YYYY-MM-DD') from survey_info
     </select>
     
-    <select id="selectAllGirderErrorStatus">
+    <select id="selectAllGirderErrorStatus" resultType="GirderErrorStatus">
 		with a as(
 		select foo.girder_id, count(*)
 		from (
@@ -51,7 +51,7 @@
 				,(select dis from girder_straight
 				   where girder_id = girder.girder_id and survey_dt = girder.survey_dt and pos = 2) dis2
 			  from girder_straight girder
-			 where girder.survey_dt = '2015-11-05'
+			 where girder.survey_dt = #{date}
 			) str
 		    ) as tmp_2
 			 where tmp_2.val2 is not NULL
@@ -80,7 +80,7 @@
 				,(select val from girder_straight
 				   where girder_id <![CDATA[ <> ]]> girder.girder_id and survey_dt = girder.survey_dt and pos = 2 and girder_order = girder.girder_order) valb2
 			  from girder_straight girder
-			 where girder.survey_dt = '2015-11-05'
+			 where girder.survey_dt = #{date}
 			 ) as tmp_2
 			 where tmp_2.val2 is not NULL
 			 and tmp_2.val1 is not NULL
@@ -105,7 +105,7 @@
 				,(select val from girder_bend
 				   where girder_id = girder.girder_id and survey_dt = girder.survey_dt and pos = 2) val2
 			  from girder_bend girder
-			 where girder.survey_dt = '2015-11-05'
+			 where girder.survey_dt = #{date}
 			) as tmp_2
 			 where tmp_2.val2 is not NULL
 			 and tmp_2.val1 is not NULL
@@ -126,7 +126,7 @@
 				   where girder_id <![CDATA[ <> ]]> girder.girder_id and survey_dt = girder.survey_dt and pos = 2 
 				   and girder_order = girder.girder_order-1 and line = girder.line) val2
 			  from girder_bend girder
-			 where girder.survey_dt = '2015-11-05'
+			 where girder.survey_dt = #{date}
 			 and girder.girder_order <![CDATA[ <> ]]> 1
 			 ) as tmp_2
 			 where tmp_2.val2 is not NULL
@@ -150,18 +150,99 @@
     </select>
     
     <select id="selectGirderMeasurement" resultType="GirderMeasurement">
+    	select
+			#{id} as girderId,
+			#{date} as measurementDate,
+			coalesce(HorFirstValues.val, 9999) as horizontalDeformationAtStart,
+			coalesce(HorMidValues.val, 9999) as horizontalDeformationAtMid,
+			coalesce(HorLastValues.val, 9999) as horizontalDeformationAtLast,
+			coalesce(VerFirstValues.val, 9999) as verticalDeformationAtStart,
+			coalesce(VerMidValues.val, 9999) as verticalDeformationAtMid,
+			coalesce(VerLastValues.val, 9999) as verticalDeformationAtLast
+		from
+			(select val from girder_straight
+			where true
+			and girder_id = #{id}
+			and survey_dt = to_timestamp(#{date}, 'YYYY-MM-DD')
+			and pos = 0) HorFirstValues,
+			(select val from girder_straight
+			where true
+			and girder_id = #{id}
+			and survey_dt = to_timestamp(#{date}, 'YYYY-MM-DD')
+			and pos = 1) HorMidValues,
+			(select val from girder_straight
+			where true
+			and girder_id = #{id}
+			and survey_dt = to_timestamp(#{date}, 'YYYY-MM-DD')
+			and pos = 2) HorLastValues,
+			(select val from girder_bend
+			where true
+			and girder_id = #{id}
+			and survey_dt = to_timestamp(#{date}, 'YYYY-MM-DD')
+			and pos = 0) VerFirstValues,
+			(select val from girder_bend
+			where true
+			and girder_id = #{id}
+			and survey_dt = to_timestamp(#{date}, 'YYYY-MM-DD')
+			and pos = 1) VerMidValues,
+			(select val from girder_bend
+			where true
+			and girder_id = #{id}
+			and survey_dt = to_timestamp(#{date}, 'YYYY-MM-DD')
+			and pos = 2) VerLastValues
     </select>
     
     <select id="selectGirderReplacement" resultType="GirderInspection">
+    	select
+			#{id} as girderId,
+			to_char(change_date, 'YYYY-MM-DD') as girderReplacementDate,
+			coalesce(manager, 'NO NAME') as personInCharge,
+			coalesce(change_reason, 'NO REASON') as replacementReason
+		from
+			girder_his
+		where
+			girder_id = #{id}
+		order by change_date desc
+		limit 1
     </select>
     
-    <select id="selectGirderInspectionRecords">
+    <select id="selectGirderInspectionRecords" resultType="GirderInspectionItem">
+    	select
+			code as inspectionType,
+			coalesce(org, 0.0) as crackCrg,
+			coalesce(bg, 0.0) as crackBg,
+			coalesce(col, 0.0) as crackColumn,
+			coalesce(loose, 0) as boltFractures,
+			coalesce(crack, 0) as boltsLoosen,
+			coalesce(disable_crack, 0) as unrecoverableBoltFractures,
+			coalesce(disable_loose, 0) as unrecoverableBoltsLoosen
+		from
+			check_list
+		where
+			girder_id = #{id}
+			and check_date >= to_timestamp(#{date}, 'YYYY-MM-DD')
     </select>
     
-    <select id="selectGirderHorizontalDeformationHistory">
+    <select id="selectGirderHorizontalDeformationHistory" resultType="Integer">
+    	select
+			val
+		from
+			girder_straight
+		where
+			girder_id = #{id}
+			and pos = #{positionType}
+		order by survey_dt
     </select>
     
-    <select id="selectGirderVerticalDeformationHistory">
+    <select id="selectGirderVerticalDeformationHistory" resultType="Integer">
+    	select
+			val
+		from
+			girder_bend
+		where
+			girder_id = #{id}
+			and pos = #{positionType}
+		order by survey_dt
     </select>
 
 
