@@ -88,14 +88,6 @@
                 <div class="btns">
                 	<button type="button" class="on" onclick="goPage('survey');">측량</button>
                     <button type="button" onclick="goPage('check');">점검</button>
-                    <script>
-                    	function goPage(pageId){
-                    		$(".measure_wrap").each(function(){
-                    			$(this).hide();
-                    		});
-                    		$("#" + pageId).show();
-                    	}
-                    </script>
                 </div>
             </div>
             
