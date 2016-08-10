@@ -216,11 +216,7 @@
                     <li style="top:460px; left:183px;" title="C/G 하부 수직 스티프너와 가세트 플례이트 접합부">30</li>
                     <li style="top:345px; left:124px;" title="?">31</li>
                 </ul>
-            	<script>
-            		function showGraph(){
-            			$(".layer").show();
-            		}
-            	</script>
+            	
                 <div class="check_list">
                     <h3>점검</h3>
                      <table summary="점검표">
@@ -287,7 +283,7 @@
         </p>
     	<h4>A11-1 </h4>
         <div class="graph">
-        	시계열 그래프
+        	<canvas class="graph" id="timeGraph" ></canvas>
         </div>
     </div>
     <!-- END CONTENTS --> 

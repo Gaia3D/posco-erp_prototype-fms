@@ -61,6 +61,11 @@ margin-bottom:30px;
 padding:10px;
 border:1px solid #eee;
 }
+.graph #timeGraph {
+width : 1130px;
+margin-bottom:0px;
+padding:0px;
+}
 
 
 /* LAYOUT */
