@@ -187,7 +187,7 @@
                 	<li id="marker1" style="top:152px; left:329px;" title="C/G 하부 플래지와 웨브 접합부">1</li>
                     <li id="marker2" style="top:67px; left:170px;" title="C/G상부 플래지와 웨브 접합부">2</li>
                     <li id="marker3" style="top:96px; left:247px;" title="C/G 웨브(플랜지)">3</li>
-                    <li id="marker4" style="top:77px; left:385px;" title="C/G 상부 수직 스티프너와 웨브 접합부" class="warn" onclick="showGraph();">4</li>
+                    <li id="marker4" style="top:77px; left:385px;" title="C/G 상부 수직 스티프너와 웨브 접합부" >4</li>
                     <li id="marker5" style="top:147px; left:244px;" title="C/G 하부 수평스티프너와 플랜지, 웨브 부재균열">5</li>
                     <li id="marker6" style="top:99px; left:107px;" title="C/G 수평스티프너와 웨브(플랜지) 접합부">6</li>
                     <li id="marker7" style="top:59px; left:50px;" title="C/G 엔드 플레이트와 웨브 접합부">7</li>
@@ -197,7 +197,7 @@
                     <li id="marker11" style="top:147px; left:699px;" title="C/G 연결부분 하부 기둥을 접부">11</li>
                     <li id="marker12" style="top:151px; left:4px;" title="C/G 크레인 거더 하부와 기둥 상부 사이 라이너">12</li>
                     <li id="marker13" style="top:310px; left:325px;" title="C/G 상부 플래지와 가세트 플레이트 접합부">13</li>
-                    <li id="marker14" style="top:562px; left:206px;" title="C/G 하부 수평 스티프너와 가세트 플레이트 접합부" class="warn">14</li>
+                    <li id="marker14" style="top:562px; left:206px;" title="C/G 하부 수평 스티프너와 가세트 플레이트 접합부">14</li>
                     <li id="marker15" style="top:318px; left:367px;"title="C/G 상부 가세트 플레이트와 수평 례티스 및 볼트" >15</li>
                     <li id="marker16" style="top:566px; left:249px;" title="C/G 하부 가세트 플레이트와 수평 례티스 및 볼트">16</li>
                     <li id="marker17" style="top:311px; left:513px;" title="B/G 삼현재와 가세트 플레이트 접합부">17</li>
@@ -210,7 +210,7 @@
                     <li id="marker24" style="top:458px; left:227px;" title="C/G 하부 X앵클 가세트 플레이트와 수직 례티스 및 볼트">24</li>
                     <li id="marker25" style="top:348px; left:531px;" title="B/G 상부 X앵클 가세트 플레이트와 수직 례티스 및 볼트">25</li>
                     <li id="marker26" style="top:457px; left:530px;" title="B/G 하부 X앵클 가세트 플레이트와 수직 례티스 및 볼트">26</li>
-                    <li id="marker27" style="top:372px; left:597px;" title="B/G 삼현재와 수직가세트 플례이트 접합부" class="warn">27</li>
+                    <li id="marker27" style="top:372px; left:597px;" title="B/G 삼현재와 수직가세트 플례이트 접합부">27</li>
                     <li id="marker28" style="top:428px; left:597px;" title="B/G 하현재와 수직가세트 플례이트 접합부">28</li>
                     <li id="marker29" style="top:348px; left:185px;" title="C/G 삼부 수직 스티프너와 가세트 플례이트 접합부">29</li>
                     <li id="marker30" style="top:460px; left:183px;" title="C/G 하부 수직 스티프너와 가세트 플례이트 접합부">30</li>
@@ -240,7 +240,7 @@
                                     <th>절손</th>
                                 </tr>
                             </thead>
-                            <tr>
+                            <tr onclick="highlightMarker(this)">
                                 <td>2016.08.08</td>
                                 <td>4</td>
                                 <td>C/G 상부 수직 스티프너와 웨브 접합부</td>
@@ -252,7 +252,7 @@
                                 <td>-</td>
                                 <td>-</td>
                             </tr>
-                            <tr>
+                            <tr onclick="highlightMarker(this)">
                                 <td>2016.08.08</td>
                                 <td>27</td>
                                 <td>B/G 삼현재와 수직가세트 플례이트 접합부</td>
