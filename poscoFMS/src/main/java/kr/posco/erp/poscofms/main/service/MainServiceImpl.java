@@ -24,6 +24,9 @@ public class MainServiceImpl implements MainService {
 		
 		vo.setAllGirderErrorStatus(poscoFmsDao.selectAllGirderErrorStatus(date));
 		
+		if(vo.getAllGirderErrorStatus() == null)
+			return null;
+		
 		int measurementErrorCount = 0;
 		int inspectionErrorCount = 0;
 		for(GirderErrorStatusVO girderErrorStatus : vo.getAllGirderErrorStatus())
@@ -51,6 +54,10 @@ public class MainServiceImpl implements MainService {
 	public GirderInspectionVO getGirderInspection(String id) {
 		
 		GirderInspectionVO vo = poscoFmsDao.selectGirderReplacement(id);
+		
+		if(vo == null || vo.getGirderReplacementDate() == null || vo.getGirderReplacementDate().isEmpty())
+			return null;
+		
 		vo.setInspectionRecords(poscoFmsDao.selectGirderInspectionRecords(vo.getGirderReplacementDate(), id));
 		
 		return vo;
