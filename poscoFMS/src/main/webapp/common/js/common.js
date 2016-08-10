@@ -6,11 +6,13 @@
  * @returns
  */
 function goMenu(url) {
+	
 	$("#topMenu > li").each(function() {
 		$(this).removeClass("on");
 	});
 	$("." + url).addClass("on");
-	location.href = "<%=contextRoot%>" + url + ".posco";
+	//alert(contextRoot + url + ".posco");
+	location.href = contextRoot + url + ".posco";
 }
 
 /**

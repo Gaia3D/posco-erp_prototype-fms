@@ -37,7 +37,7 @@
         </ul>
         <p class="user">
         	<span>홍길동 님</span>
-            <button type="button" onclick="goMenu('login.posco');">로그아웃</button>
+            <button type="button" onclick="goMenu('login');">로그아웃</button>
         </p>
     </div>
 
