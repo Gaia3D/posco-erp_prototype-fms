@@ -7,10 +7,10 @@
     </settings>
     <typeAliases>
     
-        <typeAlias alias="GirderErrorStatus" type="kr.posco.erp.poscofms.core.vo.GirderErrorStatusVO"/>
-        <typeAlias alias="GirderMeasurement" type="kr.posco.erp.poscofms.core.vo.GirderMeasurementVO"/>
-        <typeAlias alias="GirderInspection" type="kr.posco.erp.poscofms.core.vo.GirderInspectionVO"/>
-        <typeAlias alias="GirderInspectionItem" type="kr.posco.erp.poscofms.core.vo.GirderInspectionItemVO"/>
+        <typeAlias alias="GirderErrorStatus" type="kr.posco.erp.poscofms.main.vo.GirderErrorStatusVO"/>
+        <typeAlias alias="GirderMeasurement" type="kr.posco.erp.poscofms.main.vo.GirderMeasurementVO"/>
+        <typeAlias alias="GirderInspection" type="kr.posco.erp.poscofms.main.vo.GirderInspectionVO"/>
+        <typeAlias alias="GirderInspectionItem" type="kr.posco.erp.poscofms.main.vo.GirderInspectionItemVO"/>
 
         <typeAlias alias="ArrayList" type="java.util.ArrayList"/>
 
