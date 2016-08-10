@@ -27,3 +27,11 @@ function goPage(pageId) {
 	});
 	$("#" + pageId).show();
 }
+
+/** 점검 마커 표시 **/	
+function highlightMarker(table){
+	$(".check_drawing li").removeClass("warn");
+	var subTd = table.getElementsByTagName("td")
+	var markerId = 'marker' + subTd[1].innerHTML
+	$("#"+ markerId).addClass("warn");
+}
