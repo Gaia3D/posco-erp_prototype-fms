@@ -2,13 +2,13 @@ package kr.posco.erp.poscofms.main.service;
 
 import java.util.ArrayList;
 
-import kr.posco.erp.poscofms.main.vo.GirderErrorStatusVO;
+import kr.posco.erp.poscofms.main.vo.GirderErrorStatusSummaryVO;
 import kr.posco.erp.poscofms.main.vo.GirderInspectionVO;
 import kr.posco.erp.poscofms.main.vo.GirderMeasurementVO;
 
 public interface MainService {
 	
-	public ArrayList<GirderErrorStatusVO> getGirderErrorStatus(String date);
+	public GirderErrorStatusSummaryVO getGirderErrorStatus(String date);
 	
 	public GirderMeasurementVO getGirderMeasurement(String date, String id);
 	
