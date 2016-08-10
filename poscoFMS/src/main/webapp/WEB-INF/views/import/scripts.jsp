@@ -68,8 +68,8 @@
 	   	            pointHoverBorderWidth: 2,
 	   	            pointRadius: 1,
 	   	            pointHitRadius: 10,
-	   	            data: [-5, -10, 10, -34, 2, 1, 17],
-	   	            spanGaps: false,
+	   	            data: [-5, -10, 10, -34, null, 1, 17],
+	   	            spanGaps: true,
 	   	        }
 	   	    ]
 	   	};
