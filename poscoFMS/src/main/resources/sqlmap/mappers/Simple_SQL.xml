@@ -6,7 +6,11 @@
 <mapper namespace="kr.posco.erp.poscofms.main.dao.PoscoFmsDao">
 
     <select id="selectTotalMeasurementDates" resultType="String">
-    	SELECT to_char(survey_dt, 'YYYY-MM-DD') from survey_info
+    	select
+    		to_char(survey_dt, 'YYYY-MM-DD')
+    	from
+    		survey_info
+    	order by survey_dt desc
     </select>
     
     <select id="selectAllGirderErrorStatus" resultType="GirderErrorStatus">
@@ -150,46 +154,164 @@
     </select>
     
     <select id="selectGirderMeasurement" resultType="GirderMeasurement">
-    	select
-			#{id} as girderId,
-			#{date} as measurementDate,
+    	With
+			targetGirder as
+			(
+				select
+					rail,
+					line,
+					girder_order
+				from
+					girder_info
+				where
+					true
+					and girder_id = #{id}
+			),
+			counterGirder as
+			(
+				select
+					girder_id
+				from
+					girder_info, targetGirder
+				where
+					true
+					and girder_info.rail = targetGirder.rail
+					and girder_info.girder_order = targetGirder.girder_order
+					and girder_info.line != targetGirder.line
+			),
+			previousGirder as
+			(
+				select
+					girder_id
+				from
+					girder_info, targetGirder
+				where
+					true
+					and girder_info.line = targetGirder.line
+					and girder_info.girder_order = targetGirder.girder_order -1
+			)
+		select
 			coalesce(HorFirstValues.val, 9999) as horizontalDeformationAtStart,
 			coalesce(HorMidValues.val, 9999) as horizontalDeformationAtMid,
 			coalesce(HorLastValues.val, 9999) as horizontalDeformationAtLast,
+			coalesce(CounterHorFirstValues.val, 9999) as horizontalDeformationAtCounterGirderStart,
+			coalesce(CounterHorMidValues.val, 9999) as horizontalDeformationAtCounterGirderMid,
+			coalesce(CounterHorLastValues.val, 9999) as horizontalDeformationAtCounterGirderLast,
 			coalesce(VerFirstValues.val, 9999) as verticalDeformationAtStart,
 			coalesce(VerMidValues.val, 9999) as verticalDeformationAtMid,
-			coalesce(VerLastValues.val, 9999) as verticalDeformationAtLast
+			coalesce(VerLastValues.val, 9999) as verticalDeformationAtLast,
+			coalesce(PreviousVerLastValues.val, 9999) as verticalDeformationAtPreviousGirderLast
 		from
-			(select val from girder_straight
-			where true
-			and girder_id = #{id}
-			and survey_dt = to_timestamp(#{date}, 'YYYY-MM-DD')
-			and pos = 0) HorFirstValues,
-			(select val from girder_straight
-			where true
-			and girder_id = #{id}
-			and survey_dt = to_timestamp(#{date}, 'YYYY-MM-DD')
-			and pos = 1) HorMidValues,
-			(select val from girder_straight
-			where true
-			and girder_id = #{id}
-			and survey_dt = to_timestamp(#{date}, 'YYYY-MM-DD')
-			and pos = 2) HorLastValues,
-			(select val from girder_bend
-			where true
-			and girder_id = #{id}
-			and survey_dt = to_timestamp(#{date}, 'YYYY-MM-DD')
-			and pos = 0) VerFirstValues,
-			(select val from girder_bend
-			where true
-			and girder_id = #{id}
-			and survey_dt = to_timestamp(#{date}, 'YYYY-MM-DD')
-			and pos = 1) VerMidValues,
-			(select val from girder_bend
-			where true
-			and girder_id = #{id}
-			and survey_dt = to_timestamp(#{date}, 'YYYY-MM-DD')
-			and pos = 2) VerLastValues
+			(
+				select
+					val
+				from
+					girder_straight
+				where
+					true
+					and girder_id = #{id}
+					and survey_dt = to_timestamp(#{date}, 'YYYY-MM-DD')
+					and pos = 0
+			) HorFirstValues,
+			(
+				select
+					val
+				from
+					girder_straight
+				where
+					true
+					and girder_id = #{id}
+					and survey_dt = to_timestamp(#{date}, 'YYYY-MM-DD')
+					and pos = 1
+			) HorMidValues,
+			(
+				select
+					val
+				from
+					girder_straight
+				where
+					true
+					and girder_id = #{id}
+					and survey_dt = to_timestamp(#{date}, 'YYYY-MM-DD')
+					and pos = 2
+			) HorLastValues,
+			(
+				select
+					val
+				from
+					girder_straight, counterGirder
+				where
+					true
+					and girder_straight.girder_id = counterGirder.girder_id
+					and survey_dt = to_timestamp(#{date}, 'YYYY-MM-DD')
+					and pos = 0
+			) CounterHorFirstValues,
+			(
+				select
+					val
+				from
+					girder_straight, counterGirder
+				where
+					true
+					and girder_straight.girder_id = counterGirder.girder_id
+					and survey_dt = to_timestamp(#{date}, 'YYYY-MM-DD')
+					and pos = 1
+			) CounterHorMidValues,
+			(
+				select
+					val
+				from
+					girder_straight, counterGirder
+				where
+					true
+					and girder_straight.girder_id = counterGirder.girder_id
+					and survey_dt = to_timestamp(#{date}, 'YYYY-MM-DD')
+					and pos = 2
+			) CounterHorLastValues,
+			(
+				select
+					val
+				from
+					girder_bend
+				where
+					true
+					and girder_id = #{id}
+					and survey_dt = to_timestamp(#{date}, 'YYYY-MM-DD')
+					and pos = 0
+			) VerFirstValues,
+			(
+				select
+					val
+				from
+					girder_bend
+				where
+					true
+					and girder_id = #{id}
+					and survey_dt = to_timestamp(#{date}, 'YYYY-MM-DD')
+					and pos = 1
+			) VerMidValues,
+			(
+				select
+					val
+				from
+					girder_bend
+				where
+					true
+					and girder_id = #{id}
+					and survey_dt = to_timestamp(#{date}, 'YYYY-MM-DD')
+					and pos = 2
+			) VerLastValues,
+			(
+				select
+					val
+				from
+					girder_bend, previousGirder
+				where
+					true
+					and girder_bend.girder_id = previousGirder.girder_id
+					and survey_dt = to_timestamp(#{date}, 'YYYY-MM-DD')
+					and pos = 2
+			) PreviousVerLastValues
     </select>
     
     <select id="selectGirderReplacement" resultType="GirderInspection">
