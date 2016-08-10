@@ -1,4 +1,4 @@
-package kr.posco.erp.poscofms.core.dao;
+package kr.posco.erp.poscofms.main.dao;
 
 import java.util.ArrayList;
 
