@@ -15,10 +15,10 @@
 <html>
 <body>
 <h2>Hello World!</h2>
-<h3 style="cursor:pointer" onclick="location.href='<%=contextRoot%>login';">로그인 페이지 링크</h3>
-<h3 style="cursor:pointer" onclick="location.href='<%=contextRoot%>home';">레이아웃 페이지 링크</h3>
-<h3 style="cursor:pointer" onclick="location.href='<%=contextRoot%>detail';">상세 페이지 링크</h3>
-<h3 style="cursor:pointer" onclick="location.href='<%=contextRoot%>report';">보고서 페이지 링크</h3>
+<h3 style="cursor:pointer" onclick="location.href='<%=contextRoot%>login.posco';">로그인 페이지 링크</h3>
+<h3 style="cursor:pointer" onclick="location.href='<%=contextRoot%>home.posco';">레이아웃 페이지 링크</h3>
+<h3 style="cursor:pointer" onclick="location.href='<%=contextRoot%>detail.posco';">상세 페이지 링크</h3>
+<h3 style="cursor:pointer" onclick="location.href='<%=contextRoot%>report.posco';">보고서 페이지 링크</h3>
 <h4>이 파일을 제거하면 정상적으로 로그인 페이지가 가장 먼저 로딩됩니다.!!!</h4>
 </body>
 </html>
