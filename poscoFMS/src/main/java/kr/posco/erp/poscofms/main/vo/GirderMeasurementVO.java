@@ -1,4 +1,4 @@
-package kr.posco.erp.poscofms.core.vo;
+package kr.posco.erp.poscofms.main.vo;
 
 public class GirderMeasurementVO {
 	

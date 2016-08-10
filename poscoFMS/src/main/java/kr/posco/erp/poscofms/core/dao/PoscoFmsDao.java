@@ -5,10 +5,10 @@ import java.util.ArrayList;
 import org.apache.ibatis.annotations.Param;
 
 import kr.posco.erp.poscofms.core.annotation.MybatisForPoscofms;
-import kr.posco.erp.poscofms.core.vo.GirderErrorStatusVO;
-import kr.posco.erp.poscofms.core.vo.GirderInspectionItemVO;
-import kr.posco.erp.poscofms.core.vo.GirderInspectionVO;
-import kr.posco.erp.poscofms.core.vo.GirderMeasurementVO;
+import kr.posco.erp.poscofms.main.vo.GirderErrorStatusVO;
+import kr.posco.erp.poscofms.main.vo.GirderInspectionItemVO;
+import kr.posco.erp.poscofms.main.vo.GirderInspectionVO;
+import kr.posco.erp.poscofms.main.vo.GirderMeasurementVO;
 
 @MybatisForPoscofms
 public interface PoscoFmsDao {
