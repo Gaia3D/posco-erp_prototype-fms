@@ -14,6 +14,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import kr.posco.erp.poscofms.main.service.MainService;
+
 /**
  * Handles requests for the application home page.
  */
@@ -22,8 +24,8 @@ public class MainController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(MainController.class);
 
-	//@Autowired
-	//MainService mainService;
+	@Autowired
+	MainService mainService;
 	
 	/**
 	 * indexPage
