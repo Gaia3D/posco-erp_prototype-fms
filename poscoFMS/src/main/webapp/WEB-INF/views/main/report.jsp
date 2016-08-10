@@ -13,8 +13,8 @@
 		contextRoot += "/";
 	}
 	
-	System.out.println(request.getParameter("login"));
-	System.out.println(request.getParameter("code"));
+	//System.out.println(request.getParameter("login"));
+	//System.out.println(request.getParameter("code"));
 	
 	String userEmail = (String)session.getAttribute("userEmail");
 	String userName = (String)session.getAttribute("userName");
