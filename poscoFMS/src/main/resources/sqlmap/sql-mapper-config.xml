@@ -12,12 +12,6 @@
         <typeAlias alias="GirderInspection" type="kr.posco.erp.poscofms.main.vo.GirderInspectionVO"/>
         <typeAlias alias="GirderInspectionItem" type="kr.posco.erp.poscofms.main.vo.GirderInspectionItemVO"/>
 
-        <typeAlias alias="ArrayList" type="java.util.ArrayList"/>
-
     </typeAliases>
-    
-    <mappers>
-		<mapper resource ="sqlmap/mappers/Simple_SQL.xml"/>
-	</mappers>
 
 </configuration>

@@ -8,6 +8,8 @@ import kr.posco.erp.poscofms.main.vo.GirderMeasurementVO;
 
 public interface MainService {
 	
+	public List<String> getAllMeasurementDates();
+	
 	public GirderErrorStatusSummaryVO getGirderErrorStatus(String date);
 	
 	public GirderMeasurementVO getGirderMeasurement(String date, String id);

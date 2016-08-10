@@ -16,6 +16,12 @@ public class MainServiceImpl implements MainService {
 	
 	@Autowired
 	PoscoFmsDao poscoFmsDao;
+	
+	@Override
+	public List<String> getAllMeasurementDates() {
+
+		return poscoFmsDao.selectTotalMeasurementDates();
+	}
 
 	@Override
 	public GirderErrorStatusSummaryVO getGirderErrorStatus(String date) {
@@ -73,5 +79,5 @@ public class MainServiceImpl implements MainService {
 	public List<Integer> getGirderVerticalDeformationHistory(String id, int positionType) {
 
 		return poscoFmsDao.selectGirderVerticalDeformationHistory(id, positionType);
-	}
+	}	
 }
