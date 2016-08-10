@@ -10,6 +10,143 @@
     </select>
     
     <select id="selectAllGirderErrorStatus">
+		with a as(
+		select foo.girder_id, count(*)
+		from (
+		select list.girder_id
+		  from check_list list
+			,(    select girder_id, max(change_date) as change_date
+			       from girder_his 
+			      group by girder_id
+			) his
+		 where list.check_date >= his.change_date
+		   and list.girder_id = his.girder_id
+		) as foo
+		group by foo.girder_id
+		),
+		b as (
+		select girder_id
+			, case when (comp0 - @ref0 >= 0) and (comp1 - @ref1 >= 0) and (comp2 - @ref2 >= 0) then 't' else 'f' end result
+		from (
+		select girder_id, dis0, dis1, dis2, val0, val1, val2
+			, dis1*1000/500 comp0
+			, dis2*1000/500 comp1
+			, (dis2 + dis1)*1000/500 comp2
+			, val1-val0 ref0
+			, val2-val1 ref1
+			, val0-val2 ref2
+		  from (
+		  select * from (
+		  select distinct girder_id
+				,(select val from girder_straight
+				   where girder_id = girder.girder_id and survey_dt = girder.survey_dt and pos = 0) val0
+				,(select val from girder_straight
+				   where girder_id = girder.girder_id and survey_dt = girder.survey_dt and pos = 1) val1
+				,(select val from girder_straight
+				   where girder_id = girder.girder_id and survey_dt = girder.survey_dt and pos = 2) val2
+				,(select dis from girder_straight
+				   where girder_id = girder.girder_id and survey_dt = girder.survey_dt and pos = 0) dis0
+				,(select dis from girder_straight
+				   where girder_id = girder.girder_id and survey_dt = girder.survey_dt and pos = 1) dis1
+				,(select dis from girder_straight
+				   where girder_id = girder.girder_id and survey_dt = girder.survey_dt and pos = 2) dis2
+			  from girder_straight girder
+			 where girder.survey_dt = '2015-11-05'
+			) str
+		    ) as tmp_2
+			 where tmp_2.val2 is not NULL
+			 and tmp_2.val1 is not NULL
+			 and tmp_2.val0 is not NULL
+		) comp
+		 order by 1,2
+		 ),
+		c as (
+		select girder_id
+			, case when (@(val0 + valb0) >= 21.7) and (@(val1 + valb1) >= 21.7) and (@(val2 + valb2) >= 21.7) then 't' else 'f' end result
+		 from 
+		(
+		select * from (
+			select distinct girder_id
+				,(select val from girder_straight
+				   where girder_id = girder.girder_id and survey_dt = girder.survey_dt and pos = 0 ) val0
+				,(select val from girder_straight
+				   where girder_id = girder.girder_id and survey_dt = girder.survey_dt and pos = 1) val1
+				,(select val from girder_straight
+				   where girder_id = girder.girder_id and survey_dt = girder.survey_dt and pos = 2) val2
+				,(select val from girder_straight
+				   where girder_id <![CDATA[ <> ]]> girder.girder_id and survey_dt = girder.survey_dt and pos = 0 and girder_order = girder.girder_order) valb0
+				,(select val from girder_straight
+				   where girder_id <![CDATA[ <> ]]> girder.girder_id and survey_dt = girder.survey_dt and pos = 1 and girder_order = girder.girder_order) valb1
+				,(select val from girder_straight
+				   where girder_id <![CDATA[ <> ]]> girder.girder_id and survey_dt = girder.survey_dt and pos = 2 and girder_order = girder.girder_order) valb2
+			  from girder_straight girder
+			 where girder.survey_dt = '2015-11-05'
+			 ) as tmp_2
+			 where tmp_2.val2 is not NULL
+			 and tmp_2.val1 is not NULL
+			 and tmp_2.val0 is not NULL
+			 and tmp_2.valb2 is not NULL
+			 and tmp_2.valb1 is not NULL
+			 and tmp_2.valb0 is not NULL
+		) 
+		tmp
+		),
+		d as (
+		select girder_id
+		, case when ((val2 + val0)/2 <![CDATA[ <= ]]> val1) then 't' else 'f' end result
+		 from 
+		(
+		select * from (
+			select distinct girder_id
+				,(select val from girder_bend
+				   where girder_id = girder.girder_id and survey_dt = girder.survey_dt and pos = 0 ) val0
+				,(select val from girder_bend
+				   where girder_id = girder.girder_id and survey_dt = girder.survey_dt and pos = 1) val1
+				,(select val from girder_bend
+				   where girder_id = girder.girder_id and survey_dt = girder.survey_dt and pos = 2) val2
+			  from girder_bend girder
+			 where girder.survey_dt = '2015-11-05'
+			) as tmp_2
+			 where tmp_2.val2 is not NULL
+			 and tmp_2.val1 is not NULL
+			 and tmp_2.val0 is not NULL
+		) 
+		tmp
+		),
+		e as (
+		select girder_id
+		, case when ((val0 + val2) <![CDATA[ <= ]]> 5) then 't' else 'f' end result
+		 from 
+		(
+		select * from (
+			select distinct girder_id
+				,(select val from girder_bend
+				   where girder_id = girder.girder_id and survey_dt = girder.survey_dt and pos = 0 ) val0
+				,(select val from girder_bend
+				   where girder_id <![CDATA[ <> ]]> girder.girder_id and survey_dt = girder.survey_dt and pos = 2 
+				   and girder_order = girder.girder_order-1 and line = girder.line) val2
+			  from girder_bend girder
+			 where girder.survey_dt = '2015-11-05'
+			 and girder.girder_order <![CDATA[ <> ]]> 1
+			 ) as tmp_2
+			 where tmp_2.val2 is not NULL
+			 and tmp_2.val0 is not NULL
+		) 
+		tmp
+		)
+		select base.*
+			,case when ((b.result = 't') or (b.result is null))
+			and ((c.result = 't') or (c.result is null))
+			and ((d.result = 't') or (d.result is null)) 
+			and ((e.result = 't') or (e.result is null))
+			then 't' else 'f' end as survey_res
+			, case when (a.count > 0) then 't' else 'f' end  as check_res
+		from (select girder_id, girder_top, girder_left from girder_info) as base
+		left join b on base.girder_id = b.girder_id
+		left join c on base.girder_id = c.girder_id
+		left join d on base.girder_id = d.girder_id
+		left join e on base.girder_id = e.girder_id
+		left join a on base.girder_id = a.girder_id 
     </select>
     
     <select id="selectGirderMeasurement" resultType="GirderMeasurement">

@@ -28,16 +28,13 @@
 	String error = request.getParameter("error");
 %>
 
-	<div class="header">
-    	<h1>POSCO RUNWAY시설물 관리시스템</h1>
-        <ul id="topMenu">
-        	<li><a href="#" class="home" onclick="goMenu('home');">홈</a></li>
-            <li><a href="#" class="detail" onclick="goMenu('detail');">상세조회</a></li>
-            <li><a href="#" class="report" onclick="goMenu('report');">보고서</a></li>
-        </ul>
-        <p class="user">
-        	<span>홍길동 님</span>
-            <button type="button" onclick="goMenu('login.posco');">로그아웃</button>
-        </p>
-    </div>
-
+	<script src="<%=contextRoot%>common/js/jquery-2.2.3.min.js"></script>
+    <script>
+    	function goMenu(url){
+    		$("#topMenu > li").each(function(){
+    			$(this).removeClass("on");
+    		});
+    		$("."+url).addClass("on");
+    		location.href="<%=contextRoot%>" + url + ".posco";
+    	}
+    </script>

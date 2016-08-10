@@ -33,7 +33,7 @@ public class MainController {
 	 * @param none
 	 * @return indexPage 경로
 	 */
-	@RequestMapping(value = "/index.posco", method = RequestMethod.GET)
+	@RequestMapping(value = "/home.posco", method = RequestMethod.GET)
 	public String indexPage(Locale locale, Model model) {
 		logger.info("Welcome fms! The client locale is {}.", locale);
 		

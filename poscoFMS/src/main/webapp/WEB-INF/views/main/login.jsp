@@ -34,6 +34,7 @@
 <meta content="IE=edge" http-equiv="X-UA-Compatible">
 <title>RUNWAY시설물 관리시스템</title>
 <link rel="stylesheet" href="<%=contextRoot%>common/css/style.css">
+<jsp:include page="../import/scripts.jsp" />
 </head>
 
 <body class="login">
@@ -47,13 +48,9 @@
             <p>
             	<input type="password" placeholder="비밀번호">
             </p>
-            <button type="submit" onclick="goMenu('index.posco');return false;">로그인</button>
+            <button type="submit" onclick="goMenu('home');return false;">로그인</button>
         </form>
-	    <script>
-	    	function goMenu(url){
-	    		location.href="<%=contextRoot%>" + url;
-	    	}
-	    </script>
+
 
     </div>  
 </body>

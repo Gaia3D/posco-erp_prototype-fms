@@ -526,18 +526,21 @@ padding:15px;
 font-size:1.7em;
 color:#FFF;
 border:3px solid #fff;
+border-radius:7px;
 background:none;
 }
-/*
+
 .login_wrap form P > input:hover {
-border:3px solid #407fe3
+color:#feff8d;
+border:3px solid #feff8d
 }
-*/
+
 .login_wrap form > button {
 width:384px;	
 padding:21px;
 font-size:1.7em;
 color:#222;
+border-radius:7px;
 background:#feff8d;
 }
 .login_wrap form > button:hover {
