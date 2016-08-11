@@ -73,7 +73,7 @@ public class MainController {
 	 * @return detailPage 경로
 	 */
 	@RequestMapping(value = "/detail.posco", method = RequestMethod.GET)
-	public String detailPage(Locale locale, Model model) {
+	public String detailPage(Locale locale, Model model, String girderId, String selDate, String kind) {
 		logger.info("Welcome fms! The client locale is {}.", locale);
 		
 		Date date = new Date();
@@ -82,6 +82,17 @@ public class MainController {
 		String formattedDate = dateFormat.format(date);
 		
 		model.addAttribute("serverTime", formattedDate );
+		
+		// 측량 날짜를 받아와서 전
+		List<String> measurementDates = mainService.getAllMeasurementDates();
+		model.addAttribute("measurementDates", measurementDates );
+		
+		// 측량 날짜 설정
+		String selMeasurementDate = measurementDates.get(0);
+		if(selDate != null){
+			selMeasurementDate = selDate;
+		} 
+		model.addAttribute("selMeasurementDate",selMeasurementDate);
 		
 		return "main/detail";
 	}

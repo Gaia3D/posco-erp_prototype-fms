@@ -62,25 +62,25 @@ history.back();
         	<li>
             	<label>제강</label>
                 <select>
-                  <option>1제강</option>
+                  <!-- <option>1제강</option> -->
                   <option>2제강</option>
-                  <option>3제강</option>
+                  <!-- <option>3제강</option> -->
                 </select>
             </li>
             <li>
             	<label>라인</label>
                 <select>
                   <option>AB LINE</option>
-                  <option>CD LINE</option>
-                  <option>EF LINE</option>
+                  <!-- <option>CD LINE</option>
+                  <option>EF LINE</option> -->
                 </select>
             </li>
             <li>
             	<label>측량일</label>
-                <select>
-                  <option>2015. 11. 05</option>
-                  <option>2014. 11. 05</option>
-                  <option>2013. 11. 05</option>
+                <select id="measurementDate" onchange="relaodGirderStatus()">
+                  <c:forEach var="date" items="${measurementDates}">
+	    			<option value="${date}" ${date == selMeasurementDate?'selected':''}>${date}</option>
+                  </c:forEach>
                 </select>
             </li>
         </ul>
