@@ -101,6 +101,42 @@ public class GirderMeasurementVO {
 		this.horizontalDeformationAtCounterGirderLast = deformation;
 	}
 	
+	private double gapLengthAtStart;
+	
+	public double getGapLengthAtStart()
+	{
+		return this.gapLengthAtStart;
+	}
+	
+	public void setGapLengthAtStart(double length)
+	{
+		this.gapLengthAtStart = length;
+	}
+	
+	private double gapLengthAtMid;
+	
+	public double getGapLengthAtMid()
+	{
+		return this.gapLengthAtMid;
+	}
+	
+	public void setGapLengthAtMid(double length)
+	{
+		this.gapLengthAtMid = length;
+	}
+	
+	private double gapLengthAtLast;
+	
+	public double getGapLengthAtLast()
+	{
+		return this.gapLengthAtLast;
+	}
+	
+	public void setGapLengthAtLast(double length)
+	{
+		this.gapLengthAtLast = length;
+	}
+	
 	
 	// information about vertical deformation
 	private int verticalDeformationAtStart;
