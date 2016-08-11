@@ -43,6 +43,9 @@ history.back();
 <title>RUNWAY시설물 관리시스템</title>
 <link rel="stylesheet" href="<%=contextRoot%>common/css/style.css">
 <jsp:include page="../import/scripts.jsp" />
+
+<script src="/common/js/controlForIndexPage.js"></script>
+
 </head>
 <body>  
 <div id="header_wrap">
@@ -84,8 +87,8 @@ history.back();
     <!-- END NAV --> 
     <div class="contents">
     	<ul class="count">
-        	<li class="measure"><label>측량</label><span>${measurementErrorCount}</span>건</li>
-        	<li class="check"><label>점검</label><span>${inspectionErrorCount}</span>건</li>
+        	<li class="measure"><label>측량이상</label><span>${measurementErrorCount}</span>건</li>
+        	<li class="check"><label>점검이상</label><span>${inspectionErrorCount}</span>건</li>
         </ul>
         
     	<div class="index xy">
