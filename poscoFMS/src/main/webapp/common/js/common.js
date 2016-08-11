@@ -25,7 +25,12 @@ function goPage(pageId) {
 	$(".measure_wrap").each(function() {
 		$(this).hide();
 	});
+	
+	$(".btns button").each(function(){
+		$(this).removeClass("on");
+	});
 	$("#" + pageId).show();
+	$("#btn" + pageId.substring(0,1).toUpperCase() + pageId.substring(1)).addClass("on");
 }
 
 /** 점검 마커 표시 **/	

@@ -98,8 +98,8 @@ history.back();
         	<div class="title">
             	<h3>11~12</h3>
                 <div class="btns">
-                	<button type="button" class="on" onclick="goPage('survey');">측량</button>
-                    <button type="button" onclick="goPage('check');">점검</button>
+                	<button id="btnSurvey" type="button" class="on" onclick="goPage('survey');">측량</button>
+                    <button id="btnCheck" type="button" onclick="goPage('check');">점검</button>
                 </div>
             </div>
             
