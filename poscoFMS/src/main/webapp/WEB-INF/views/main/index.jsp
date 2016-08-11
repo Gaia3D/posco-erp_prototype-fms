@@ -93,22 +93,22 @@ history.back();
     			<c:choose>
     				<c:when test="${not status.measurementPass && status.inspectionPass}">
     					<p style="top:${status.positionY + 117}px; left:${status.positionX + 435}px;" title="${status.girderId}">
-            				<a href="detail.posco?girderId=${status.girderId}&selDate=${selMeasurementDate}" class="measure">측량경고</a>
+            				<a href="detail.posco?girderId=${status.girderId}&selDate=${selMeasurementDate}&kind=measurement" class="measure">측량경고</a>
             			</p>
     				</c:when>
     				<c:when test="${not status.inspectionPass && status.measurementPass}">
 	    				<p style="top:${status.positionY + 117}px; left:${status.positionX + 435}px;" title="${status.girderId}">
-			            	<a href="#" class="check">측량경고</a>
+			            	<a href="detail.posco?girderId=${status.girderId}&selDate=${selMeasurementDate}&kind=inspection" class="check">측량경고</a>
 			            </p>
     				</c:when>
     				<c:when test="${not status.measurementPass && not status.inspectionPass}">
 	    				<p class="both" style="top:${status.positionY + 117}px; left:${status.positionX + 435}px;" title="${status.girderId}">
-			            	<a href="detail.posco?girderId=${status.girderId}&selDate=${selMeasurementDate}" href="#" class="measure">측량경고</a>
-			                <a href="#" class="check">측량경고</a>
+			            	<a href="detail.posco?girderId=${status.girderId}&selDate=${selMeasurementDate}&kind=measurement" class="measure">측량경고</a>
+			                <a href="detail.posco?girderId=${status.girderId}&selDate=${selMeasurementDate}&kind=inspection" class="check">측량경고</a>
 			            </p>
     				</c:when>
     				<c:otherwise>
-    					<a href="#" style="top:${status.positionY + 117}px; left:${status.positionX + 435}px;" title="${status.girderId}"></a>
+    					<a href="detail.posco?girderId=${status.girderId}&selDate=${selMeasurementDate}&kind=measurement" style="top:${status.positionY + 117}px; left:${status.positionX + 435}px;" title="${status.girderId}"></a>
 				    </c:otherwise>
             	</c:choose>
             </c:forEach>
