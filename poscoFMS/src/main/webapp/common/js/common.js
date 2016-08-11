@@ -12,7 +12,13 @@ function goMenu(url) {
 	});
 	$("." + url).addClass("on");
 	//alert(contextRoot + url + ".posco");
-	location.href = contextRoot + url + ".posco?selDate=" + $("#measurementDate").val() ;
+	var dt = $("#measurementDate").val();
+	if(dt == null || dt.indexOf('undefined') > -1 || dt == undefined){
+		location.href = contextRoot + url + ".posco" ;
+	} else {
+		//alert(">"+dt + "<");
+		location.href = contextRoot + url + ".posco?selDate=" + dt ;
+	}
 }
 
 /**
