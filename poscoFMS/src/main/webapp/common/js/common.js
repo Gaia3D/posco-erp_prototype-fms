@@ -26,6 +26,11 @@ function goPage(pageId) {
 		$(this).hide();
 	});
 	$("#" + pageId).show();
+	if(pageId == "survey"){
+		$(".snb ul li:nth-child(3)").show();		
+	} else {
+		$(".snb ul li:nth-child(3)").hide();
+	}
 	
 }
 
