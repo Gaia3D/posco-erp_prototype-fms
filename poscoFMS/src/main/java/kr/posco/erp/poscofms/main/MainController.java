@@ -3,6 +3,7 @@ package kr.posco.erp.poscofms.main;
 import java.text.DateFormat;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import kr.posco.erp.poscofms.main.service.MainService;
+import kr.posco.erp.poscofms.main.vo.GirderErrorStatusSummaryVO;
 
 /**
  * Handles requests for the application home page.
@@ -43,6 +45,17 @@ public class MainController {
 		String formattedDate = dateFormat.format(date);
 		
 		model.addAttribute("serverTime", formattedDate );
+		
+		// 측량 날짜를 받아와서 전
+		List<String> measurementDates = mainService.getAllMeasurementDates();
+		model.addAttribute("measurementDates", measurementDates );
+		
+		// 거더별 정보를 가져옴
+		String sampleDate = measurementDates.get(0);
+		GirderErrorStatusSummaryVO girderStatus = mainService.getGirderErrorStatus(sampleDate);
+		model.addAttribute("measurementErrorCount", girderStatus.getMeasurementErrorCount());
+		model.addAttribute("inspectionErrorCount", girderStatus.getInspectionErrorCount());
+		model.addAttribute("allGirderStatus", girderStatus.getAllGirderErrorStatus());
 		
 		return "main/index";
 	}

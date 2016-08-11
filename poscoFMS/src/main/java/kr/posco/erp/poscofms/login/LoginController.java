@@ -75,7 +75,7 @@ public class LoginController {
 				session.setAttribute("userName", name);
 			}
 
-			forward = "main/index";
+			forward = "redirect:/home.posco";
 		} else {
 			
 			session.setAttribute("msg", "로그인 정보를 확인해주십시오.");

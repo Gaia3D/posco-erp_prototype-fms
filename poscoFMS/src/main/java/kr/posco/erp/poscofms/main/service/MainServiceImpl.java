@@ -27,7 +27,6 @@ public class MainServiceImpl implements MainService {
 	public GirderErrorStatusSummaryVO getGirderErrorStatus(String date) {
 
 		GirderErrorStatusSummaryVO vo = new GirderErrorStatusSummaryVO();
-		
 		vo.setAllGirderErrorStatus(poscoFmsDao.selectAllGirderErrorStatus(date));
 		
 		if(vo.getAllGirderErrorStatus() == null)
