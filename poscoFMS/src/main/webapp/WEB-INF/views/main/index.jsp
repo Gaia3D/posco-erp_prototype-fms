@@ -26,6 +26,14 @@
 		userName = URLDecoder.decode(userName, "UTF-8");
 	
 	String error = request.getParameter("error");
+	
+	if(StringUtil.isEmpty(userEmail)){
+%>
+<script>
+history.back();
+</script>
+<%		
+	} else {
 %>
 <!DOCTYPE html>
 <html lang="ko">
@@ -36,11 +44,11 @@
 <link rel="stylesheet" href="<%=contextRoot%>common/css/style.css">
 <jsp:include page="../import/scripts.jsp" />
 </head>
-
 <body>  
-
 <div id="header_wrap">
-<jsp:include page="../import/top.jsp" />
+<jsp:include page="../import/top.jsp" >
+	<jsp:param value="home" name="menu"/>
+</jsp:include>
 </div>
 <!-- END HEADER -->
 
@@ -50,25 +58,25 @@
         	<li>
             	<label>제강</label>
                 <select>
-                  <option>1제강</option>
+                  <!-- <option>1제강</option> -->
                   <option>2제강</option>
-                  <option>3제강</option>
+                  <!-- <option>3제강</option> -->
                 </select>
             </li>
             <li>
             	<label>라인</label>
                 <select>
                   <option>AB LINE</option>
-                  <option>CD LINE</option>
-                  <option>EF LINE</option>
+                  <!-- <option>CD LINE</option> -->
+                  <!-- <option>EF LINE</option> -->
                 </select>
             </li>
             <li>
             	<label>측량일</label>
                 <select>
-                  <option>2015. 11. 05</option>
-                  <option>2014. 11. 05</option>
-                  <option>2013. 11. 05</option>
+                  <c:forEach var="date" items="${measurementDates}">
+                    <option>${date}</option>
+                  </c:forEach>
                 </select>
             </li>
         </ul>
@@ -76,28 +84,34 @@
     <!-- END NAV --> 
     <div class="contents">
     	<ul class="count">
-        	<li class="measure"><label>측량</label><span>3</span>건</li>
-        	<li class="check"><label>점검</label><span>3</span>건</li>
+        	<li class="measure"><label>측량</label><span>${measurementErrorCount}</span>건</li>
+        	<li class="check"><label>점검</label><span>${inspectionErrorCount}</span>건</li>
         </ul>
         
     	<div class="index xy">
-        	<!-- 링크샘플 A13 -->
-        	<a href="#" style="top:117px;left:435px;" title="A13"></a>
-            <!-- 선택된 샘플 B13 -->
-            <a href="#" class="on" style="top:117px; left:496px;" title="B13~12"></a>
-            <!-- 측량경고 샘플 A4 -->
-            <p style="top:576px; left:435px;" title="A4~3">
-            	<a href="#" class="measure">측량경고</a>
-            </p>
-            <!-- 점검경고 샘플 B9 -->
-            <p style="top:321px; left:496px;" title="B9~8">
-            	<a href="#" class="check">측량경고</a>
-            </p>
-            <!-- 측량,점검경고 샘플 B3 -->
-            <p style="top:627px; left:496px;" class="both" title="B3~2">
-            	<a href="#" class="measure">측량경고</a>
-                <a href="#" class="check">측량경고</a>
-            </p>
+    		<c:forEach var="status" items="${allGirderStatus}">
+    			<c:choose>
+    				<c:when test="${not status.measurementPass && status.inspectionPass}">
+    					<p style="top:${status.positionY + 117}px; left:${status.positionX + 435}px;" title="${status.girderId}">
+            				<a href="#" class="measure">측량경고</a>
+            			</p>
+    				</c:when>
+    				<c:when test="${not status.inspectionPass && status.measurementPass}">
+	    				<p style="top:${status.positionY + 117}px; left:${status.positionX + 435}px;" title="${status.girderId}">
+			            	<a href="#" class="check">측량경고</a>
+			            </p>
+    				</c:when>
+    				<c:when test="${not status.measurementPass && not status.inspectionPass}">
+	    				<p class="both" style="top:${status.positionY + 117}px; left:${status.positionX + 435}px;" title="${status.girderId}">
+			            	<a href="#" class="measure">측량경고</a>
+			                <a href="#" class="check">측량경고</a>
+			            </p>
+    				</c:when>
+    				<c:otherwise>
+    					<a href="#" style="top:${status.positionY + 117}px; left:${status.positionX + 435}px;" title="${status.girderId}"></a>
+				    </c:otherwise>
+            	</c:choose>
+            </c:forEach>
         </div>
         <!-- END INDEX -->
     </div>
@@ -106,3 +120,7 @@
 <!-- END WRAP --> 
 </body>
 </html>
+
+<%		
+	}
+%>

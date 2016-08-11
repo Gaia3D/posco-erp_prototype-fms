@@ -13,8 +13,8 @@
 		contextRoot += "/";
 	}
 	
-	System.out.println(request.getParameter("login"));
-	System.out.println(request.getParameter("code"));
+	//System.out.println(request.getParameter("login"));
+	//System.out.println(request.getParameter("code"));
 	
 	String userEmail = (String)session.getAttribute("userEmail");
 	String userName = (String)session.getAttribute("userName");
@@ -38,6 +38,7 @@
     <script src="<%=contextRoot%>common/js/common.js"></script>
     <script src="<%=contextRoot%>common/js/graph.js"></script>
 
+	<!-- 전역변수들이 위치할 곳 -->
     <script>
     
     	var contextRoot = '<%=contextRoot%>';
