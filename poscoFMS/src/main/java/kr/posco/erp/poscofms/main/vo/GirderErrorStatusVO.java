@@ -8,7 +8,7 @@ public class GirderErrorStatusVO {
 	
 	private int positionY;
 	
-	private boolean mesuarementPass;
+	private boolean measurementPass;
 	
 	private boolean inspectionPass;
 	
@@ -45,12 +45,12 @@ public class GirderErrorStatusVO {
 	
 	public boolean getMeasurementPass()
 	{
-		return this.mesuarementPass;
+		return this.measurementPass;
 	}
 	
 	public void setMeasurementPass(boolean bPass)
 	{
-		this.mesuarementPass = bPass;
+		this.measurementPass = bPass;
 	}
 	
 	public boolean getInspectionPass()
