@@ -197,6 +197,9 @@
 			coalesce(CounterHorFirstValues.val, 9999) as horizontalDeformationAtCounterGirderStart,
 			coalesce(CounterHorMidValues.val, 9999) as horizontalDeformationAtCounterGirderMid,
 			coalesce(CounterHorLastValues.val, 9999) as horizontalDeformationAtCounterGirderLast,
+			coalesce(HorFirstValues.dis, 9999) as gapLengthAtStart,
+			coalesce(HorMidValues.dis, 9999) as gapLengthAtMid,
+			coalesce(HorLastValues.dis, 9999) as gapLengthAtLast,
 			coalesce(VerFirstValues.val, 9999) as verticalDeformationAtStart,
 			coalesce(VerMidValues.val, 9999) as verticalDeformationAtMid,
 			coalesce(VerLastValues.val, 9999) as verticalDeformationAtLast,
@@ -204,7 +207,7 @@
 		from
 			(
 				select
-					val
+					val, dis
 				from
 					girder_straight
 				where
@@ -215,7 +218,7 @@
 			) HorFirstValues,
 			(
 				select
-					val
+					val, dis
 				from
 					girder_straight
 				where
@@ -226,7 +229,7 @@
 			) HorMidValues,
 			(
 				select
-					val
+					val, dis
 				from
 					girder_straight
 				where

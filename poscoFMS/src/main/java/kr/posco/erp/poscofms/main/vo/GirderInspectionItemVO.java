@@ -4,11 +4,11 @@ public class GirderInspectionItemVO {
 	
 	private int inspectionType;
 	
-	private float crackCrg;
+	private double crackCrg;
 	
-	private float crackBg;
+	private double crackBg;
 	
-	private float crackColumn;
+	private double crackColumn;
 	
 	private int boltFractures;
 	
@@ -29,32 +29,32 @@ public class GirderInspectionItemVO {
 		this.inspectionType = type;
 	}
 	
-	public float getCrackCrg()
+	public double getCrackCrg()
 	{
 		return this.crackCrg;
 	}
 	
-	public void setCrackCrg(float crackSize)
+	public void setCrackCrg(double crackSize)
 	{
 		this.crackCrg = crackSize;
 	}
 	
-	public float getCrackBg()
+	public double getCrackBg()
 	{
 		return this.crackBg;
 	}
 	
-	public void setCrackBg(float crackSize)
+	public void setCrackBg(double crackSize)
 	{
 		this.crackBg = crackSize;
 	}
 	
-	public float getCrackColumn()
+	public double getCrackColumn()
 	{
 		return this.crackColumn;
 	}
 	
-	public void setCrackColumn(float crackSize)
+	public void setCrackColumn(double crackSize)
 	{
 		this.crackColumn = crackSize;
 	}
