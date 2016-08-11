@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import kr.posco.erp.poscofms.main.service.MainService;
 import kr.posco.erp.poscofms.main.vo.GirderErrorStatusSummaryVO;
+import kr.posco.erp.poscofms.main.vo.GirderErrorStatusVO;
 
 /**
  * Handles requests for the application home page.
@@ -36,7 +37,7 @@ public class MainController {
 	 * @return indexPage 경로
 	 */
 	@RequestMapping(value = "/home.posco", method = RequestMethod.GET)
-	public String indexPage(Locale locale, Model model) {
+	public String indexPage(Locale locale, Model model, String selDate) {
 		logger.info("Welcome fms! The client locale is {}.", locale);
 		
 		Date date = new Date();
@@ -50,9 +51,15 @@ public class MainController {
 		List<String> measurementDates = mainService.getAllMeasurementDates();
 		model.addAttribute("measurementDates", measurementDates );
 		
+		// 측량 날짜 설정
+		String selMeasurementDate = measurementDates.get(0);
+		if(selDate != null){
+			selMeasurementDate = selDate;
+		} 
+		model.addAttribute("selMeasurementDate",selMeasurementDate);
+		
 		// 거더별 정보를 가져옴
-		String sampleDate = measurementDates.get(0);
-		GirderErrorStatusSummaryVO girderStatus = mainService.getGirderErrorStatus(sampleDate);
+		GirderErrorStatusSummaryVO girderStatus = mainService.getGirderErrorStatus(selMeasurementDate);
 		model.addAttribute("measurementErrorCount", girderStatus.getMeasurementErrorCount());
 		model.addAttribute("inspectionErrorCount", girderStatus.getInspectionErrorCount());
 		model.addAttribute("allGirderStatus", girderStatus.getAllGirderErrorStatus());
@@ -67,7 +74,7 @@ public class MainController {
 	 * @return detailPage 경로
 	 */
 	@RequestMapping(value = "/detail.posco", method = RequestMethod.GET)
-	public String detailPage(Locale locale, Model model) {
+	public String detailPage(Locale locale, Model model, String girderId, String selDate, String kind) {
 		logger.info("Welcome fms! The client locale is {}.", locale);
 		
 		Date date = new Date();
@@ -76,6 +83,26 @@ public class MainController {
 		String formattedDate = dateFormat.format(date);
 		
 		model.addAttribute("serverTime", formattedDate );
+		
+		// 측량 날짜를 받아와서 전
+		List<String> measurementDates = mainService.getAllMeasurementDates();
+		model.addAttribute("measurementDates", measurementDates );
+		
+		// 측량 날짜 설정
+		String selMeasurementDate = measurementDates.get(0);
+		if(selDate != null){
+			selMeasurementDate = selDate;
+		} 
+		model.addAttribute("selMeasurementDate",selMeasurementDate);
+		
+		String selectedGirder = "A1";
+		if(girderId != null){
+			selectedGirder = girderId;
+		};
+		model.addAttribute("selectedGirderId", selectedGirder );
+		
+		List<GirderErrorStatusVO> girderInfoList = mainService.getGirderInfo();
+		model.addAttribute("girderInfoList", girderInfoList );
 		
 		return "main/detail";
 	}

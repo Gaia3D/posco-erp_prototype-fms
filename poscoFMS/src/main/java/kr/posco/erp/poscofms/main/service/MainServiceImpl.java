@@ -347,4 +347,9 @@ public class MainServiceImpl implements MainService {
 
 		return poscoFmsDao.selectGirderVerticalDeformationHistory(id, positionType);
 	}	
+	
+	@Override
+	public List<GirderErrorStatusVO> getGirderInfo() {
+		return poscoFmsDao.selectGirderInfo();
+	}
 }

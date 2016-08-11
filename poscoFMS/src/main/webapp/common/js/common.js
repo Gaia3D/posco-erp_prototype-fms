@@ -12,7 +12,7 @@ function goMenu(url) {
 	});
 	$("." + url).addClass("on");
 	//alert(contextRoot + url + ".posco");
-	location.href = contextRoot + url + ".posco";
+	location.href = contextRoot + url + ".posco?selDate=" + $("#measurementDate").val() ;
 }
 
 /**
@@ -36,8 +36,8 @@ function goPage(pageId) {
 /** 점검 마커 표시 **/	
 function highlightMarker(table){
 	$(".check_drawing li").removeClass("warn");
-	var subTd = table.getElementsByTagName("td")
-	var markerId = 'marker' + subTd[1].innerHTML
+	var subTd = table.getElementsByTagName("td");
+	var markerId = 'marker' + subTd[1].innerHTML;
 	$("#"+ markerId).addClass("warn");
 }
 
@@ -46,3 +46,4 @@ function highlightMarker(table){
 function logout(){
 	location.href=contextRoot + "logout.posco";
 }
+
