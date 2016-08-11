@@ -372,6 +372,13 @@
 			and pos = #{positionType}
 		order by survey_dt
     </select>
-
+	
+	<select id="selectGirderInfo" resultType="GirderErrorStatus">
+		select 
+			girder_id as "girderId", 
+			girder_top as "positionY", 
+			girder_left as "positionX"
+		from girder_info
+	</select>
 
 </mapper>

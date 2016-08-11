@@ -28,4 +28,7 @@ public interface PoscoFmsDao {
 	public List<Integer> selectGirderHorizontalDeformationHistory(@Param("id") String id, @Param("positionType") int positionType);
 	public List<Integer> selectGirderVerticalDeformationHistory(@Param("id") String id, @Param("positionType") int positionType);
 	
+	// for detailPage indexMap
+	public List<GirderErrorStatusVO> selectGirderInfo();
+	
 }

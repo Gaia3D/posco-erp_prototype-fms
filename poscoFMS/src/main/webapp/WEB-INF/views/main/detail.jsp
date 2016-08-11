@@ -45,7 +45,7 @@ history.back();
 <title>RUNWAY시설물 관리시스템</title>
 <link rel="stylesheet" href="<%=contextRoot%>common/css/style.css">
 <jsp:include page="../import/scripts.jsp" />
-<script src="/common/js/controlForDetailPage.js"></script>
+<script src="<%=contextRoot%>common/js/controlForDetailPage.js"></script>
 </head>
 
 <body>
@@ -63,25 +63,25 @@ history.back();
         	<li>
             	<label>제강</label>
                 <select>
-                  <option>1제강</option>
+                  <!-- <option>1제강</option> -->
                   <option>2제강</option>
-                  <option>3제강</option>
+                  <!-- <option>3제강</option> -->
                 </select>
             </li>
             <li>
             	<label>라인</label>
                 <select>
                   <option>AB LINE</option>
-                  <option>CD LINE</option>
-                  <option>EF LINE</option>
+                  <!-- <option>CD LINE</option> -->
+                  <!-- <option>EF LINE</option> -->
                 </select>
             </li>
             <li>
             	<label>측량일</label>
-                <select>
-                  <option>2015. 11. 05</option>
-                  <option>2014. 11. 05</option>
-                  <option>2013. 11. 05</option>
+                <select id="measurementDate" onchange="relaodGirderStatus()">
+                  <c:forEach var="date" items="${measurementDates}">
+	    			<option value="${date}" ${date == selMeasurementDate?'selected':''}>${date}</option>
+                  </c:forEach>
                 </select>
             </li>
         </ul>
@@ -89,10 +89,11 @@ history.back();
     <!-- END NAV --> 
     <div class="contents">
     	<div class="subindex xy">
-        	<!-- 링크샘플 A13 -->
-        	<a href="#" style="top:63px;left:58px;" title="A13~12"></a>
-            <!-- 선택된 샘플 B13 -->
-            <a href="#" class="on" style="top:63px; left:121px;" title="B13~12"></a>
+    		<c:forEach var="girderInfo" items="${girderInfoList}">
+    			<a href="detail.posco?girderId=${girderInfo.girderId}&selDate=${selMeasurementDate}&kind=measurement" 
+    			style="top:${girderInfo.positionY + 63}px;left:${girderInfo.positionX + 58}px;" 
+    			title="${girderInfo.girderId}" ${girderInfo.girderId == selectedGirderId?'class="on"':''}></a>
+    		</c:forEach>
         </div>
         <!-- END INDEX -->
         <div class="view">

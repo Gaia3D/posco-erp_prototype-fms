@@ -43,9 +43,7 @@ history.back();
 <title>RUNWAY시설물 관리시스템</title>
 <link rel="stylesheet" href="<%=contextRoot%>common/css/style.css">
 <jsp:include page="../import/scripts.jsp" />
-
-<script src="/common/js/controlForIndexPage.js"></script>
-
+<script src="<%=contextRoot%>common/js/controlForIndexPage.js"></script>
 </head>
 <body>  
 <div id="header_wrap">
@@ -76,7 +74,7 @@ history.back();
             </li>
             <li>
             	<label>측량일</label>
-                <select id="measurementDate" onchange="relaodGirderStatus()">
+                <select id="measurementDate">
                   <c:forEach var="date" items="${measurementDates}">
 	    			<option value="${date}" ${date == selMeasurementDate?'selected':''}>${date}</option>
                   </c:forEach>

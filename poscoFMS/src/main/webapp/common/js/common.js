@@ -12,7 +12,7 @@ function goMenu(url) {
 	});
 	$("." + url).addClass("on");
 	//alert(contextRoot + url + ".posco");
-	location.href = contextRoot + url + ".posco";
+	location.href = contextRoot + url + ".posco?selDate=" + $("#measurementDate").val() ;
 }
 
 /**
@@ -26,6 +26,7 @@ function goPage(pageId) {
 		$(this).hide();
 	});
 	$("#" + pageId).show();
+	
 }
 
 /** 점검 마커 표시 **/	
@@ -42,7 +43,3 @@ function logout(){
 	location.href=contextRoot + "logout.posco";
 }
 
-function relaodGirderStatus() {
-	selDate = document.getElementById("measurementDate").value;
-	location.href=contextRoot + "home.posco?selDate=" + selDate;
-}
