@@ -45,6 +45,11 @@ history.back();
 <title>RUNWAY시설물 관리시스템</title>
 <link rel="stylesheet" href="<%=contextRoot%>common/css/style.css">
 <jsp:include page="../import/scripts.jsp" />
+<script>
+$(document).ready(function(){
+	goPage('check');
+});
+</script>
 </head>
 
 <body>
