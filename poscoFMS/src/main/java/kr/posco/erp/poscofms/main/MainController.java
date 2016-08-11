@@ -36,7 +36,7 @@ public class MainController {
 	 * @return indexPage 경로
 	 */
 	@RequestMapping(value = "/home.posco", method = RequestMethod.GET)
-	public String indexPage(Locale locale, Model model) {
+	public String indexPage(Locale locale, Model model, String selDate) {
 		logger.info("Welcome fms! The client locale is {}.", locale);
 		
 		Date date = new Date();
@@ -50,9 +50,15 @@ public class MainController {
 		List<String> measurementDates = mainService.getAllMeasurementDates();
 		model.addAttribute("measurementDates", measurementDates );
 		
+		// 측량 날짜 설정
+		String selMeasurementDate = measurementDates.get(0);
+		if(selDate != null){
+			selMeasurementDate = selDate;
+		} 
+		model.addAttribute("selMeasurementDate",selMeasurementDate);
+		
 		// 거더별 정보를 가져옴
-		String sampleDate = measurementDates.get(0);
-		GirderErrorStatusSummaryVO girderStatus = mainService.getGirderErrorStatus(sampleDate);
+		GirderErrorStatusSummaryVO girderStatus = mainService.getGirderErrorStatus(selMeasurementDate);
 		model.addAttribute("measurementErrorCount", girderStatus.getMeasurementErrorCount());
 		model.addAttribute("inspectionErrorCount", girderStatus.getInspectionErrorCount());
 		model.addAttribute("allGirderStatus", girderStatus.getAllGirderErrorStatus());

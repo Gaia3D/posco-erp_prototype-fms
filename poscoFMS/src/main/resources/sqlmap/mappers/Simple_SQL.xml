@@ -78,11 +78,14 @@
 				,(select val from girder_straight
 				   where girder_id = girder.girder_id and survey_dt = girder.survey_dt and pos = 2) val2
 				,(select val from girder_straight
-				   where girder_id <![CDATA[ <> ]]> girder.girder_id and survey_dt = girder.survey_dt and pos = 0 and girder_order = girder.girder_order) valb0
+				   where girder_id <![CDATA[ <> ]]> girder.girder_id and survey_dt = girder.survey_dt and pos = 0 
+				   and girder_order = girder.girder_order and rail = girder.rail) valb0
 				,(select val from girder_straight
-				   where girder_id <![CDATA[ <> ]]> girder.girder_id and survey_dt = girder.survey_dt and pos = 1 and girder_order = girder.girder_order) valb1
+				   where girder_id <![CDATA[ <> ]]> girder.girder_id and survey_dt = girder.survey_dt and pos = 1 
+				   and girder_order = girder.girder_order and rail = girder.rail) valb1
 				,(select val from girder_straight
-				   where girder_id <![CDATA[ <> ]]> girder.girder_id and survey_dt = girder.survey_dt and pos = 2 and girder_order = girder.girder_order) valb2
+				   where girder_id <![CDATA[ <> ]]> girder.girder_id and survey_dt = girder.survey_dt and pos = 2 
+				   and girder_order = girder.girder_order and rail = girder.rail) valb2
 			  from girder_straight girder
 			 where girder.survey_dt = to_date(#{date},'YYYY-MM-DD')
 			 ) as tmp_2
@@ -126,9 +129,9 @@
 			select distinct girder_id
 				,(select val from girder_bend
 				   where girder_id = girder.girder_id and survey_dt = girder.survey_dt and pos = 0 ) val0
-				,(select val from girder_bend
-				   where girder_id <![CDATA[ <> ]]> girder.girder_id and survey_dt = girder.survey_dt and pos = 2 
-				   and girder_order = girder.girder_order-1 and line = girder.line) val2
+				,(select val from girder_bend 
+				   where rail = girder.rail and line = girder.line and girder_order = girder.girder_order-1 
+				   and pos = 2 and survey_dt = girder.survey_dt) val2
 			  from girder_bend girder
 			 where girder.survey_dt = to_date(#{date},'YYYY-MM-DD')
 			 and girder.girder_order <![CDATA[ <> ]]> 1

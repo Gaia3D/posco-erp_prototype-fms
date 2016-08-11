@@ -73,9 +73,9 @@ history.back();
             </li>
             <li>
             	<label>측량일</label>
-                <select>
+                <select id="measurementDate" onchange="relaodGirderStatus()">
                   <c:forEach var="date" items="${measurementDates}">
-                    <option>${date}</option>
+	    			<option value="${date}" ${date == selMeasurementDate?'selected':''}>${date}</option>
                   </c:forEach>
                 </select>
             </li>
@@ -93,7 +93,7 @@ history.back();
     			<c:choose>
     				<c:when test="${not status.measurementPass && status.inspectionPass}">
     					<p style="top:${status.positionY + 117}px; left:${status.positionX + 435}px;" title="${status.girderId}">
-            				<a href="#" class="measure">측량경고</a>
+            				<a href="detail.posco?girderId=${status.girderId}&selDate=${selMeasurementDate}" class="measure">측량경고</a>
             			</p>
     				</c:when>
     				<c:when test="${not status.inspectionPass && status.measurementPass}">
@@ -103,7 +103,7 @@ history.back();
     				</c:when>
     				<c:when test="${not status.measurementPass && not status.inspectionPass}">
 	    				<p class="both" style="top:${status.positionY + 117}px; left:${status.positionX + 435}px;" title="${status.girderId}">
-			            	<a href="#" class="measure">측량경고</a>
+			            	<a href="detail.posco?girderId=${status.girderId}&selDate=${selMeasurementDate}" href="#" class="measure">측량경고</a>
 			                <a href="#" class="check">측량경고</a>
 			            </p>
     				</c:when>
