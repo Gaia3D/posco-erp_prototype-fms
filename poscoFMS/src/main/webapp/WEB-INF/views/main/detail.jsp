@@ -47,7 +47,7 @@ history.back();
 <jsp:include page="../import/scripts.jsp" />
 <script src="<%=contextRoot%>common/js/controlForDetailPage.js"></script>
 
-<c:if test="${param.kind == 'check'}">
+<c:if test="${param.kind == 'inspection'}">
 <script>
 $(document).ready(function(){
 	goPage('check');
@@ -130,7 +130,7 @@ $(document).ready(function(){
                     	var straight2 = 0;
                     	var straight3 = 23
                     	
-                    	var interval = (Math.abs(straight3 - straight2) > Math.abs(straight1 - straight2)?(Math.abs(straight3 - straight2):(Math.abs(straight1 - straight2) ;
+                    	var interval = (Math.abs(straight3 - straight2) > Math.abs(straight1 - straight2))?Math.abs(straight3 - straight2):Math.abs(straight1 - straight2) ;
                     	
                     	//var modVal1 = ;
                     	
