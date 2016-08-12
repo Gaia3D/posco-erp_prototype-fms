@@ -31,7 +31,8 @@ function drawStraight(x,y,z){
 	context1.lineTo(modVal2,75);
 	context1.lineTo(modVal3,150);
 	context1.stroke();
-	console.log(modVal1 + "_" + modVal2 + "_" + modVal3);
+	context1.closePath();
+	//console.log(modVal1 + "_" + modVal2 + "_" + modVal3);
 }
 
 
@@ -59,6 +60,7 @@ function drawCurve(x,y,z){
 	context2.lineTo(150, modVal2);
 	context2.lineTo(300, modVal3);
 	context2.stroke();
-	console.log(modVal1 + "_" + modVal2 + "_" + modVal3);
+	context2.closePath();
+	//console.log(modVal1 + "_" + modVal2 + "_" + modVal3);
 }
 

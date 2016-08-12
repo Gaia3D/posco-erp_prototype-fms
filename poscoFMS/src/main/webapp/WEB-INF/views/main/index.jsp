@@ -28,11 +28,7 @@
 	String error = request.getParameter("error");
 	
 	if(StringUtil.isEmpty(userEmail)){
-%>
-<script>
-history.back();
-</script>
-<%		
+		out.print("<html><head><script>history.back();</script></head></html>");
 	} else {
 %>
 <!DOCTYPE html>
