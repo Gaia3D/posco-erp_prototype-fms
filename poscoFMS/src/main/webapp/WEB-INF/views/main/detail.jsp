@@ -133,7 +133,7 @@ $(document).ready(function(){
                     	var straight2 = 0;
                     	var straight3 = 23
                     	
-                    	var interval = Math.abs(straight3 - straight2) > Math.abs(straight1 - straight2)? Math.abs(straight3 - straight2 : Math.abs(straight1 - straight2 ;
+                    	var interval = Math.abs(straight3 - straight2) > Math.abs(straight1 - straight2)? Math.abs(straight3 - straight2) : Math.abs(straight1 - straight2) ;
                     	
                     	//var modVal1 = ;
                     	
