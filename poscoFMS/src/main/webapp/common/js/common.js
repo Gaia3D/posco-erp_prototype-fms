@@ -37,6 +37,12 @@ function goPage(pageId) {
 	});
 	$("#" + pageId).show();
 	$("#btn" + pageId.substring(0,1).toUpperCase() + pageId.substring(1)).addClass("on");
+	
+	if(pageId == "survey"){
+		$(".snb ul li:nth-child(3)").show();		
+	} else {
+		$(".snb ul li:nth-child(3)").hide();
+	}
 }
 
 /** 점검 마커 표시 **/	
