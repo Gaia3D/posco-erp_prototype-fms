@@ -46,11 +46,15 @@ history.back();
 <link rel="stylesheet" href="<%=contextRoot%>common/css/style.css">
 <jsp:include page="../import/scripts.jsp" />
 <script src="<%=contextRoot%>common/js/controlForDetailPage.js"></script>
+
+<c:if test="${param.kind == 'check'}">
 <script>
 $(document).ready(function(){
 	goPage('check');
 });
 </script>
+</c:if>
+
 </head>
 
 <body>
