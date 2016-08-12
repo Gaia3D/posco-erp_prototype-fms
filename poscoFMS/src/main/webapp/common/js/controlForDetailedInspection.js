@@ -17,7 +17,7 @@ function refreshDetailPageToNewInspection(result){
 	$(".check_list>table tbody").empty();
 	var trTag = ""
 	inspectionDatas = result.inspectionRecords;
-	if(inspectionDatas.length == 0){
+	if(inspectionDatas && inspectionDatas.length == 0){
 		trTag = '<tr><td colspan="11">점검이력이 없습니다.</td></tr>';
 		$(".check_list>table").append(trTag);
 	}else{
