@@ -12,29 +12,23 @@ function refreshDetailPageToNewMeasurement(result){
 function setGirderMeasurementData(result){
 	//console.log(result);
 	$("#horizontalDeformationAtStart")
-		.off("click").on("click", function(){showGraph(result.girderId, 'S', 0);})
 		.removeClass("warn").addClass(result.horizontalDeformationAtStart<0?"warn":"")
 		.find("span").text(result.horizontalDeformationAtStart==9999?"-":result.horizontalDeformationAtStart);
 	$("#horizontalDeformationAtMid")
-		.off("click").on("click", function(){showGraph(result.girderId, 'S', 1);})
 		.removeClass("warn").addClass(result.horizontalDeformationAtMid<0?"warn":"")
 		.find(" span").text(result.horizontalDeformationAtMid==9999?"-":result.horizontalDeformationAtMid);
 	$("#horizontalDeformationAtLast")
-		.off("click").on("click", function(){showGraph(result.girderId, 'S', 2);})
 		.removeClass("warn").addClass(result.horizontalDeformationAtLast<0?"warn":"")
 		.find(" span").text(result.horizontalDeformationAtLast==9999?"-":result.horizontalDeformationAtLast);
 	drawStraight(result.girderId, result.horizontalDeformationAtStart, result.horizontalDeformationAtMid, result.horizontalDeformationAtLast);
 	
 	$("#verticalDeformationAtStart")
-		.off("click").on("click", function(){showGraph(result.girderId, 'C', 0);})
 		.removeClass("warn").addClass(result.verticalDeformationAtStart<0?"warn":"")
 		.find("span").text(result.verticalDeformationAtStart==9999?"-":result.verticalDeformationAtStart);
 	$("#verticalDeformationAtMid")
-		.off("click").on("click", function(){showGraph(result.girderId, 'C', 1);})
 		.removeClass("warn").addClass(result.verticalDeformationAtMid<0?"warn":"")
 		.find("span").text(result.verticalDeformationAtMid==9999?"-":result.verticalDeformationAtMid);
 	$("#verticalDeformationAtLast")
-		.off("click").on("click", function(){showGraph(result.girderId, 'C', 2);})
 		.removeClass("warn").addClass(result.verticalDeformationAtLast<0?"warn":"")
 		.find("span").text(result.verticalDeformationAtLast==9999?"-":result.verticalDeformationAtLast);
 	drawCurve(result.girderId, result.verticalDeformationAtStart, result.verticalDeformationAtMid, result.verticalDeformationAtLast);
@@ -145,11 +139,11 @@ function makeTimeSeriesPageTrigger()
 		{
 			var classString = $(this).prop('class');
 			if(classString.includes('first'))
-				requestHorizontalDeformationHistory(0);
+				requestHorizontalDeformationHistory(2);
 			else if(classString.includes('middle'))
 				requestHorizontalDeformationHistory(1);
 			else if(classString.includes('last'))
-				requestHorizontalDeformationHistory(2);
+				requestHorizontalDeformationHistory(0);
 		}
 	);
 	
@@ -190,7 +184,8 @@ function requestHorizontalDeformationHistory(positionType)
 
 function horizontalDeformationHistoryArriven(result)
 {
-	showGraph('진직도', result.date, result.history);
+	console.log('horizontal history arriven');
+	showGraph('진직도', result.dates, result.history);
 }
 
 function requestVerticalDeformationHistory(positionType)
@@ -198,7 +193,7 @@ function requestVerticalDeformationHistory(positionType)
 	console.log('vertical clicked : ' + positionType);
 	
 	$.ajax({
-		url : contextRoot + "verticalDeformationHistory.posco",
+		url : contextRoot + "VerticalDeformationHistory.posco",
 		type : "GET",
 		dataType : "json",
 		data : {
@@ -215,6 +210,7 @@ function requestVerticalDeformationHistory(positionType)
 
 function verticalDeformationHistoryArriven(result)
 {
-	showGraph('굴곡도', result.date, result.history);
+	console.log('vertical history arriven');
+	showGraph('굴곡도', result.dates, result.history);
 }
 

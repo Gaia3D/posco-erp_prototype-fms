@@ -1,5 +1,11 @@
 
 function showGraph(title, dates, history) {
+	
+	console.log('그래프 제목 : ' + title);
+	console.log('x축  : ' + dates);
+	console.log('y축  : ' + history);
+	
+	
 	$(".layer").show();
 
 	var ctx = $("#timeGraph");

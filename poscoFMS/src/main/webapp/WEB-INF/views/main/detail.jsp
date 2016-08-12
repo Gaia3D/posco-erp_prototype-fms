@@ -44,7 +44,6 @@
 <script src="<%=contextRoot%>common/js/controlForDetailPage.js"></script>
 <script src="<%=contextRoot%>common/js/controlForDetailedMeasurement.js"></script>
 <script src="<%=contextRoot%>common/js/controlForDetailedInspection.js"></script>
-<script src="<%=contextRoot%>common/js/controlForDetailedTimeSeries.js"></script>
 
 <c:if test="${kind == 'inspection'}">
 <script>
