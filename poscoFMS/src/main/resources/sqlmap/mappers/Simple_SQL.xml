@@ -336,6 +336,7 @@
     
     <select id="selectGirderInspectionRecords" resultType="GirderInspectionItem">
     	select
+    		to_char(check_date, 'YYYY-MM-DD') as inspectionDate,
 			code as inspectionType,
 			coalesce(org, 0.0) as crackCrg,
 			coalesce(bg, 0.0) as crackBg,

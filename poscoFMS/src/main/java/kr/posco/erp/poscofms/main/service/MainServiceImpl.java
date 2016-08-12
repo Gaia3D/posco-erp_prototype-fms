@@ -318,7 +318,8 @@ public class MainServiceImpl implements MainService {
 		
 		GirderMeasurementVO vo = poscoFmsDao.selectGirderMeasurement(date, id);
 		
-		this.processAllTests(vo);
+		if(vo != null)
+			this.processAllTests(vo);
 
 		return vo;
 	}

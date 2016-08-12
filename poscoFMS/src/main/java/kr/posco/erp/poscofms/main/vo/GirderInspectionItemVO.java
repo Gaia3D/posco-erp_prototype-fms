@@ -2,6 +2,8 @@ package kr.posco.erp.poscofms.main.vo;
 
 public class GirderInspectionItemVO {
 	
+	private String inspectionDate;
+	
 	private int inspectionType;
 	
 	private double crackCrg;
@@ -18,6 +20,16 @@ public class GirderInspectionItemVO {
 	
 	private int unrecoverableBoltsLoosen;
 
+	
+	public String getInspectionDate()
+	{
+		return this.inspectionDate;
+	}
+	
+	public void setInspectionDate(String date)
+	{
+		this.inspectionDate = date;
+	}
 	
 	public int getInspectionType()
 	{
