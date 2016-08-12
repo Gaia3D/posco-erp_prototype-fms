@@ -1,5 +1,5 @@
 
-function showGraph() {
+function showGraph(title, dates, history) {
 	$(".layer").show();
 
 	var ctx = $("#timeGraph");

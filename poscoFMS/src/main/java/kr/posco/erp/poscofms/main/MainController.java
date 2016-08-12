@@ -187,4 +187,32 @@ public class MainController {
 		
 		return result;
 	}
+	
+	@RequestMapping(value = "/HorizontalDeformationHistory.posco", method = RequestMethod.GET)
+	public @ResponseBody Object getHorizontalDeformationHistory(String girderId, int positionType)
+	{
+		List<Integer> history = mainService.getGirderHorizontalDeformationHistory(girderId, positionType);
+		List<String> dates = mainService.getAllMeasurementDates();
+		
+		HashMap<String, Object> result = new HashMap<String, Object>();
+		
+		result.put("dates", dates);
+		result.put("history", history);
+		
+		return result;
+	}
+	
+	@RequestMapping(value = "/VerticalDeformationHistory.posco", method = RequestMethod.GET)
+	public @ResponseBody Object getVerticalDeformationHistory(String girderId, int positionType)
+	{
+		List<Integer> history = mainService.getGirderVerticalDeformationHistory(girderId, positionType);
+		List<String> dates = mainService.getAllMeasurementDates();
+		
+		HashMap<String, Object> result = new HashMap<String, Object>();
+		
+		result.put("dates", dates);
+		result.put("history", history);
+		
+		return result;
+	}
 }

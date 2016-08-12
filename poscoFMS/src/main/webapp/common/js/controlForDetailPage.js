@@ -17,6 +17,8 @@ function onLoad(pageType)
 	
 	makeGirderIndexMapHandler();
 	
+	makeTimeSeriesPageTrigger();
+	
 	$("#selectDate").change(
 		function()
 		{

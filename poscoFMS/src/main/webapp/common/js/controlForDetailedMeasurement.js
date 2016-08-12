@@ -91,3 +91,83 @@ function drawCurve(x,y,z){
 	//console.log(modVal1 + "_" + modVal2 + "_" + modVal3);
 }
 
+function makeTimeSeriesPageTrigger()
+{
+	$(".straight a").click(
+		function()
+		{
+			var classString = $(this).prop('class');
+			if(classString.includes('first'))
+				requestHorizontalDeformationHistory(0);
+			else if(classString.includes('middle'))
+				requestHorizontalDeformationHistory(1);
+			else if(classString.includes('last'))
+				requestHorizontalDeformationHistory(2);
+		}
+	);
+	
+	
+	$(".curve a").click(
+		function()
+		{
+			var classString = $(this).prop('class');
+			if(classString.includes('first'))
+				requestVerticalDeformationHistory(0);
+			else if(classString.includes('middle'))
+				requestVerticalDeformationHistory(1);
+			else if(classString.includes('last'))
+				requestVerticalDeformationHistory(2);
+		}
+	);
+}
+
+function requestHorizontalDeformationHistory(positionType)
+{
+	console.log('horizontal clicked : ' + positionType);
+	
+	$.ajax({
+		url : contextRoot + "HorizontalDeformationHistory.posco",
+		type : "GET",
+		dataType : "json",
+		data : {
+			girderId : selectedGirderId,
+			positionType : positionType
+		},
+		async : true,
+		success : horizontalDeformationHistoryArriven,
+		error : function(XMLHttpRequest, textStatus, errorThrown) {
+			alert(errorThrown);
+		}
+	});
+}
+
+function horizontalDeformationHistoryArriven(result)
+{
+	showGraph('진직도', result.date, result.history);
+}
+
+function requestVerticalDeformationHistory(positionType)
+{
+	console.log('vertical clicked : ' + positionType);
+	
+	$.ajax({
+		url : contextRoot + "verticalDeformationHistory.posco",
+		type : "GET",
+		dataType : "json",
+		data : {
+			girderId : selectedGirderId,
+			positionType : positionType
+		},
+		async : true,
+		success : verticalDeformationHistoryArriven,
+		error : function(XMLHttpRequest, textStatus, errorThrown) {
+			alert(errorThrown);
+		}
+	});
+}
+
+function verticalDeformationHistoryArriven(result)
+{
+	showGraph('굴곡도', result.date, result.history);
+}
+
