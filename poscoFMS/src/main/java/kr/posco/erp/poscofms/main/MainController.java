@@ -3,6 +3,7 @@ package kr.posco.erp.poscofms.main;
 import java.text.DateFormat;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
@@ -167,5 +168,23 @@ public class MainController {
 		
 		return girderInspection;
 	}
-
+	
+	@RequestMapping(value = "/getDetailedData.posco", method = RequestMethod.GET)
+	public @ResponseBody Object getGirderDetailedData(String date, String girderId)
+	{
+		GirderMeasurementVO voM = mainService.getGirderMeasurement(date, girderId);
+		if(voM == null)
+			voM = new GirderMeasurementVO();
+		
+		GirderInspectionVO voI = mainService.getGirderInspection(girderId);
+		if (voI == null)
+			voI = new GirderInspectionVO();
+		
+		HashMap<String, Object> result = new HashMap<String, Object>();
+		
+		result.put("measurement", voM);
+		result.put("inspection", voI);
+		
+		return result;
+	}
 }

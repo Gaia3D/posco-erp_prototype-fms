@@ -2,7 +2,7 @@
  * 
  */
 
-function refreshDetailPageToNewMeasurement(date, girderId)
+function refreshDetailPageToNewMeasurement(result)
 {
 }
 

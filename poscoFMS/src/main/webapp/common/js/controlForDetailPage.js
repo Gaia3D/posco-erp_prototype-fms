@@ -19,8 +19,8 @@ function onLoad(pageType)
 	
 	$("#measurementDate").change(function(){
 		selectedDate = this.value;
-		
-		refreshDetailPageToNewMeasurement(selectedDate, selectedGirderId);
+	
+		// TODO - khj : must request new data
 	});
 	
 	$("#btnSurvey").click(
@@ -57,12 +57,37 @@ function onLoad(pageType)
 
 function refreshDetailPageForNewData()
 {
-	// refreshDetailPageToNewMeasurement();
-	refreshDetailPageToNewInspection(selectedGirderId);
+	$.ajax({
+		url : contextRoot + "getGirderDetailedData.posco",
+		type : "GET",
+		dataType : "json",
+		data : {
+			girderId : selectedGirderId,
+			date : selectedDate
+		},
+		async : true,
+		success : girderDetailedDataArriven,
+		error : function(XMLHttpRequest, textStatus, errorThrown) {
+			alert(errorThrown);
+		}
+	});
+}
+
+function girderDetailedDataArriven(result)
+{
+	refreshDetailPageToNewMeasurement(result.measurement);
+	refreshDetailPageToNewInspection(result.inspection);
 }
 
 function makeGirderIndexMapHandler()
 {
+	$('.subindex a').click(
+		function()
+		{
+			$('.subindex a').removeClass('on');
+			$(this).addClass('on');
+		}
+	);
 }
 
 
