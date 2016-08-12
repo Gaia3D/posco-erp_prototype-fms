@@ -98,7 +98,7 @@ $(document).ready(function(){
             </li>
             <li>
             	<label>측량일</label>
-                <select id="measurementDate" onchange="relaodGirderStatus()">
+                <select id="measurementDate">
                   <c:forEach var="date" items="${measurementDates}">
 	    			<option value="${date}" ${date == selMeasurementDate?'selected':''}>${date}</option>
                   </c:forEach>
