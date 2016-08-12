@@ -5,6 +5,18 @@
 //function refreshDetailPageToNewMeasurement(date, girderId){
 function refreshDetailPageToNewMeasurement(result){
 	
+	$("#horizontalDeformation")
+		.removeClass("warn").addClass(result.horizontalDeformationTestResult == 'pass'?"":result.horizontalDeformationTestResult == 'failure'?"warn":"unchecked")
+		.find("td")[1].innerText = result.horizontalDeformationCalculated;
+	$("#reverseCamber")
+		.removeClass("warn").addClass(result.reverseCamberTestResult == 'pass'?"":result.reverseCamberTestResult == 'failure'?"warn":"unchecked")
+		.find("td")[1].innerText = result.reverseCamberCalculated;
+	$("#heightDifference")
+		.removeClass("warn").addClass(result.heightDifferenceTestResult == 'pass'?"":result.heightDifferenceTestResult == 'failure'?"warn":"unchecked")
+		.find("td")[1].innerText = result.heightDifferenceBetweenThisAndPreviousGirder;
+	$("#spanTest")
+		.removeClass("warn").addClass(result.spanTestResult == 'pass'?"":result.spanTestResult == 'failure'?"warn":"unchecked")
+		.find("td")[1].innerText = result.spanCalculated;
 	setGirderMeasurementData(result);
 	
 }
