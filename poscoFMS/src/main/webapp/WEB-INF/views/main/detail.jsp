@@ -53,6 +53,7 @@ history.back();
 <c:if test="${param.kind == 'check'}">
 <script>
 $(document).ready(function(){
+	console.log('inspection first');
 	goPage('check');
 });
 </script>
@@ -139,7 +140,7 @@ $(document).ready(function(){
                     	
                     	
                     	context1.beginPath();
-                    	context.moveTo(75 + straight1 ,200);
+                    	context1.moveTo(75 + straight1 ,200);
                     	context1.lineTo(75,200);
                     	context1.lineTo(75,200);
                     	
