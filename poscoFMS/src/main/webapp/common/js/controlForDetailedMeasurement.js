@@ -2,22 +2,11 @@
  * 
  */
 
-function refreshDetailPageToNewMeasurement(date, girderId){
+//function refreshDetailPageToNewMeasurement(date, girderId){
+function refreshDetailPageToNewMeasurement(result){
 	
-	$.ajax({
-		url : contextRoot + "girderMeasurement.posco",
-		type : "GET",
-		dataType : "json",
-		data : {
-			girderId : girderId,
-			date : date
-		},
-		async : true,
-		success : setGirderMeasurementData,
-		error : function(XMLHttpRequest, textStatus, errorThrown) {
-			alert(errorThrown);
-		}
-	});
+	setGirderMeasurementData(result);
+	
 }
 
 function setGirderMeasurementData(result){
