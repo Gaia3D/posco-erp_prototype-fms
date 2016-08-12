@@ -95,13 +95,13 @@
     				</c:when>
     				<c:when test="${not status.inspectionPass && status.measurementPass}">
 	    				<p style="top:${status.positionY + 117}px; left:${status.positionX + 435}px;" title="${status.girderId}">
-			            	<a href="detail.posco?girderId=${status.girderId}&selDate=${selMeasurementDate}&kind=inspection" class="check">측량경고</a>
+			            	<a href="detail.posco?girderId=${status.girderId}&selDate=${selMeasurementDate}&kind=inspection" class="check">점검경고</a>
 			            </p>
     				</c:when>
     				<c:when test="${not status.measurementPass && not status.inspectionPass}">
 	    				<p class="both" style="top:${status.positionY + 117}px; left:${status.positionX + 435}px;" title="${status.girderId}">
 			            	<a href="detail.posco?girderId=${status.girderId}&selDate=${selMeasurementDate}&kind=measurement" class="measure">측량경고</a>
-			                <a href="detail.posco?girderId=${status.girderId}&selDate=${selMeasurementDate}&kind=inspection" class="check">측량경고</a>
+			                <a href="detail.posco?girderId=${status.girderId}&selDate=${selMeasurementDate}&kind=inspection" class="check">점검경고</a>
 			            </p>
     				</c:when>
     				<c:otherwise>
