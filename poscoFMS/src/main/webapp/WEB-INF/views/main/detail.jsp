@@ -46,11 +46,19 @@
 <script src="<%=contextRoot%>common/js/controlForDetailedInspection.js"></script>
 <script src="<%=contextRoot%>common/js/controlForDetailedTimeSeries.js"></script>
 
-<c:if test="${param.kind == 'check'}">
+<c:if test="${kind == 'inspection'}">
 <script>
 $(document).ready(function(){
-	console.log('inspection first');
-	goPage('check');
+	console.log('page loading : inspection first');
+	onLoad('inspection');
+});
+</script>
+</c:if>
+<c:if test="${kind == 'measurement'}">
+<script>
+$(document).ready(function(){
+	console.log('page loading : measurement first');
+	onLoad('measurement');
 });
 </script>
 </c:if>
@@ -65,6 +73,9 @@ $(document).ready(function(){
 </jsp:include>
 </div>
 <!-- END HEADER -->
+
+<input id="selectedGirderId" type="hidden" value="${selectedGirderId}">
+<input id="measurementDate" type="hidden" value="${selMeasurementDate}">
 
 <div id="wrap">
 	<div class="snb">
@@ -99,7 +110,7 @@ $(document).ready(function(){
     <div class="contents">
     	<div class="subindex xy">
     		<c:forEach var="girderInfo" items="${girderInfoList}">
-    			<a href="detail.posco?girderId=${girderInfo.girderId}&selDate=${selMeasurementDate}&kind=measurement" 
+    			<a href="detail.posco?girderId=${girderInfo.girderId}&selDate=${selMeasurementDate}&kind=${kind}" 
     			style="top:${girderInfo.positionY + 63}px;left:${girderInfo.positionX + 58}px;" 
     			title="${girderInfo.girderId}" ${girderInfo.girderId == selectedGirderId?'class="on"':''}></a>
     		</c:forEach>
@@ -109,8 +120,8 @@ $(document).ready(function(){
         	<div class="title">
             	<h3>11~12</h3>
                 <div class="btns">
-                	<button id="btnSurvey" type="button" class="on" onclick="goPage('survey');">측량</button>
-                    <button id="btnCheck" type="button" onclick="goPage('check');">점검</button>
+                	<button id="btnSurvey" type="button" class="on">측량</button>
+                    <button id="btnCheck" type="button"">점검</button>
                 </div>
             </div>
             

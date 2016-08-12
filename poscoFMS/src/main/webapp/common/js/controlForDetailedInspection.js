@@ -4,18 +4,18 @@
 
 function refreshDetailPageToNewInspection(girderId)
 {
-	getGirderInsectList(girderId)
+	getGirderInspectList(girderId);
 	
 }
 
 // 점검 정보요청 AJAX
-function getGirderInsectList(girderId){
+function getGirderInspectList(girderId){
 	$.ajax({
-		url : contextRoot + "getGirderInsectList.posco",
+		url : contextRoot + "getGirderInspectList.posco",
 		type : "GET",
 		dataType : "json",
 		data : {
-			girderId : "B4"
+			girderId : girderId
 		},
 		async : true,
 		success : setGirderInspectionData,

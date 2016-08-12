@@ -8,17 +8,64 @@ var selectedGirderId = "";
 var selectedDate = "";
 var pageMode = "";
 
-function onLoad()
+function onLoad(pageType)
 {
+	pageMode = pageType;
+	selectedGirderId = $("#selectedGirderId").val();
+	selectedDate = $("#measurementDate").val();
+	
+	console.log('initial girder id = ' + selectedGirderId);
+	console.log('initial date = ' + selectedDate);
+	
+	makeGirderIndexMapHandler();
+	
 	$("#measurementDate").change(function(){
 		selectedDate = this.value;
 		
 		refreshDetailPageToNewMeasurement(selectedDate, selectedGirderId);
 	});
 	
-	refreshDetailPageToNewInspection(selectedGirderId)
+	$("#btnSurvey").click(
+		function()
+		{
+			console.log('change into measurement');
+			pageMode = 'measurement';
+			goPage('survey');
+		}
+	);
+	
+	$("#btnCheck").click(
+		function()
+		{
+			console.log('change into inspection');
+			pageMode = 'inspection';
+			goPage('check');
+			
+		}
+	);
+	
+	refreshDetailPageForNewData();
+	
+	if(pageType == 'inspection')
+	{
+		goPage('check');
+	}
+	else if(pageType == 'measurement')
+	{
+		goPage('survey');
+	}
+
 }
 
+function refreshDetailPageForNewData()
+{
+	// refreshDetailPageToNewMeasurement();
+	refreshDetailPageToNewInspection(selectedGirderId);
+}
+
+function makeGirderIndexMapHandler()
+{
+}
 
 
 /**
