@@ -17,11 +17,15 @@ function onLoad(pageType)
 	
 	makeGirderIndexMapHandler();
 	
-	$("#measurementDate").change(function(){
-		selectedDate = this.value;
-	
-		requestMeasurementData();
-	});
+	$("#selectDate").change(
+		function()
+		{
+			selectedDate = this.value;
+			console.log('Measurement date changed : ' + selectedDate);
+		
+			requestMeasurementData();
+		}
+	);
 	
 	$("#btnSurvey").click(
 		function()
