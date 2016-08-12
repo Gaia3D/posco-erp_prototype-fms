@@ -20,7 +20,7 @@ function onLoad(pageType)
 	$("#measurementDate").change(function(){
 		selectedDate = this.value;
 	
-		// TODO - khj : must request new data
+		requestMeasurementData();
 	});
 	
 	$("#btnSurvey").click(
@@ -42,7 +42,7 @@ function onLoad(pageType)
 		}
 	);
 	
-	refreshDetailPageForNewData();
+	requestNewDataForDetailPage();
 	
 	if(pageType == 'inspection')
 	{
@@ -55,7 +55,7 @@ function onLoad(pageType)
 
 }
 
-function refreshDetailPageForNewData()
+function requestNewDataForDetailPage()
 {
 	$.ajax({
 		url : contextRoot + "getGirderDetailedData.posco",
@@ -66,17 +66,42 @@ function refreshDetailPageForNewData()
 			date : selectedDate
 		},
 		async : true,
-		success : girderDetailedDataArriven,
+		success : detailedGirderDataArriven,
 		error : function(XMLHttpRequest, textStatus, errorThrown) {
 			alert(errorThrown);
 		}
 	});
 }
 
-function girderDetailedDataArriven(result)
+function requestMeasurementData()
 {
+	$.ajax({
+		url : contextRoot + "girderMeasurement.posco",
+		type : "GET",
+		dataType : "json",
+		data : {
+			girderId : selectedGirderId,
+			date : selectedDate
+		},
+		async : true,
+		success : girderMeasurementDataArriven,
+		error : function(XMLHttpRequest, textStatus, errorThrown) {
+			alert(errorThrown);
+		}
+	});
+}
+
+function detailedGirderDataArriven(result)
+{
+	console.log('All girder data arriven');
 	refreshDetailPageToNewMeasurement(result.measurement);
 	refreshDetailPageToNewInspection(result.inspection);
+}
+
+function girderMeasurementDataArriven(result)
+{
+	console.log('Girder measurement data arriven');
+	refreshDetailPageToNewMeasurement(result);
 }
 
 function makeGirderIndexMapHandler()
@@ -86,6 +111,12 @@ function makeGirderIndexMapHandler()
 		{
 			$('.subindex a').removeClass('on');
 			$(this).addClass('on');
+			
+			var girderId = $(this).prop('title');
+			console.log('Girder Selection Changed : ' + girderId);
+			selectedGirderId = girderId;
+			
+			requestNewDataForDetailPage();
 		}
 	);
 }

@@ -169,7 +169,7 @@ public class MainController {
 		return girderInspection;
 	}
 	
-	@RequestMapping(value = "/getDetailedData.posco", method = RequestMethod.GET)
+	@RequestMapping(value = "/getGirderDetailedData.posco", method = RequestMethod.GET)
 	public @ResponseBody Object getGirderDetailedData(String date, String girderId)
 	{
 		GirderMeasurementVO voM = mainService.getGirderMeasurement(date, girderId);
