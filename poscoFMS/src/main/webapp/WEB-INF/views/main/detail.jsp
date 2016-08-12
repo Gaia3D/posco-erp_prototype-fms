@@ -98,7 +98,7 @@ $(document).ready(function(){
             </li>
             <li>
             	<label>측량일</label>
-                <select id="measurementDate" onchange="relaodGirderStatus()">
+                <select id="measurementDate">
                   <c:forEach var="date" items="${measurementDates}">
 	    			<option value="${date}" ${date == selMeasurementDate?'selected':''}>${date}</option>
                   </c:forEach>
@@ -110,8 +110,7 @@ $(document).ready(function(){
     <div class="contents">
     	<div class="subindex xy">
     		<c:forEach var="girderInfo" items="${girderInfoList}">
-    			<a href="detail.posco?girderId=${girderInfo.girderId}&selDate=${selMeasurementDate}&kind=${kind}" 
-    			style="top:${girderInfo.positionY + 63}px;left:${girderInfo.positionX + 58}px;" 
+    			<a id="${girderInfo.girderId}" style="top:${girderInfo.positionY + 63}px;left:${girderInfo.positionX + 58}px;" 
     			title="${girderInfo.girderId}" ${girderInfo.girderId == selectedGirderId?'class="on"':''}></a>
     		</c:forEach>
         </div>

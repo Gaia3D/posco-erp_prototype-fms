@@ -88,7 +88,7 @@ function drawCurve(x,y,z){
 	var modVal3 = 70 - curve3 / interval * 150 ;
 	
 
-    context2.strokeStyle = "purple";
+    context2.strokeStyle = "darkorange";
     context2.lineWidth = 3;
     context2.lineCap = "miter";
     context2.lineJoin = "round";

@@ -19,8 +19,8 @@ function onLoad(pageType)
 	
 	$("#measurementDate").change(function(){
 		selectedDate = this.value;
-		
-		refreshDetailPageToNewMeasurement(selectedDate, selectedGirderId);
+	
+		requestMeasurementData();
 	});
 	
 	$("#btnSurvey").click(
@@ -42,7 +42,7 @@ function onLoad(pageType)
 		}
 	);
 	
-	refreshDetailPageForNewData();
+	requestNewDataForDetailPage();
 	
 	if(pageType == 'inspection')
 	{
@@ -55,14 +55,70 @@ function onLoad(pageType)
 
 }
 
-function refreshDetailPageForNewData()
+function requestNewDataForDetailPage()
 {
-	refreshDetailPageToNewMeasurement(selectedDate, selectedGirderId);
-	refreshDetailPageToNewInspection(selectedGirderId);
+	$.ajax({
+		url : contextRoot + "getGirderDetailedData.posco",
+		type : "GET",
+		dataType : "json",
+		data : {
+			girderId : selectedGirderId,
+			date : selectedDate
+		},
+		async : true,
+		success : detailedGirderDataArriven,
+		error : function(XMLHttpRequest, textStatus, errorThrown) {
+			alert(errorThrown);
+		}
+	});
+}
+
+function requestMeasurementData()
+{
+	$.ajax({
+		url : contextRoot + "girderMeasurement.posco",
+		type : "GET",
+		dataType : "json",
+		data : {
+			girderId : selectedGirderId,
+			date : selectedDate
+		},
+		async : true,
+		success : girderMeasurementDataArriven,
+		error : function(XMLHttpRequest, textStatus, errorThrown) {
+			alert(errorThrown);
+		}
+	});
+}
+
+function detailedGirderDataArriven(result)
+{
+	console.log('All girder data arriven');
+	refreshDetailPageToNewMeasurement(result.measurement);
+	refreshDetailPageToNewInspection(result.inspection);
+}
+
+function girderMeasurementDataArriven(result)
+{
+	console.log('Girder measurement data arriven');
+	refreshDetailPageToNewMeasurement(result);
 }
 
 function makeGirderIndexMapHandler()
 {
+	$('.subindex a').click(
+		function()
+		{
+			$('.subindex a').removeClass('on');
+			$(this).addClass('on');
+			
+			var girderId = $(this).prop('title');
+			console.log('Girder Selection Changed : ' + girderId);
+			selectedGirderId = girderId;
+			
+			requestNewDataForDetailPage();
+		}
+	);
 }
 
 

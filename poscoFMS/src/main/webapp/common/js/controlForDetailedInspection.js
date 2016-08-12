@@ -2,42 +2,23 @@
  * 
  */
 
-function refreshDetailPageToNewInspection(girderId)
-{
-	getGirderInspectList(girderId);
-	
-}
-
-// 점검 정보요청 AJAX
-function getGirderInspectList(girderId){
-	$.ajax({
-		url : contextRoot + "getGirderInspectList.posco",
-		type : "GET",
-		dataType : "json",
-		data : {
-			girderId : girderId
-		},
-		async : true,
-		success : setGirderInspectionData,
-		error : function(XMLHttpRequest, textStatus, errorThrown) {
-			alert(errorThrown);
-		}
-	});
-}
-
 // AJAX 요청 성공 시 실행
-function setGirderInspectionData(result){
+function refreshDetailPageToNewInspection(result){
 	if(result.girderId == null){
-		$(".check_list h3").html($(".check_list h3").html() + " ( 교체이력 및 준공이력이 없습니다. )");
+		$(".check_list h3").html("점검 ( 교체이력 및 준공이력이 없습니다. )");
+		trTag = '<tr><td colspan="11">해당 거더의 준공 및 교체 이력이 없습니다.</td></tr>';
+		$(".check_list>table").append(trTag);
+		return;
 	}else{
-		$(".check_list h3").html($(".check_list h3").html() + 
-				" ( 교체일 : "+ result.girderReplacementDate +", 교체이유 : "+ result.replacementReason + ", 담당자 : " + result.personInCharge + " )" );
+		$(".check_list h3").html(
+				"점검 ( 교체일 : "+ result.girderReplacementDate +", 교체이유 : "+ result.replacementReason + ", 담당자 : " + result.personInCharge + " )" );
 	}
 	
+	$(".check_list>table tbody").empty();
 	var trTag = ""
 	inspectionDatas = result.inspectionRecords;
 	if(inspectionDatas && inspectionDatas.length == 0){
-		trTag = '<tr><td colspan="11">점검이력이 없습니다.</td></tr>'
+		trTag = '<tr><td colspan="11">점검이력이 없습니다.</td></tr>';
 		$(".check_list>table").append(trTag);
 	}else{
 		for (inspectionRow in inspectionDatas){
