@@ -30,7 +30,7 @@ function setGirderMeasurementData(result){
  * @returns
  */
 function drawStraight(x,y,z){
-	
+	context1.clearRect(0, 0, canvas1.width, canvas1.height);
 	var straight1 = x;
 	var straight2 = y;
 	var straight3 = z;
@@ -65,7 +65,7 @@ function drawStraight(x,y,z){
  * @returns
  */
 function drawCurve(x,y,z){
-	
+	context2.clearRect(0, 0, canvas2.width, canvas2.height);
 	var curve1 = x;
 	var curve2 = y;
 	var curve3 = z;
