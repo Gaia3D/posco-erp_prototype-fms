@@ -4,7 +4,7 @@
 
 function refreshDetailPageToNewInspection(girderId)
 {
-	getGirderInspectList(girderId)
+	getGirderInspectList(girderId);
 	
 }
 
@@ -15,7 +15,7 @@ function getGirderInspectList(girderId){
 		type : "GET",
 		dataType : "json",
 		data : {
-			girderId : "B4"
+			girderId : girderId
 		},
 		async : true,
 		success : setGirderInspectionData,
