@@ -1,0 +1,7 @@
+/**
+ * 
+ */
+
+function refreshDetailPageToNewMeasurement(date, girderId)
+{
+}
