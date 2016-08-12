@@ -17,7 +17,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import kr.posco.erp.poscofms.main.service.MainService;
 import kr.posco.erp.poscofms.main.vo.GirderErrorStatusSummaryVO;
+import kr.posco.erp.poscofms.main.vo.GirderInspectionVO;
+import kr.posco.erp.poscofms.main.vo.GirderMeasurementVO;
 import kr.posco.erp.poscofms.main.vo.GirderErrorStatusVO;
+
 
 /**
  * Handles requests for the application home page.
@@ -94,16 +97,24 @@ public class MainController {
 			selMeasurementDate = selDate;
 		} 
 		model.addAttribute("selMeasurementDate",selMeasurementDate);
-		
+
+		// girder id setting
 		String selectedGirder = "A1";
-		if(girderId != null){
-			selectedGirder = girderId;
+		if(girderId == null){
+			girderId = selectedGirder;
 		};
 		model.addAttribute("selectedGirderId", selectedGirder );
 		
+		// girder info by id 
 		List<GirderErrorStatusVO> girderInfoList = mainService.getGirderInfo();
 		model.addAttribute("girderInfoList", girderInfoList );
-		
+
+		// measurement & inspection info of this girder
+		GirderMeasurementVO voM = mainService.getGirderMeasurement(selDate, girderId);
+		model.addAttribute("measurementInfo", voM);
+		GirderInspectionVO voI = mainService.getGirderInspection(girderId);
+		model.addAttribute("inspectionInfo", voI);
+
 		return "main/detail";
 	}
 	
