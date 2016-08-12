@@ -147,7 +147,7 @@
 			and ((d.result = 't') or (d.result is null)) 
 			and ((e.result = 't') or (e.result is null))
 			then True else False end as "measurementPass"
-			, case when (a.count > 0) then True else False end  as "inspectionPass"
+			, case when (a.count is NUll) then True else False end  as "inspectionPass"
 		from (select girder_id, girder_top, girder_left from girder_info) as base
 		left join b on base.girder_id = b.girder_id
 		left join c on base.girder_id = c.girder_id
