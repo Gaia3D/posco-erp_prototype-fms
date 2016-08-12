@@ -29,11 +29,7 @@
 
 	
 	if(StringUtil.isEmpty(userEmail)){
-%>
-<script>
-history.back();
-</script>
-<%		
+		out.print("<html><head><script>history.back();</script></head></html>");
 	} else {
 %>
 
@@ -137,24 +133,10 @@ $(document).ready(function(){
                     <a href="#" title="시계열조회" class="first" onclick="showGraph();"><span>-10</span></a>
                     <a href="#" title="시계열조회" class="middle warn"><span>-0</span></a>
                     <a href="#" title="시계열조회" class="last"><span>23</span></a>
-                    <canvas id="canvStraight" style="width:150px;height:400px;margin:57px;"></canvas>
+                    <canvas id="canvStraight" style="width:150px;height:400px;margin:57px;">weqrasdfzxcv</canvas>
                     <script>
                     	var canvas1= document.getElementById("canvStraight");
                     	var context1 = canvas1.getContext('2d');
-                    	var straight1 = -10;
-                    	var straight2 = 0;
-                    	var straight3 = 23
-                    	
-                    	var interval = Math.abs(straight3 - straight2) > Math.abs(straight1 - straight2)? Math.abs(straight3 - straight2) : Math.abs(straight1 - straight2) ;
-                    	
-                    	//var modVal1 = ;
-                    	
-                    	
-                    	context1.beginPath();
-                    	context1.moveTo(75 + straight1 ,200);
-                    	context1.lineTo(75,200);
-                    	context1.lineTo(75,200);
-                    	
                     </script>
                 </div>
                 <!-- 굴곡도 -->
@@ -164,17 +146,29 @@ $(document).ready(function(){
                     <a href="#" title="시계열조회" class="middle"><span>-0</span></a>
                     <a href="#" title="시계열조회" class="last warn"><span>23</span></a>
                     <canvas id="canvCurve" style="width:400px;height:140px;margin:51px;"></canvas>
+                    <script>
+                    	var canvas2= document.getElementById("canvCurve");
+                    	var context2 = canvas2.getContext('2d');
+                    </script>
                 </div>
+                <script>
+					$(document).ready(function(){
+						drawStraight(-10, 0, 23);
+						drawCurve(-10, 0, 23);
+					});              
+                </script>
                 <!-- 표 -->
                 <div class="measure_list">
                     <h4>기준상세</h4>
                     <!-- 측정값이 경고일때 해당 TR에 class="warn"을 적용 -->
                     <table summary="기준상세표">
                         <thead>
-                            <th>구분</th>
-                            <th>기준</th>
-                            <th>측정값</th>
-                            <th>판정결과</th>
+	                        <tr>
+	                            <th>구분</th>
+	                            <th>기준</th>
+	                            <th>측정값</th>
+	                            <th>판정결과</th>
+	                        </tr>
                         </thead>
                         <tr class="warn">
                             <th>진직도</th>
@@ -207,10 +201,12 @@ $(document).ready(function(){
                     <h3>점검기준</h3>
                      <table summary="점검기준표">
                             <thead>
-                                <th>NO</th>
-                                <th>검사항목</th>
-                                <th>검사방법</th>
-                                <th>허용오차</th>
+	                            <tr>
+	                                <th>NO</th>
+	                                <th>검사항목</th>
+	                                <th>검사방법</th>
+	                                <th>허용오차</th>
+	                            </tr>
                             </thead>
                             <tr>
                                 <th>1</th>
