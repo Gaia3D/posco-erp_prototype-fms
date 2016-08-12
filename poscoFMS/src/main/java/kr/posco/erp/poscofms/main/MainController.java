@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.posco.erp.poscofms.main.service.MainService;
 import kr.posco.erp.poscofms.main.vo.GirderErrorStatusSummaryVO;
@@ -166,6 +167,26 @@ public class MainController {
 		//dataProcessService.processRequest(input);
 		
 		return nextPageName;
+	}
+	
+	@RequestMapping(value = "/getGirderInsectList.posco", method = RequestMethod.GET)
+	public @ResponseBody Object getGirderInsectList(Locale locale, Model model, String girderId) {
+        logger.info("Welcome fms! The client locale is {}.", locale);
+		
+		Date date = new Date();
+		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+		
+		String formattedDate = dateFormat.format(date);
+		
+		model.addAttribute("serverTime", formattedDate );
+		
+		GirderInspectionVO GirderInspection = mainService.getGirderInspection(girderId);
+		
+		if (GirderInspection == null){
+			GirderInspection = new GirderInspectionVO();
+		};
+		
+		return GirderInspection;
 	}
 	
 }

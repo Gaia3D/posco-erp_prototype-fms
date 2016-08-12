@@ -15,6 +15,8 @@ function onLoad()
 		
 		refreshDetailPageToNewMeasurement(selectedDate, selectedGirderId);
 	});
+	
+	refreshDetailPageToNewInspection(selectedGirderId)
 }
 
 
@@ -36,9 +38,11 @@ function goPage(pageId) {
 	$("#" + pageId).show();
 	$("#btn" + pageId.substring(0,1).toUpperCase() + pageId.substring(1)).addClass("on");
 	
+	// 시간 콤보 박스 show/hide
 	if(pageId == "survey"){
 		$(".snb ul li:nth-child(3)").show();		
 	} else {
 		$(".snb ul li:nth-child(3)").hide();
+		$(".check_drawing li").removeClass("warn");
 	}
 }

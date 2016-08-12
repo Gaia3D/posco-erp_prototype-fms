@@ -266,7 +266,7 @@ $(document).ready(function(){
                             <thead>
                             	<tr>
                                     <th rowspan="2">날짜</th>
-                                    <th colspan="2">항목</th>
+                                    <th colspan="3">항목</th>
                                     <th colspan="3">균열</th>
                                     <th colspan="2">볼트</th>
                                     <th colspan="2">보수불가</th>
@@ -274,6 +274,7 @@ $(document).ready(function(){
                                 <tr>
                                     <th>유형</th>
                                     <th>위치</th>
+                                    <th>개소</th>
                                     <th>CRG</th>
                                     <th>BG</th>
                                     <th>Colume</th>
@@ -283,30 +284,7 @@ $(document).ready(function(){
                                     <th>절손</th>
                                 </tr>
                             </thead>
-                            <tr onclick="highlightMarker(this)">
-                                <td>2016.08.08</td>
-                                <td>4</td>
-                                <td>C/G 상부 수직 스티프너와 웨브 접합부</td>
-                                <td>-</td>
-                                <td class="warn">0.10</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                            </tr>
-                            <tr onclick="highlightMarker(this)">
-                                <td>2016.08.08</td>
-                                <td>27</td>
-                                <td>B/G 삼현재와 수직가세트 플례이트 접합부</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td>-</td>
-                                <td class="warn">20</td>
-                                <td>-</td>
-                                <td>-</td>
-                            </tr>
+                            
                         </table>
                 </div>
                 <!-- END 점검기준 -->
