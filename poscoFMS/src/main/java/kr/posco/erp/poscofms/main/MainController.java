@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.posco.erp.poscofms.main.service.MainService;
 import kr.posco.erp.poscofms.main.vo.GirderErrorStatusSummaryVO;
@@ -100,19 +101,25 @@ public class MainController {
 
 		// girder id setting
 		String selectedGirder = "A1";
-		if(girderId == null){
-			girderId = selectedGirder;
+		if(girderId != null){
+			 selectedGirder = girderId;
 		};
 		model.addAttribute("selectedGirderId", selectedGirder );
 		
 		// girder info by id 
 		List<GirderErrorStatusVO> girderInfoList = mainService.getGirderInfo();
 		model.addAttribute("girderInfoList", girderInfoList );
+		
+		// info type
+		String pageType = "measurement";
+		if(kind != null)
+			pageType = kind;
+		model.addAttribute("kind", pageType);
 
 		// measurement & inspection info of this girder
-		GirderMeasurementVO voM = mainService.getGirderMeasurement(selDate, girderId);
+		GirderMeasurementVO voM = mainService.getGirderMeasurement(selDate, selectedGirder);
 		model.addAttribute("measurementInfo", voM);
-		GirderInspectionVO voI = mainService.getGirderInspection(girderId);
+		GirderInspectionVO voI = mainService.getGirderInspection(selectedGirder);
 		model.addAttribute("inspectionInfo", voI);
 
 		return "main/detail";
@@ -138,34 +145,15 @@ public class MainController {
 		return "main/report";
 	}
 	
-	/**
-	 * viewPage
-	 * 권한이 있는 사용자에게 해당 페이지로 포워드해준다.
-	 * @param nextSubPage 전체 페이지 프레임 안에서 content 영역만을 리프레시할 수 있도록 해당 부분의 페이지만 호출하는 경로를 포워딩해준다.
-	 * @param nextPageName 부분 페이지가 아닌 전체 페이지를 로드하는 경우 이 항목에 값을 전달하여 해당 페이지로 포워드해준다.
-	 * @return 목적에 맞는 해당 페이지 경로
-	 */
-	@RequestMapping(value = "/viewPage.posco")
-	public String viewPage(Locale locale, Model model, String nextSubPageName, String nextPageName) {
-		logger.debug("Welcome sdmc Main! The client locale is {}.", locale);
-		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
-		
-
-		if(nextPageName == null){
-			model.addAttribute("nextSubPageName", nextSubPageName );
-			nextPageName = "main/main";
-		}
-		
-		model.addAttribute("serverTime", formattedDate );
-		
-		// TODO right now 0 : extract input parameters from client request
-		//dataProcessService.processRequest(input);
-		
-		return nextPageName;
+	@RequestMapping(value = "/girderMeasurement.posco", method = RequestMethod.GET)
+	public @ResponseBody Object getGirderMeasurement(String date, String girderId)
+	{
+		return mainService.getGirderMeasurement(date, girderId);
 	}
 	
+	@RequestMapping(value = "/girderInspection.posco", method = RequestMethod.GET)
+	public @ResponseBody Object getGirderInspection(String girderId)
+	{
+		return mainService.getGirderInspection(girderId);
+	}
 }
