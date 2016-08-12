@@ -140,7 +140,7 @@ $(document).ready(function(){
                     	
                     	
                     	context1.beginPath();
-                    	context.moveTo(75 + straight1 ,200);
+                    	context1.moveTo(75 + straight1 ,200);
                     	context1.lineTo(75,200);
                     	context1.lineTo(75,200);
                     	
