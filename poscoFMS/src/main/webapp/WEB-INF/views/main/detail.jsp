@@ -129,9 +129,9 @@ $(document).ready(function(){
                 <!-- 진직도 -->
                 <div class="straight">
                     <h4>진직도</h4>
-                    <a href="#" title="시계열조회" id="horizontalDeformationAtStart" class="first" onclick="showGraph();"><span>-10</span></a>
+                    <a href="#" title="시계열조회" id="horizontalDeformationAtLast" class="first" onclick="showGraph();"><span>-10</span></a>
                     <a href="#" title="시계열조회" id="horizontalDeformationAtMid" class="middle warn"><span>-0</span></a>
-                    <a href="#" title="시계열조회" id="horizontalDeformationAtLast" class="last"><span>23</span></a>
+                    <a href="#" title="시계열조회" id="horizontalDeformationAtStart" class="last"><span>23</span></a>
                     <canvas id="canvStraight" style="width:150px;height:400px;margin:57px;">weqrasdfzxcv</canvas>
                     <script>
                     	var canvas1= document.getElementById("canvStraight");
