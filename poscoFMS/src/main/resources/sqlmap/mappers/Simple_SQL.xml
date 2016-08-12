@@ -311,10 +311,10 @@
 				select
 					val
 				from
-					girder_bend, previousGirder
-				where
-					true
-					and girder_bend.girder_id = previousGirder.girder_id
+					girder_bend
+				left outer join previousGirder on girder_bend.girder_id = previousGirder.girder_id
+				where true
+					and girder_bend.girder_id = #{id}
 					and survey_dt = to_timestamp(#{date}, 'YYYY-MM-DD')
 					and pos = 2
 			) PreviousVerLastValues
