@@ -163,25 +163,25 @@ $(document).ready(function(){
 	                            <th>판정결과</th>
 	                        </tr>
                         </thead>
-                        <tr id="" >
+                        <tr id="horizontalDeformation" >
                             <th>진직도</th>
                             <td>L/500</td>
                             <td>L/1200</td>
                             <td></td>
                         </tr>
-                        <tr id="">
+                        <tr id="reverseCamber">
                             <th>역캠버</th>
                             <td>L/500</td>
                             <td>L/1200</td>
                             <td></td>
                         </tr>
-                        <tr id="">
+                        <tr id="heightDifference">
                             <th>단차</th>
                             <td>L/500</td>
                             <td>L/1200</td>
                             <td></td>
                         </tr>
-                        <tr id="">
+                        <tr id="spanTest">
                             <th>span</th>
                             <td>L/500</td>
                             <td>L/1200</td>
