@@ -2,12 +2,44 @@
  * 
  */
 
-function refreshDetailPageToNewMeasurement(date, girderId)
-{
+function refreshDetailPageToNewMeasurement(date, girderId){
+	
+	$.ajax({
+		url : contextRoot + "girderMeasurement.posco",
+		type : "GET",
+		dataType : "json",
+		data : {
+			girderId : girderId,
+			date : date
+		},
+		async : true,
+		success : setGirderMeasurementData,
+		error : function(XMLHttpRequest, textStatus, errorThrown) {
+			alert(errorThrown);
+		}
+	});
 }
 
+function setGirderMeasurementData(result){
+	console.log(result);
+	$("#horizontalDeformationAtStart span").text(result.horizontalDeformationAtStart);
+	$("#horizontalDeformationAtMid span").text(result.horizontalDeformationAtMid);
+	$("#horizontalDeformationAtLast span").text(result.horizontalDeformationAtLast);
+	drawStraight(result.horizontalDeformationAtStart, result.horizontalDeformationAtMid, result.horizontalDeformationAtLast);
+	
+	$("#verticalDeformationAtStart span").text(result.verticalDeformationAtStart);
+	$("#verticalDeformationAtMid span").text(result.verticalDeformationAtMid);
+	$("#verticalDeformationAtLast span").text(result.verticalDeformationAtLast);
+	drawCurve(result.verticalDeformationAtStart, result.verticalDeformationAtMid, result.verticalDeformationAtLast);
+}
 
-
+/**
+ * 진직도 직선 그리는 함수
+ * @param x
+ * @param y
+ * @param z
+ * @returns
+ */
 function drawStraight(x,y,z){
 	
 	var straight1 = x;
@@ -27,16 +59,22 @@ function drawStraight(x,y,z){
     context1.lineJoin = "round";
     
 	context1.beginPath();
-	context1.moveTo(modVal1,0);
+	context1.moveTo(modVal1,150);
 	context1.lineTo(modVal2,75);
-	context1.lineTo(modVal3,150);
+	context1.lineTo(modVal3,0);
 	context1.stroke();
 	context1.closePath();
 	//console.log(modVal1 + "_" + modVal2 + "_" + modVal3);
 }
 
 
-
+/**
+ * 굴곡도 직선 그리는 함수
+ * @param x
+ * @param y
+ * @param z
+ * @returns
+ */
 function drawCurve(x,y,z){
 	
 	var curve1 = x;
@@ -45,13 +83,13 @@ function drawCurve(x,y,z){
 	
 	var interval = 100 ;
 	
-	var modVal1 = curve1 / interval * 150 + 70 ; //보정 계수 포함. 아래도 마찬가지
-	var modVal2 = curve2 / interval * 150 + 70 ;
-	var modVal3 = curve3 / interval * 150 + 70 ;
+	var modVal1 = 70 - curve1 / interval * 150 ; //보정 계수 포함. 아래도 마찬가지
+	var modVal2 = 70 - curve2 / interval * 150 ;
+	var modVal3 = 70 - curve3 / interval * 150 ;
 	
 
-    context2.strokeStyle = "darkorange";
-    context2.lineWidth = 10;
+    context2.strokeStyle = "purple";
+    context2.lineWidth = 3;
     context2.lineCap = "miter";
     context2.lineJoin = "round";
     

@@ -130,9 +130,9 @@ $(document).ready(function(){
                 <!-- 진직도 -->
                 <div class="straight">
                     <h4>진직도</h4>
-                    <a href="#" title="시계열조회" class="first" onclick="showGraph();"><span>-10</span></a>
-                    <a href="#" title="시계열조회" class="middle warn"><span>-0</span></a>
-                    <a href="#" title="시계열조회" class="last"><span>23</span></a>
+                    <a href="#" title="시계열조회" id="horizontalDeformationAtStart" class="first" onclick="showGraph();"><span>-10</span></a>
+                    <a href="#" title="시계열조회" id="horizontalDeformationAtMid" class="middle warn"><span>-0</span></a>
+                    <a href="#" title="시계열조회" id="horizontalDeformationAtLast" class="last"><span>23</span></a>
                     <canvas id="canvStraight" style="width:150px;height:400px;margin:57px;">weqrasdfzxcv</canvas>
                     <script>
                     	var canvas1= document.getElementById("canvStraight");
@@ -142,21 +142,16 @@ $(document).ready(function(){
                 <!-- 굴곡도 -->
                 <div class="curve">
                     <h4>굴곡도</h4>
-                    <a href="#" title="시계열조회" class="first"><span>-10</span></a>
-                    <a href="#" title="시계열조회" class="middle"><span>-0</span></a>
-                    <a href="#" title="시계열조회" class="last warn"><span>23</span></a>
+                    <a href="#" title="시계열조회" id="verticalDeformationAtStart" class="first"><span>-10</span></a>
+                    <a href="#" title="시계열조회" id="verticalDeformationAtMid" class="middle"><span>-0</span></a>
+                    <a href="#" title="시계열조회" id="verticalDeformationAtLast" class="last warn"><span>23</span></a>
                     <canvas id="canvCurve" style="width:400px;height:140px;margin:51px;"></canvas>
                     <script>
                     	var canvas2= document.getElementById("canvCurve");
                     	var context2 = canvas2.getContext('2d');
                     </script>
                 </div>
-                <script>
-					$(document).ready(function(){
-						drawStraight(-10, 0, 23);
-						drawCurve(-10, 0, 23);
-					});              
-                </script>
+
                 <!-- 표 -->
                 <div class="measure_list">
                     <h4>기준상세</h4>
@@ -170,25 +165,25 @@ $(document).ready(function(){
 	                            <th>판정결과</th>
 	                        </tr>
                         </thead>
-                        <tr class="warn">
+                        <tr id="" >
                             <th>진직도</th>
                             <td>L/500</td>
                             <td>L/1200</td>
                             <td></td>
                         </tr>
-                        <tr>
+                        <tr id="">
                             <th>역캠버</th>
                             <td>L/500</td>
                             <td>L/1200</td>
                             <td></td>
                         </tr>
-                        <tr>
+                        <tr id="">
                             <th>단차</th>
                             <td>L/500</td>
                             <td>L/1200</td>
                             <td></td>
                         </tr>
-                        <tr>
+                        <tr id="">
                             <th>span</th>
                             <td>L/500</td>
                             <td>L/1200</td>

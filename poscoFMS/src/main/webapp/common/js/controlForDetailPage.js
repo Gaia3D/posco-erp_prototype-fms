@@ -57,7 +57,7 @@ function onLoad(pageType)
 
 function refreshDetailPageForNewData()
 {
-	// refreshDetailPageToNewMeasurement();
+	refreshDetailPageToNewMeasurement(selectedDate, selectedGirderId);
 	refreshDetailPageToNewInspection(selectedGirderId);
 }
 
