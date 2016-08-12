@@ -5,6 +5,10 @@ public class GirderInspectionItemVO {
 	private String inspectionDate;
 	
 	private int inspectionType;
+
+	private String posText;
+
+	private int count;
 	
 	private double crackCrg;
 	
@@ -39,6 +43,21 @@ public class GirderInspectionItemVO {
 	public void setInspectionType(int type)
 	{
 		this.inspectionType = type;
+	}
+	public String getPosText() {
+		return posText;
+	}
+
+	public void setPosText(String posText) {
+		this.posText = posText;
+	}
+
+	public int getCount() {
+		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
 	}
 	
 	public double getCrackCrg()

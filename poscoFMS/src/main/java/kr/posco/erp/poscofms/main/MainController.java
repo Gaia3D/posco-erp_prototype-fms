@@ -148,12 +148,24 @@ public class MainController {
 	@RequestMapping(value = "/girderMeasurement.posco", method = RequestMethod.GET)
 	public @ResponseBody Object getGirderMeasurement(String date, String girderId)
 	{
-		return mainService.getGirderMeasurement(date, girderId);
+		GirderMeasurementVO vo = mainService.getGirderMeasurement(date, girderId);
+		
+		if(vo == null)
+			vo = new GirderMeasurementVO();
+		
+		return vo;
 	}
-	
-	@RequestMapping(value = "/girderInspection.posco", method = RequestMethod.GET)
-	public @ResponseBody Object getGirderInspection(String girderId)
+
+	@RequestMapping(value = "/getGirderInspectList.posco", method = RequestMethod.GET)
+	public @ResponseBody Object getGirderInspectList(String girderId)
 	{
-		return mainService.getGirderInspection(girderId);
+		GirderInspectionVO girderInspection = mainService.getGirderInspection(girderId);
+		
+		if (girderInspection == null){
+			girderInspection = new GirderInspectionVO();
+		};
+		
+		return girderInspection;
 	}
+
 }

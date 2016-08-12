@@ -44,6 +44,8 @@ function onLoad(pageType)
 		}
 	);
 	
+	refreshDetailPageForNewData();
+	
 	if(pageType == 'inspection')
 	{
 		goPage('check');
@@ -52,6 +54,13 @@ function onLoad(pageType)
 	{
 		goPage('survey');
 	}
+
+}
+
+function refreshDetailPageForNewData()
+{
+	// refreshDetailPageToNewMeasurement();
+	refreshDetailPageToNewInspection(selectedGirderId);
 }
 
 function makeGirderIndexMapHandler()
@@ -76,9 +85,11 @@ function goPage(pageId) {
 	$("#" + pageId).show();
 	$("#btn" + pageId.substring(0,1).toUpperCase() + pageId.substring(1)).addClass("on");
 	
+	// 시간 콤보 박스 show/hide
 	if(pageId == "survey"){
 		$(".snb ul li:nth-child(3)").show();		
 	} else {
 		$(".snb ul li:nth-child(3)").hide();
+		$(".check_drawing li").removeClass("warn");
 	}
 }
