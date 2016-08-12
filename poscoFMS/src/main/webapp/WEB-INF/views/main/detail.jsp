@@ -44,7 +44,6 @@
 <script src="<%=contextRoot%>common/js/controlForDetailPage.js"></script>
 <script src="<%=contextRoot%>common/js/controlForDetailedMeasurement.js"></script>
 <script src="<%=contextRoot%>common/js/controlForDetailedInspection.js"></script>
-<script src="<%=contextRoot%>common/js/controlForDetailedTimeSeries.js"></script>
 
 <c:if test="${kind == 'inspection'}">
 <script>
@@ -262,7 +261,7 @@ $(document).ready(function(){
                     <li id="marker28" style="top:428px; left:597px;" title="B/G 하현재와 수직가세트 플례이트 접합부">28</li>
                     <li id="marker29" style="top:348px; left:185px;" title="C/G 삼부 수직 스티프너와 가세트 플례이트 접합부">29</li>
                     <li id="marker30" style="top:460px; left:183px;" title="C/G 하부 수직 스티프너와 가세트 플례이트 접합부">30</li>
-                    <li id="marker31" style="top:345px; left:124px;" title="?">31</li>
+                    <li id="marker31" style="top:345px; left:124px;" title="C/G 상부 플래지와 레일 연결 플랜지 볼트">31</li>
                 </ul>
             	
                 <div class="check_list">

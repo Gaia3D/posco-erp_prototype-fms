@@ -234,7 +234,7 @@
     
     <select id="selectGirderHorizontalDeformationHistory" resultType="Integer">
     	select
-			val
+			coalesce(val, 9999)
 		from
 			girder_straight
 		where
@@ -245,7 +245,7 @@
     
     <select id="selectGirderVerticalDeformationHistory" resultType="Integer">
     	select
-			val
+			coalesce(val, 9999)
 		from
 			girder_bend
 		where
