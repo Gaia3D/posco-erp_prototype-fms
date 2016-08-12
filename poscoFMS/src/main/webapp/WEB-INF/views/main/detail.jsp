@@ -53,6 +53,7 @@ history.back();
 <c:if test="${param.kind == 'check'}">
 <script>
 $(document).ready(function(){
+	console.log('inspection first');
 	goPage('check');
 });
 </script>
@@ -133,13 +134,13 @@ $(document).ready(function(){
                     	var straight2 = 0;
                     	var straight3 = 23
                     	
-                    	var interval = (Math.abs(straight3 - straight2) > Math.abs(straight1 - straight2)?(Math.abs(straight3 - straight2):(Math.abs(straight1 - straight2) ;
+                    	var interval = Math.abs(straight3 - straight2) > Math.abs(straight1 - straight2)? Math.abs(straight3 - straight2) : Math.abs(straight1 - straight2) ;
                     	
                     	//var modVal1 = ;
                     	
                     	
                     	context1.beginPath();
-                    	context.moveTo(75 + straight1 ,200);
+                    	context1.moveTo(75 + straight1 ,200);
                     	context1.lineTo(75,200);
                     	context1.lineTo(75,200);
                     	
