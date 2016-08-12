@@ -337,7 +337,9 @@
     <select id="selectGirderInspectionRecords" resultType="GirderInspectionItem">
     	select
     		to_char(check_date, 'YYYY-MM-DD') as inspectionDate,
-			code as inspectionType,
+			check_list.code as inspectionType,
+			pos_txt as posText,
+			coalesce(count, 0.0) as count,
 			coalesce(org, 0.0) as crackCrg,
 			coalesce(bg, 0.0) as crackBg,
 			coalesce(col, 0.0) as crackColumn,
@@ -347,9 +349,12 @@
 			coalesce(disable_loose, 0) as unrecoverableBoltsLoosen
 		from
 			check_list
+		join check_code
+		on check_list.code = check_code.code
 		where
 			girder_id = #{id}
 			and check_date >= to_timestamp(#{date}, 'YYYY-MM-DD')
+		order by check_date desc
     </select>
     
     <select id="selectGirderHorizontalDeformationHistory" resultType="Integer">
