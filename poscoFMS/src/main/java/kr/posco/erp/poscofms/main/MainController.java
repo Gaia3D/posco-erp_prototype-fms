@@ -1,7 +1,7 @@
 package kr.posco.erp.poscofms.main;
 
 import java.text.DateFormat;
-
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -196,6 +196,7 @@ public class MainController {
 		
 		HashMap<String, Object> result = new HashMap<String, Object>();
 		
+		Collections.reverse(dates);
 		result.put("dates", dates);
 		result.put("history", history);
 		
@@ -210,6 +211,7 @@ public class MainController {
 		
 		HashMap<String, Object> result = new HashMap<String, Object>();
 		
+		Collections.reverse(dates);
 		result.put("dates", dates);
 		result.put("history", history);
 		

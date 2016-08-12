@@ -1,18 +1,14 @@
 
-function showGraph(title, dates, history) {
-	
-	console.log('그래프 제목 : ' + title);
-	console.log('x축  : ' + dates);
-	console.log('y축  : ' + history);
-	
+function showGraph(title, dates, history, maxVal) {
 	
 	$(".layer").show();
-
+	
 	var ctx = $("#timeGraph");
+	$(ctx).empty;
 	var data = {
-		labels : [ "1", "2", "3", "4", "5", "6", "7" ],
+		labels : dates,
 		datasets : [ {
-			label : "시계열 그래프",
+			label : title + " 시계열 그래프",
 			fill : false,
 			lineTension : 0.1,
 			backgroundColor : "rgba(75,192,192,0.4)",
@@ -28,9 +24,9 @@ function showGraph(title, dates, history) {
 			pointHoverBackgroundColor : "rgba(75,192,192,1)",
 			pointHoverBorderColor : "rgba(220,220,220,1)",
 			pointHoverBorderWidth : 2,
-			pointRadius : 1,
+			pointRadius : 5,
 			pointHitRadius : 10,
-			data : [ -5, -10, 10, -34, null, 1, 17 ],
+			data : history,
 			spanGaps : true,
 		} ]
 	};
@@ -54,4 +50,6 @@ function showGraph(title, dates, history) {
 			}
 		}
 	});
+	
+	
 }

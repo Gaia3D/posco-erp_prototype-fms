@@ -165,7 +165,7 @@ function makeTimeSeriesPageTrigger()
 function requestHorizontalDeformationHistory(positionType)
 {
 	console.log('horizontal clicked : ' + positionType);
-	
+	$("div.contents>h4").html(selectedGirderId +" - "+positionType)
 	$.ajax({
 		url : contextRoot + "HorizontalDeformationHistory.posco",
 		type : "GET",
@@ -185,13 +185,13 @@ function requestHorizontalDeformationHistory(positionType)
 function horizontalDeformationHistoryArriven(result)
 {
 	console.log('horizontal history arriven');
-	showGraph('진직도', result.dates, result.history);
+	showGraph('진직도', result.dates, result.history, result.maxVal);
 }
 
 function requestVerticalDeformationHistory(positionType)
 {
 	console.log('vertical clicked : ' + positionType);
-	
+	$("div.contents>h4").html(selectedGirderId +" - "+positionType)
 	$.ajax({
 		url : contextRoot + "VerticalDeformationHistory.posco",
 		type : "GET",
@@ -211,6 +211,6 @@ function requestVerticalDeformationHistory(positionType)
 function verticalDeformationHistoryArriven(result)
 {
 	console.log('vertical history arriven');
-	showGraph('굴곡도', result.dates, result.history);
+	showGraph('굴곡도', result.dates, result.history, result.maxVal);
 }
 
