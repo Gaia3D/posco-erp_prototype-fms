@@ -126,24 +126,10 @@ $(document).ready(function(){
                     <a href="#" title="시계열조회" class="first" onclick="showGraph();"><span>-10</span></a>
                     <a href="#" title="시계열조회" class="middle warn"><span>-0</span></a>
                     <a href="#" title="시계열조회" class="last"><span>23</span></a>
-                    <canvas id="canvStraight" style="width:150px;height:400px;margin:57px;"></canvas>
+                    <canvas id="canvStraight" style="width:150px;height:400px;margin:57px;">weqrasdfzxcv</canvas>
                     <script>
                     	var canvas1= document.getElementById("canvStraight");
                     	var context1 = canvas1.getContext('2d');
-                    	var straight1 = -10;
-                    	var straight2 = 0;
-                    	var straight3 = 23
-                    	
-                    	var interval = Math.abs(straight3 - straight2) > Math.abs(straight1 - straight2)? Math.abs(straight3 - straight2) : Math.abs(straight1 - straight2) ;
-                    	
-                    	//var modVal1 = ;
-                    	
-                    	
-                    	context1.beginPath();
-                    	context1.moveTo(75 + straight1 ,200);
-                    	context1.lineTo(75,200);
-                    	context1.lineTo(75,200);
-                    	
                     </script>
                 </div>
                 <!-- 굴곡도 -->
@@ -153,7 +139,17 @@ $(document).ready(function(){
                     <a href="#" title="시계열조회" class="middle"><span>-0</span></a>
                     <a href="#" title="시계열조회" class="last warn"><span>23</span></a>
                     <canvas id="canvCurve" style="width:400px;height:140px;margin:51px;"></canvas>
+                    <script>
+                    	var canvas2= document.getElementById("canvCurve");
+                    	var context2 = canvas2.getContext('2d');
+                    </script>
                 </div>
+                <script>
+					$(document).ready(function(){
+						drawStraight(-10, 0, 23);
+						drawCurve(-10, 0, 23);
+					});              
+                </script>
                 <!-- 표 -->
                 <div class="measure_list">
                     <h4>기준상세</h4>
