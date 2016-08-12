@@ -12,7 +12,13 @@ function goMenu(url) {
 	});
 	$("." + url).addClass("on");
 	//alert(contextRoot + url + ".posco");
-	location.href = contextRoot + url + ".posco";
+	var dt = $("#measurementDate").val();
+	if(dt == null || dt.indexOf('undefined') > -1 || dt == undefined){
+		location.href = contextRoot + url + ".posco" ;
+	} else {
+		//alert(">"+dt + "<");
+		location.href = contextRoot + url + ".posco?selDate=" + dt ;
+	}
 }
 
 /**
@@ -25,7 +31,18 @@ function goPage(pageId) {
 	$(".measure_wrap").each(function() {
 		$(this).hide();
 	});
+	
+	$(".btns button").each(function(){
+		$(this).removeClass("on");
+	});
 	$("#" + pageId).show();
+	$("#btn" + pageId.substring(0,1).toUpperCase() + pageId.substring(1)).addClass("on");
+	
+	if(pageId == "survey"){
+		$(".snb ul li:nth-child(3)").show();		
+	} else {
+		$(".snb ul li:nth-child(3)").hide();
+	}
 }
 
 /** 점검 마커 표시 **/	
@@ -42,7 +59,3 @@ function logout(){
 	location.href=contextRoot + "logout.posco";
 }
 
-function relaodGirderStatus() {
-	selDate = document.getElementById("measurementDate").value;
-	location.href=contextRoot + "home.posco?selDate=" + selDate;
-}

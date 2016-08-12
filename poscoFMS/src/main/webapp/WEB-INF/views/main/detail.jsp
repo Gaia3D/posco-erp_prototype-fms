@@ -45,7 +45,16 @@ history.back();
 <title>RUNWAY시설물 관리시스템</title>
 <link rel="stylesheet" href="<%=contextRoot%>common/css/style.css">
 <jsp:include page="../import/scripts.jsp" />
-<script src="/common/js/controlForDetailPage.js"></script>
+<script src="<%=contextRoot%>common/js/controlForDetailPage.js"></script>
+
+<c:if test="${param.kind == 'check'}">
+<script>
+$(document).ready(function(){
+	goPage('check');
+});
+</script>
+</c:if>
+
 </head>
 
 <body>
@@ -63,25 +72,25 @@ history.back();
         	<li>
             	<label>제강</label>
                 <select>
-                  <option>1제강</option>
+                  <!-- <option>1제강</option> -->
                   <option>2제강</option>
-                  <option>3제강</option>
+                  <!-- <option>3제강</option> -->
                 </select>
             </li>
             <li>
             	<label>라인</label>
                 <select>
                   <option>AB LINE</option>
-                  <option>CD LINE</option>
-                  <option>EF LINE</option>
+                  <!-- <option>CD LINE</option> -->
+                  <!-- <option>EF LINE</option> -->
                 </select>
             </li>
             <li>
             	<label>측량일</label>
-                <select>
-                  <option>2015. 11. 05</option>
-                  <option>2014. 11. 05</option>
-                  <option>2013. 11. 05</option>
+                <select id="measurementDate" onchange="relaodGirderStatus()">
+                  <c:forEach var="date" items="${measurementDates}">
+	    			<option value="${date}" ${date == selMeasurementDate?'selected':''}>${date}</option>
+                  </c:forEach>
                 </select>
             </li>
         </ul>
@@ -89,18 +98,19 @@ history.back();
     <!-- END NAV --> 
     <div class="contents">
     	<div class="subindex xy">
-        	<!-- 링크샘플 A13 -->
-        	<a href="#" style="top:63px;left:58px;" title="A13~12"></a>
-            <!-- 선택된 샘플 B13 -->
-            <a href="#" class="on" style="top:63px; left:121px;" title="B13~12"></a>
+    		<c:forEach var="girderInfo" items="${girderInfoList}">
+    			<a href="detail.posco?girderId=${girderInfo.girderId}&selDate=${selMeasurementDate}&kind=measurement" 
+    			style="top:${girderInfo.positionY + 63}px;left:${girderInfo.positionX + 58}px;" 
+    			title="${girderInfo.girderId}" ${girderInfo.girderId == selectedGirderId?'class="on"':''}></a>
+    		</c:forEach>
         </div>
         <!-- END INDEX -->
         <div class="view">
         	<div class="title">
             	<h3>11~12</h3>
                 <div class="btns">
-                	<button type="button" class="on" onclick="goPage('survey');">측량</button>
-                    <button type="button" onclick="goPage('check');">점검</button>
+                	<button id="btnSurvey" type="button" class="on" onclick="goPage('survey');">측량</button>
+                    <button id="btnCheck" type="button" onclick="goPage('check');">점검</button>
                 </div>
             </div>
             
@@ -112,6 +122,25 @@ history.back();
                     <a href="#" title="시계열조회" class="first" onclick="showGraph();"><span>-10</span></a>
                     <a href="#" title="시계열조회" class="middle warn"><span>-0</span></a>
                     <a href="#" title="시계열조회" class="last"><span>23</span></a>
+                    <canvas id="canvStraight" style="width:150px;height:400px;margin:57px;"></canvas>
+                    <script>
+                    	var canvas1= document.getElementById("canvStraight");
+                    	var context1 = canvas1.getContext('2d');
+                    	var straight1 = -10;
+                    	var straight2 = 0;
+                    	var straight3 = 23
+                    	
+                    	var interval = (Math.abs(straight3 - straight2) > Math.abs(straight1 - straight2)?(Math.abs(straight3 - straight2):(Math.abs(straight1 - straight2) ;
+                    	
+                    	//var modVal1 = ;
+                    	
+                    	
+                    	context1.beginPath();
+                    	context.moveTo(75 + straight1 ,200);
+                    	context1.lineTo(75,200);
+                    	context1.lineTo(75,200);
+                    	
+                    </script>
                 </div>
                 <!-- 굴곡도 -->
                 <div class="curve">
@@ -119,6 +148,7 @@ history.back();
                     <a href="#" title="시계열조회" class="first"><span>-10</span></a>
                     <a href="#" title="시계열조회" class="middle"><span>-0</span></a>
                     <a href="#" title="시계열조회" class="last warn"><span>23</span></a>
+                    <canvas id="canvCurve" style="width:400px;height:140px;margin:51px;"></canvas>
                 </div>
                 <!-- 표 -->
                 <div class="measure_list">
