@@ -2,8 +2,6 @@
  * 
  */
 
-$(document).ready(onLoad);
-
 var selectedGirderId = "";
 var selectedDate = "";
 var pageMode = "";
