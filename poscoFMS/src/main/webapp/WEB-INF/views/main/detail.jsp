@@ -304,7 +304,7 @@ $(document).ready(function(){
 <div class="layer" style="display:none;">
 	 <div class="contents">
      	<p class="close">
-        	<button type="button" title="닫기" onclick="$('.layer').hide();">레이어닫기</button>
+        	<button type="button" title="닫기">레이어닫기</button>
         </p>
     	<h4>A11-1 </h4>
         <div class="graph">

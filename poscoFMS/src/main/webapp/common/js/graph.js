@@ -3,8 +3,9 @@ function showGraph(title, dates, history, maxVal) {
 	
 	$(".layer").show();
 	
-	var ctx = $("#timeGraph");
-	$(ctx).empty;
+	var canvas = $("#timeGraph")[0];
+	
+	var ctx = canvas.getContext('2d');
 	var data = {
 		labels : dates,
 		datasets : [ {
@@ -51,5 +52,8 @@ function showGraph(title, dates, history, maxVal) {
 		}
 	});
 	
-	
+	$("div.layer>div>p button").click(function() {
+		$(".layer").hide();
+		myLineChart.destroy()
+	})
 }
