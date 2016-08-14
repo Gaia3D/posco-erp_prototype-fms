@@ -1,6 +1,7 @@
 package kr.posco.erp.poscofms.main;
 
 import java.text.DateFormat;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
@@ -200,6 +201,14 @@ public class MainController {
 		result.put("dates", dates);
 		result.put("history", history);
 		
+		while(history.remove(null));
+		
+		int maxVal = Collections.max(history);
+		int minVal = Collections.min(history);
+		if(maxVal < Math.abs(minVal))
+			maxVal = Math.abs(minVal);
+		result.put("maxVal", maxVal);
+		
 		return result;
 	}
 	
@@ -214,6 +223,14 @@ public class MainController {
 		Collections.reverse(dates);
 		result.put("dates", dates);
 		result.put("history", history);
+		
+		while(history.remove(null));
+		
+		int maxVal = Collections.max(history);
+		int minVal = Collections.min(history);
+		if(maxVal < Math.abs(minVal))
+			maxVal = Math.abs(minVal);
+		result.put("maxVal", maxVal);
 		
 		return result;
 	}

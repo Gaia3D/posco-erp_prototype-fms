@@ -31,7 +31,13 @@ function showGraph(title, dates, history, maxVal) {
 			spanGaps : true,
 		} ]
 	};
-
+	
+	yMax = maxVal + 10;
+	var remainder = yMax % 5;
+	if(remainder!=0)
+		yMax = yMax - remainder + 5;
+	yMin = yMax*(-1);
+	
 	var myLineChart = new Chart(ctx, {
 		type : 'line',
 		data : data,
@@ -43,8 +49,8 @@ function showGraph(title, dates, history, maxVal) {
 				} ],
 				yAxes : [ {
 					ticks : {
-						max : 50,
-						min : -50,
+						max : yMax,
+						min : yMin,
 						stepSize : 5
 					}
 				} ]
