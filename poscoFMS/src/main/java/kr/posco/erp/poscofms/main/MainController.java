@@ -1,6 +1,7 @@
 package kr.posco.erp.poscofms.main;
 
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
@@ -201,10 +202,11 @@ public class MainController {
 		result.put("dates", dates);
 		result.put("history", history);
 		
-		while(history.remove(null));
+		List<Integer> editHistory = new ArrayList<Integer>(history);
+		while(editHistory.remove(null));
 		
-		int maxVal = Collections.max(history);
-		int minVal = Collections.min(history);
+		int maxVal = Collections.max(editHistory);
+		int minVal = Collections.min(editHistory);
 		if(maxVal < Math.abs(minVal))
 			maxVal = Math.abs(minVal);
 		result.put("maxVal", maxVal);
@@ -224,10 +226,11 @@ public class MainController {
 		result.put("dates", dates);
 		result.put("history", history);
 		
-		while(history.remove(null));
+		List<Integer> editHistory = new ArrayList<Integer>(history);
+		while(editHistory.remove(null));
 		
-		int maxVal = Collections.max(history);
-		int minVal = Collections.min(history);
+		int maxVal = Collections.max(editHistory);
+		int minVal = Collections.min(editHistory);
 		if(maxVal < Math.abs(minVal))
 			maxVal = Math.abs(minVal);
 		result.put("maxVal", maxVal);
