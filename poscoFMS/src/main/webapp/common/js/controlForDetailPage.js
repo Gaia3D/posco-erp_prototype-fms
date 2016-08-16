@@ -60,7 +60,7 @@ function onLoad(pageType)
 	}
 	
 	$("div.layer>div>h4").css("margin-bottom","5px")
-
+	$(".check_drawing").css("min-width","756px")
 }
 
 function requestNewDataForDetailPage()
