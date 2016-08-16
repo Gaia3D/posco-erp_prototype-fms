@@ -58,6 +58,8 @@ function onLoad(pageType)
 	{
 		goPage('survey');
 	}
+	
+	$("div.layer>div>h4").css("margin-bottom","5px")
 
 }
 
