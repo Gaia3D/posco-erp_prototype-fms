@@ -47,7 +47,7 @@
 	</servlet-mapping>
 
 	<welcome-file-list>
-		<welcome-file>temp.jsp</welcome-file>	<!-- 각 페이지 링크를 위한 임시 페이지 -->
+		<!-- welcome-file>temp.jsp</welcome-file -->	<!-- 각 페이지 링크를 위한 임시 페이지 -->
 		<welcome-file>login.posco</welcome-file>
 		<welcome-file>index.posco</welcome-file>
 		<welcome-file>index.html</welcome-file>
