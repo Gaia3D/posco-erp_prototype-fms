@@ -123,6 +123,7 @@ function makeGirderIndexMapHandler()
 			selectedGirderId = girderId;
 			
 			requestNewDataForDetailPage();
+			$(".check_drawing li").removeClass("warn");
 		}
 	);
 }
