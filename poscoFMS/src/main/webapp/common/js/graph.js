@@ -119,5 +119,6 @@ function showGraph(title, dates, history, maxVal) {
 	$("div.layer>div>p button").click(function() {
 		$(".layer").hide();
 		myLineChart.destroy()
+		$("body").css("overflow-y","auto");
 	})
 }

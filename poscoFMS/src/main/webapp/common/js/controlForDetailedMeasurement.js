@@ -156,7 +156,10 @@ function makeTimeSeriesPageTrigger()
 				requestHorizontalDeformationHistory(1);
 			else if(classString.includes('last'))
 				requestHorizontalDeformationHistory(0);
+			
+			$("body").css("overflow-y","hidden");
 		}
+		
 	);
 	
 	
@@ -170,6 +173,8 @@ function makeTimeSeriesPageTrigger()
 				requestVerticalDeformationHistory(1);
 			else if(classString.includes('last'))
 				requestVerticalDeformationHistory(2);
+			
+			$("body").css("overflow-y","hidden");
 		}
 	);
 }
