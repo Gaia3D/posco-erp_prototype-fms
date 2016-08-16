@@ -5,6 +5,64 @@ function showGraph(title, dates, history, maxVal) {
 	
 	var canvas = $("#timeGraph")[0];
 	
+//	var editDates = [];
+//	var editHistory = [];
+//	
+//	var date1 = ""
+//	var date2 = ""
+//	
+//	for(count in dates){
+//		date = dates[count];
+//		if (date2 != ""){
+//			date1 = date2;
+//			date2 = date;
+//			
+//			splitDate1 = date1.split('-');
+//			splitDate2 = date2.split('-');
+//			
+//			yaerData1 = Number(splitDate1[0]);
+//			monthData1 = Number(splitDate1[1]);
+//			dayData1 = Number(splitDate1[2]);
+//			yaerData2 = Number(splitDate2[0]);
+//			monthData2 = Number(splitDate2[1]);
+//			dayData2 = Number(splitDate2[2]);
+//			
+//			while(true){
+//				monthData1 += 1
+//				if(yaerData1 < yaerData2){
+//					if(monthData1 < 13){
+//						editDates.push(String(yaerData1)+"-"+monthData1);
+//						editHistory.push(null);
+//					}else{
+//						monthData1 -= 12;
+//						yaerData1 += 1;
+//						if(yaerData1==yaerData2 && monthData1==monthData2){
+//							editDates.push(date2);
+//							editHistory.push(history[count]);
+//							break;
+//						}else{
+//							editDates.push(String(yaerData1)+"-"+monthData1);
+//							editHistory.push(null);
+//						}
+//					}
+//				}else{
+//					if(monthData1 < monthData2){
+//						editDates.push(String(yaerData1)+"-"+monthData1);
+//						editHistory.push(null);
+//					}else{
+//						editDates.push(date2);
+//						editHistory.push(history[count]);
+//						break;
+//					}
+//				}
+//			}
+//		}else{
+//			date2 = date;
+//			editDates.push(date2);
+//			editHistory.push(history[count]);
+//		}
+//	}
+	
 	var ctx = canvas.getContext('2d');
 	var data = {
 		labels : dates,
