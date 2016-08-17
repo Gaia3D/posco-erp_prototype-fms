@@ -48,10 +48,6 @@
 <jsp:include page="../import/top.jsp" >
 	<jsp:param value="report" name="menu"/>
 </jsp:include>
-</div>
-<!-- END HEADER -->
-
-<div id="wrap">
 	<div class="snb">
     	<ul>
         	<li>
@@ -72,12 +68,12 @@
             </li>
         </ul>
     </div>
-    <!-- END NAV --> 
+    <!-- END SNB --> 
+</div>
+<!-- END HEADER -->
+
+<div id="wrap">
     <div class="contents">
-    	<div class="btns">
-        	<button type="button">PDF다운로드</button>
-            <button type="button">인쇄</button>
-        </div>
         <!-- 보고서 -->
         <div>
         	<img src="<%=contextRoot%>common/images/@report.png" />

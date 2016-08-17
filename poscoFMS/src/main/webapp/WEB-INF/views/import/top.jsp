@@ -40,5 +40,15 @@
         	<span><%=userName%> 님</span>
             <button type="button" onclick="logout();">로그아웃</button>
         </p>
+        <div class="btns">
+<c:if test="${param.menu == 'detail' }">
+        	<button id="btnSurvey" type="button" class="on">측량</button>
+            <button id="btnCheck" type="button">점검</button>
+</c:if>
+<c:if test="${param.menu == 'report' }">
+        	<button type="button">PDF다운로드</button>
+            <button type="button">인쇄</button>
+</c:if>
+        </div>
     </div>
 

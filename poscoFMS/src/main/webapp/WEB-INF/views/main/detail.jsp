@@ -72,13 +72,6 @@ $(document).ready(function(){
 <jsp:include page="../import/top.jsp" >
 	<jsp:param value="detail" name="menu"/>
 </jsp:include>
-</div>
-<!-- END HEADER -->
-
-<input id="selectedGirderId" type="hidden" value="${selectedGirderId}">
-<input id="measurementDate" type="hidden" value="${selMeasurementDate}">
-
-<div id="wrap">
 	<div class="snb">
     	<ul>
         	<li>
@@ -107,7 +100,15 @@ $(document).ready(function(){
             </li>
         </ul>
     </div>
-    <!-- END NAV --> 
+    <!-- END SNB --> 
+
+</div>
+<!-- END HEADER -->
+
+<input id="selectedGirderId" type="hidden" value="${selectedGirderId}">
+<input id="measurementDate" type="hidden" value="${selMeasurementDate}">
+
+<div id="wrap">
     <div class="contents">
     	<div class="subindex xy">
     		<c:forEach var="girderInfo" items="${girderInfoList}">
@@ -119,10 +120,6 @@ $(document).ready(function(){
         <div class="view">
         	<div class="title">
             	<h3>11~12</h3>
-                <div class="btns">
-                	<button id="btnSurvey" type="button" class="on">측량</button>
-                    <button id="btnCheck" type="button"">점검</button>
-                </div>
             </div>
             
             <!-- 측량 -->

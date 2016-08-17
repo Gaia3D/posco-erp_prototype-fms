@@ -48,10 +48,6 @@
 <jsp:include page="../import/top.jsp" >
 	<jsp:param value="home" name="menu"/>
 </jsp:include>
-</div>
-<!-- END HEADER -->
-
-<div id="wrap">
 	<div class="snb">
     	<ul>
         	<li>
@@ -80,7 +76,11 @@
             </li>
         </ul>
     </div>
-    <!-- END NAV --> 
+    <!-- END SNB --> 
+</div>
+<!-- END HEADER -->
+
+<div id="wrap">
     <div class="contents">
     	<ul class="count">
         	<li class="measure"><label>측량이상</label><span>${measurementErrorCount}</span>건</li>
