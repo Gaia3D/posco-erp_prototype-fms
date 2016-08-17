@@ -37,6 +37,8 @@
 <meta charset="utf-8">
 <meta content="IE=edge" http-equiv="X-UA-Compatible">
 <title>RUNWAY시설물 관리시스템</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0" />
+<meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
 <link rel="stylesheet" href="<%=contextRoot%>common/css/style.css">
 <jsp:include page="../import/scripts.jsp" />
 <script src="<%=contextRoot%>common/js/controlForIndexPage.js"></script>
