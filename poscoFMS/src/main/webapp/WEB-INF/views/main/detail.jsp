@@ -307,7 +307,7 @@ $(document).ready(function(){
         </p>
     	<h4>A11-1 </h4>
         <div class="graph">
-        	<canvas class="graph" id="timeGraph" ></canvas>
+        	<canvas id="timeGraph"></canvas>
         </div>
     </div>
     <!-- END CONTENTS --> 
