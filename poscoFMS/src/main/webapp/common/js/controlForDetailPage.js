@@ -15,6 +15,10 @@ function onLoad(pageType)
 	console.log('initial girder id = ' + selectedGirderId);
 	console.log('initial date = ' + selectedDate);
 	
+	girderLine = selectedGirderId.substr(0,1);
+	girderNum = selectedGirderId.substr(1,2);
+    $(".title>h3").html(girderLine + " : " + girderNum + "~" + (Number(girderNum)+1));
+	
 	makeGirderIndexMapHandler();
 	
 	makeTimeSeriesPageTrigger();
@@ -126,6 +130,9 @@ function makeGirderIndexMapHandler()
 			
 			requestNewDataForDetailPage();
 			$(".check_drawing li").removeClass("warn");
+			girderLine = selectedGirderId.substr(0,1);
+			girderNum = selectedGirderId.substr(1,2);
+		    $(".title>h3").html(girderLine + " : " + girderNum + "~" + (Number(girderNum)+1));
 		}
 	);
 }
