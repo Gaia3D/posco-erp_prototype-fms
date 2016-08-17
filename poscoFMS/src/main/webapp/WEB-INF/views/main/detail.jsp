@@ -130,7 +130,7 @@ $(document).ready(function(){
                     <a href="#" title="시계열조회" id="horizontalDeformationAtLast" class="first"><span>-10</span></a>
                     <a href="#" title="시계열조회" id="horizontalDeformationAtMid" class="middle warn"><span>-0</span></a>
                     <a href="#" title="시계열조회" id="horizontalDeformationAtStart" class="last"><span>23</span></a>
-                    <canvas id="canvStraight" style="width:150px;height:400px;margin:57px;">weqrasdfzxcv</canvas>
+                    <canvas id="canvStraight"></canvas>
                     <script>
                     	var canvas1= document.getElementById("canvStraight");
                     	var context1 = canvas1.getContext('2d');
@@ -142,7 +142,7 @@ $(document).ready(function(){
                     <a href="#" title="시계열조회" id="verticalDeformationAtStart" class="first"><span>-10</span></a>
                     <a href="#" title="시계열조회" id="verticalDeformationAtMid" class="middle"><span>-0</span></a>
                     <a href="#" title="시계열조회" id="verticalDeformationAtLast" class="last warn"><span>23</span></a>
-                    <canvas id="canvCurve" style="width:400px;height:140px;margin:51px;"></canvas>
+                    <canvas id="canvCurve"></canvas>
                     <script>
                     	var canvas2= document.getElementById("canvCurve");
                     	var context2 = canvas2.getContext('2d');
