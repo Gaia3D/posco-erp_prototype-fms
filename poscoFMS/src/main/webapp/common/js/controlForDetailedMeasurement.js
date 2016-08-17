@@ -59,24 +59,29 @@ function drawStraight(girderId, x,y,z){
 	var straight2 = y;
 	var straight3 = z;
 	
-	var interval = 100 ;
+	
+	var interval = 70 ;
 	
 	var modVal1 = 0;
 	var modVal2 = 0;
 	var modVal3 = 0;
 
 	if(girderId && girderId.indexOf("A") > -1){
-		modVal1 = 145 - straight1 / interval * 150 ; //보정 계수 포함. 아래도 마찬가지
-		modVal2 = 145 - straight2 / interval * 150 ;
-		modVal3 = 145 - straight3 / interval * 150 ;
+		modVal1 = 73 - straight1 / interval * 75 ; //보정 계수 포함. 아래도 마찬가지
+		modVal2 = 73 - straight2 / interval * 75 ;
+		modVal3 = 73 - straight3 / interval * 75 ;
 	} else {
-		modVal1 = straight1 / interval * 150 + 145 ; //보정 계수 포함. 아래도 마찬가지
-		modVal2 = straight2 / interval * 150 + 145 ;
-		modVal3 = straight3 / interval * 150 + 145 ;
+		modVal1 = straight1 / interval * 75 + 73 ; //보정 계수 포함. 아래도 마찬가지
+		modVal2 = straight2 / interval * 75 + 73 ;
+		modVal3 = straight3 / interval * 75 + 73 ;
 	}
 	
-    context1.strokeStyle = "darkorange";
-    context1.lineWidth = 10;
+	$(canvas1).attr("width", "150px");
+	$(canvas1).attr("height", "400px");
+	$(canvas1).css("margin", "57px");
+	
+    context1.strokeStyle = "000";
+    context1.lineWidth = 3;
     context1.lineCap = "miter";
     context1.lineJoin = "round";
     
@@ -84,10 +89,10 @@ function drawStraight(girderId, x,y,z){
 
 	if(straight2 < 9999){
 		if(straight1 == 9999){
-			context1.moveTo(modVal2,75);
+			context1.moveTo(modVal2,200);
 		} else {
-			context1.moveTo(modVal1,150);
-			context1.lineTo(modVal2,75);
+			context1.moveTo(modVal1,400);
+			context1.lineTo(modVal2,200);
 		}
 		if(straight3 < 9999){
 			context1.lineTo(modVal3,0);
@@ -115,12 +120,18 @@ function drawCurve(girderId, x,y,z){
 	
 	var interval = 100 ;
 	
-	var modVal1 = 60 - curve1 / interval * 150 ; //보정 계수 포함. 아래도 마찬가지
-	var modVal2 = 60 - curve2 / interval * 150 ;
-	var modVal3 = 60 - curve3 / interval * 150 ;
+	var modVal1 = 55 - curve1 / interval * 75 ; //보정 계수 포함. 아래도 마찬가지
+	var modVal2 = 55 - curve2 / interval * 75 ;
+	var modVal3 = 55 - curve3 / interval * 75 ;
 	
 
-    context2.strokeStyle = "darkorange";
+	$(canvas2).attr("width", "400px");
+	$(canvas2).attr("height", "141px");
+	$(canvas2).css("margin", "51px");
+	//context2.canvas.top = 51;
+	//context2.canvas.left = 51;
+
+	context2.strokeStyle = "000";
     context2.lineWidth = 3;
     context2.lineCap = "miter";
     context2.lineJoin = "round";
@@ -129,13 +140,13 @@ function drawCurve(girderId, x,y,z){
 	
 	if(curve2 < 9999){
 		if(curve1 == 9999){
-			context2.moveTo(150, modVal2);
+			context2.moveTo(200, modVal2);
 		} else {
 			context2.moveTo(0, modVal1);
-			context2.lineTo(150, modVal2);
+			context2.lineTo(200, modVal2);
 		}
 		if(curve3 < 9999){
-			context2.lineTo(300, modVal3);
+			context2.lineTo(400, modVal3);
 		}
 		context2.stroke();
 	}
