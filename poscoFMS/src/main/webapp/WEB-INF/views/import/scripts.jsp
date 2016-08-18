@@ -31,8 +31,9 @@
 	<script src="<%=contextRoot%>common/js/jquery-2.2.3.min.js"></script>
 
     <!-- 그래프 생성 JS -->
+    <script src="<%=contextRoot%>common/js/Moment.js"></script>
     <script src="<%=contextRoot%>common/js/chart.js"></script>
-    
+    <%-- <script src="<%=contextRoot%>common/js/Chart.Zoom.js"></script> --%>
     
     <!-- 사용자 작성 js -->
     <script src="<%=contextRoot%>common/js/common.js"></script>
