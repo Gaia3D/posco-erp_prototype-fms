@@ -103,13 +103,21 @@ function showGraph(title, dates, history, maxVal) {
 			scales : {
 				xAxes : [ {
 					display : true,
-					position : 'bottom'
+					position : 'bottom',
+					type: 'time',
+					unit: 'month',
+				    unitStepSize: 1,
+	                time: {
+	                    displayFormats: {
+	                        quarter: 'YYYY-MM'
+	                    }
+					}
 				} ],
 				yAxes : [ {
 					ticks : {
-						max : yMax,
-						min : yMin,
-						stepSize : 5
+						max : 100,
+						min : -100,
+						stepSize : 10
 					}
 				} ]
 			}
