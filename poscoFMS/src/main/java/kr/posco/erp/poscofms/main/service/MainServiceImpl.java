@@ -55,8 +55,8 @@ public class MainServiceImpl implements MainService {
 			comparedValueAtMid = Math.abs(input.getHorizontalDeformationAtLast() - input.getHorizontalDeformationAtMid());
 			comparedValueAtLast = Math.abs(input.getHorizontalDeformationAtLast() - input.getHorizontalDeformationAtStart());
 			input.setHorizontalDeformationCalculated(
-					String.format("%.1f", comparedValueAtStart) + "," +
-					String.format("%.1f", comparedValueAtMid) + "," +
+					String.format("%.1f", comparedValueAtStart) + " / " +
+					String.format("%.1f", comparedValueAtMid) + " / " +
 					String.format("%.1f", comparedValueAtLast)
 				);
 			
@@ -71,7 +71,7 @@ public class MainServiceImpl implements MainService {
 		case 6:	// mid & last measurements are available
 		{
 			comparedValueAtMid = Math.abs(input.getHorizontalDeformationAtLast() - input.getHorizontalDeformationAtMid());
-			input.setHorizontalDeformationCalculated("-," + String.format("%.1f", comparedValueAtMid) + ",-");
+			input.setHorizontalDeformationCalculated("- / " + String.format("%.1f", comparedValueAtMid) + " / -");
 			if(referenceValueAtMid < comparedValueAtMid)
 				input.setHorizontalDeformationTestResult("failure");
 			else
@@ -81,7 +81,7 @@ public class MainServiceImpl implements MainService {
 		case 5:	// start & last measurements are available
 		{
 			comparedValueAtLast = Math.abs(input.getHorizontalDeformationAtLast() - input.getHorizontalDeformationAtStart());
-			input.setHorizontalDeformationCalculated("-,-," + String.format("%.1f", comparedValueAtLast));
+			input.setHorizontalDeformationCalculated("- / - / " + String.format("%.1f", comparedValueAtLast));
 			
 			if(referenceValueAtLast < comparedValueAtLast)
 				input.setHorizontalDeformationTestResult("failure");
@@ -92,7 +92,7 @@ public class MainServiceImpl implements MainService {
 		case 3: // start & mid measurements are available
 		{
 			comparedValueAtStart = Math.abs(input.getHorizontalDeformationAtMid() - input.getHorizontalDeformationAtStart());
-			input.setHorizontalDeformationCalculated(String.format("%.1f", comparedValueAtStart) + ",-,-");
+			input.setHorizontalDeformationCalculated(String.format("%.1f", comparedValueAtStart) + " / - / -");
 			
 			if(referenceValueAtStart < comparedValueAtStart)
 				input.setHorizontalDeformationTestResult("failure");
@@ -105,7 +105,7 @@ public class MainServiceImpl implements MainService {
 		case 2:
 		case 4:
 		{
-			input.setHorizontalDeformationCalculated("-,-,-");
+			input.setHorizontalDeformationCalculated("- / - / -");
 			input.setHorizontalDeformationTestResult("unchecked");
 		}
 		break;
@@ -140,8 +140,8 @@ public class MainServiceImpl implements MainService {
 			comparedValueAtMid = Math.abs(input.getHorizontalDeformationAtMid() + input.getHorizontalDeformationAtCounterGirderMid());
 			comparedValueAtLast = Math.abs(input.getHorizontalDeformationAtLast() + input.getHorizontalDeformationAtCounterGirderLast());
 			input.setSpanCalculated(
-					String.format("%.2f", comparedValueAtStart) + "," +
-					String.format("%.2f", comparedValueAtMid) + "," +
+					String.format("%.2f", comparedValueAtStart) + " / " +
+					String.format("%.2f", comparedValueAtMid) + " / " +
 					String.format("%.2f", comparedValueAtLast)
 				);
 			if(referenceValue < comparedValueAtStart ||
@@ -156,8 +156,8 @@ public class MainServiceImpl implements MainService {
 		{
 			comparedValueAtMid = Math.abs(input.getHorizontalDeformationAtMid() + input.getHorizontalDeformationAtCounterGirderMid());
 			comparedValueAtLast = Math.abs(input.getHorizontalDeformationAtLast() + input.getHorizontalDeformationAtCounterGirderLast());
-			input.setSpanCalculated("-," +
-					String.format("%.2f", comparedValueAtMid) + "," +
+			input.setSpanCalculated("- / " +
+					String.format("%.2f", comparedValueAtMid) + " / " +
 					String.format("%.2f", comparedValueAtLast)
 				);
 			if(referenceValue < comparedValueAtMid ||
@@ -172,7 +172,7 @@ public class MainServiceImpl implements MainService {
 			comparedValueAtStart = Math.abs(input.getHorizontalDeformationAtStart() + input.getHorizontalDeformationAtCounterGirderStart());
 			comparedValueAtLast = Math.abs(input.getHorizontalDeformationAtLast() + input.getHorizontalDeformationAtCounterGirderLast());
 			input.setSpanCalculated(
-					String.format("%.2f", comparedValueAtStart) + ",-," +
+					String.format("%.2f", comparedValueAtStart) + " / - / " +
 					String.format("%.2f", comparedValueAtLast)
 				);
 			if(referenceValue < comparedValueAtStart ||
@@ -187,8 +187,8 @@ public class MainServiceImpl implements MainService {
 			comparedValueAtStart = Math.abs(input.getHorizontalDeformationAtStart() + input.getHorizontalDeformationAtCounterGirderStart());
 			comparedValueAtMid = Math.abs(input.getHorizontalDeformationAtMid() + input.getHorizontalDeformationAtCounterGirderMid());
 			input.setSpanCalculated(
-					String.format("%.2f", comparedValueAtStart) + "," +
-					String.format("%.2f", comparedValueAtMid) + ",-"
+					String.format("%.2f", comparedValueAtStart) + " / " +
+					String.format("%.2f", comparedValueAtMid) + " / -"
 				);
 			if(referenceValue < comparedValueAtStart ||
 				referenceValue < comparedValueAtMid)
@@ -200,7 +200,7 @@ public class MainServiceImpl implements MainService {
 		case 4:
 		{
 			comparedValueAtLast = Math.abs(input.getHorizontalDeformationAtLast() + input.getHorizontalDeformationAtCounterGirderLast());
-			input.setSpanCalculated("-.-," + String.format("%.2f", comparedValueAtLast));
+			input.setSpanCalculated("- / - / " + String.format("%.2f", comparedValueAtLast));
 			if(referenceValue < comparedValueAtLast)
 				input.setSpanTestResult("failure");
 			else
@@ -210,7 +210,7 @@ public class MainServiceImpl implements MainService {
 		case 2:
 		{
 			comparedValueAtMid = Math.abs(input.getHorizontalDeformationAtMid() + input.getHorizontalDeformationAtCounterGirderMid());
-			input.setSpanCalculated("-," + String.format("%.2f", comparedValueAtMid) + ",-");
+			input.setSpanCalculated("- / " + String.format("%.2f", comparedValueAtMid) + " / -");
 			if(referenceValue < comparedValueAtMid)
 				input.setSpanTestResult("failure");
 			else
@@ -220,7 +220,7 @@ public class MainServiceImpl implements MainService {
 		case 1:
 		{
 			comparedValueAtStart = Math.abs(input.getHorizontalDeformationAtStart() + input.getHorizontalDeformationAtCounterGirderStart());
-			input.setSpanCalculated(String.format("%.2f", comparedValueAtStart) + ",-,-");
+			input.setSpanCalculated(String.format("%.2f", comparedValueAtStart) + " / - / -");
 			if(referenceValue < comparedValueAtStart)
 				input.setSpanTestResult("failure");
 			else
@@ -229,7 +229,7 @@ public class MainServiceImpl implements MainService {
 		break;
 		case 0:
 		{
-			input.setSpanCalculated("-,-,-");
+			input.setSpanCalculated("- / - / -");
 			input.setSpanTestResult("unchecked");
 		}
 		break;

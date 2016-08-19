@@ -6,13 +6,13 @@ function onLoad(pageType)
 
 	console.log('init reportpage!!!!');
 	
-	$("#downPdf").click(function(){
-		
-		console.log('download Pdf document');
-		//pdfSave( $(".contents").html());
-
-		//console.log("야호 성공!!!");
-	});
+//	$("#downPdf").click(function(){
+//		
+//		console.log('download Pdf document');
+//		//pdfSave( $(".contents").html());
+//
+//		//console.log("야호 성공!!!");
+//	});
 	
 	$("#printHtml").click(
 		function()
