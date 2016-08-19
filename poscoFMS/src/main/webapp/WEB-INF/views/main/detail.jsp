@@ -158,13 +158,19 @@ $(document).ready(function(){
 	                        <tr>
 	                            <th>구분</th>
 	                            <th>기준</th>
-	                            <th>측정값</th>
+	                            <th>계산값</th>
 	                            <th>판정결과</th>
 	                        </tr>
                         </thead>
                         <tr id="horizontalDeformation" >
                             <th>진직도</th>
                             <td>L/500</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr id="spanTest">
+                            <th>span</th>
+                            <td>L/1000</td>
                             <td></td>
                             <td></td>
                         </tr>
@@ -177,12 +183,6 @@ $(document).ready(function(){
                         <tr id="heightDifference">
                             <th>단차</th>
                             <td>4㎜</td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr id="spanTest">
-                            <th>span</th>
-                            <td>L/1000</td>
                             <td></td>
                             <td></td>
                         </tr>
