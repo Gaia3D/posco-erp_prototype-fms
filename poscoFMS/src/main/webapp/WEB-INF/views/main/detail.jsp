@@ -170,7 +170,7 @@ $(document).ready(function(){
                         </tr>
                         <tr id="reverseCamber">
                             <th>역캠버</th>
-                            <td>L/1200</td>
+                            <td>-L/1200</td>
                             <td></td>
                             <td></td>
                         </tr>

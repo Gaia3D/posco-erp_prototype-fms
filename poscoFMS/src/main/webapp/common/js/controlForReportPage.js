@@ -9,9 +9,9 @@ function onLoad(pageType)
 	$("#downPdf").click(function(){
 		
 		console.log('download Pdf document');
-		pdfSave( $(".contents").html());
+		//pdfSave( $(".contents").html());
 
-		console.log("야호 성공!!!");
+		//console.log("야호 성공!!!");
 	});
 	
 	$("#printHtml").click(
