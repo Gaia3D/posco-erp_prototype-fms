@@ -46,8 +46,8 @@
             <button id="btnCheck" type="button">점검</button>
 </c:if>
 <c:if test="${param.menu == 'report' }">
-        	<button type="button">PDF다운로드</button>
-            <button type="button">인쇄</button>
+        	<button id="downPdf" type="button">PDF다운로드</button>
+            <button id="printHtml" type="button">인쇄</button>
 </c:if>
         </div>
     </div>

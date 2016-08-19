@@ -151,7 +151,7 @@ $(document).ready(function(){
 
                 <!-- 표 -->
                 <div class="measure_list">
-                    <h4>기준상세</h4>
+                    <h4>판정상세</h4>
                     <!-- 측정값이 경고일때 해당 TR에 class="warn"을 적용 -->
                     <table summary="기준상세표">
                         <thead>
@@ -165,32 +165,32 @@ $(document).ready(function(){
                         <tr id="horizontalDeformation" >
                             <th>진직도</th>
                             <td>L/500</td>
-                            <td>L/1200</td>
+                            <td></td>
                             <td></td>
                         </tr>
                         <tr id="reverseCamber">
                             <th>역캠버</th>
-                            <td>L/500</td>
                             <td>L/1200</td>
+                            <td></td>
                             <td></td>
                         </tr>
                         <tr id="heightDifference">
                             <th>단차</th>
-                            <td>L/500</td>
-                            <td>L/1200</td>
+                            <td>4㎜</td>
+                            <td></td>
                             <td></td>
                         </tr>
                         <tr id="spanTest">
                             <th>span</th>
-                            <td>L/500</td>
-                            <td>L/1200</td>
+                            <td>L/1000</td>
+                            <td></td>
                             <td></td>
                         </tr>
                     </table>
                 </div>
                 
                 <div class="standard">
-                    <h3>점검기준</h3>
+                    <h3>점검상세기준</h3>
                      <table summary="점검기준표">
                             <thead>
 	                            <tr>

@@ -80,8 +80,8 @@ function drawStraight(girderId, x,y,z){
 	$(canvas1).attr("height", "400px");
 	$(canvas1).css("margin", "57px");
 	
-    context1.strokeStyle = "000";
-    context1.lineWidth = 3;
+    context1.strokeStyle = "darkorange";
+    context1.lineWidth = 5;
     context1.lineCap = "miter";
     context1.lineJoin = "round";
     
@@ -131,8 +131,8 @@ function drawCurve(girderId, x,y,z){
 	//context2.canvas.top = 51;
 	//context2.canvas.left = 51;
 
-	context2.strokeStyle = "000";
-    context2.lineWidth = 3;
+	context2.strokeStyle = "darkorange";
+    context2.lineWidth = 5;
     context2.lineCap = "miter";
     context2.lineJoin = "round";
     

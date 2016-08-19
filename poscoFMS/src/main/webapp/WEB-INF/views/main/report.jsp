@@ -41,6 +41,14 @@
 <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
 <link rel="stylesheet" href="<%=contextRoot%>common/css/style.css">
 <jsp:include page="../import/scripts.jsp" />
+<script src="<%=contextRoot%>common/js/controlForReportPage.js"></script>
+<script src="<%=contextRoot%>common/js/jsPDF-master/dist/jspdf.min.js"></script>
+<script src="<%=contextRoot%>common/js/html2canvas.js"></script>
+<script>
+$(document).ready(function(){
+	onLoad();
+});
+</script>
 </head>
 
 <body>  
@@ -51,7 +59,7 @@
 	<div class="snb">
     	<ul>
         	<li>
-            	<label>제강</label>
+            	<label id="factory">제강</label>
                 <select>
                   <option>1제강</option>
                   <option>2제강</option>
@@ -59,7 +67,7 @@
                 </select>
             </li>
             <li>
-            	<label>라인</label>
+            	<label id="rail">라인</label>
                 <select>
                   <option>AB LINE</option>
                   <option>CD LINE</option>
@@ -73,7 +81,7 @@
 <!-- END HEADER -->
 
 <div id="wrap">
-    <div class="contents">
+    <div id="contents" class="contents">
         <!-- 보고서 -->
         <div>
         	<img src="<%=contextRoot%>common/images/@report.png" />
