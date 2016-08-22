@@ -123,7 +123,7 @@
 		),
 		e as (
 		select girder_id
-		, case when ((val0 + val2) <![CDATA[ <= ]]> 5) then 't' else 'f' end result
+		, case when ((val0 - val2) <![CDATA[ <= ]]> 5) then 't' else 'f' end result
 		 from 
 		(
 		select * from (
